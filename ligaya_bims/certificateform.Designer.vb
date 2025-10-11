@@ -26,11 +26,12 @@ Partial Class certificateform
         Me.panelMain = New System.Windows.Forms.Panel()
         Me.panelLeft = New System.Windows.Forms.Panel()
         Me.panelFormFields = New System.Windows.Forms.Panel()
-        Me.dtpIssuedDate = New System.Windows.Forms.DateTimePicker()
-        Me.txtYearsStayed = New System.Windows.Forms.TextBox()
-        Me.txtAddress = New System.Windows.Forms.TextBox()
+        Me.GroupBoxStatus = New System.Windows.Forms.GroupBox()
         Me.rbMarried = New System.Windows.Forms.RadioButton()
         Me.rbSingle = New System.Windows.Forms.RadioButton()
+        Me.dtpIssuedDate = New System.Windows.Forms.DateTimePicker()
+        Me.txtPurpose = New System.Windows.Forms.TextBox()
+        Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.txtAge = New System.Windows.Forms.TextBox()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.cmbCertificateType = New System.Windows.Forms.ComboBox()
@@ -53,6 +54,7 @@ Partial Class certificateform
         Me.panelMain.SuspendLayout()
         Me.panelLeft.SuspendLayout()
         Me.panelFormFields.SuspendLayout()
+        Me.GroupBoxStatus.SuspendLayout()
         Me.panelLeftHeader.SuspendLayout()
         Me.panelRight.SuspendLayout()
         Me.panelButtons.SuspendLayout()
@@ -84,11 +86,10 @@ Partial Class certificateform
         '
         'panelFormFields
         '
+        Me.panelFormFields.Controls.Add(Me.GroupBoxStatus)
         Me.panelFormFields.Controls.Add(Me.dtpIssuedDate)
-        Me.panelFormFields.Controls.Add(Me.txtYearsStayed)
+        Me.panelFormFields.Controls.Add(Me.txtPurpose)
         Me.panelFormFields.Controls.Add(Me.txtAddress)
-        Me.panelFormFields.Controls.Add(Me.rbMarried)
-        Me.panelFormFields.Controls.Add(Me.rbSingle)
         Me.panelFormFields.Controls.Add(Me.txtAge)
         Me.panelFormFields.Controls.Add(Me.txtName)
         Me.panelFormFields.Controls.Add(Me.cmbCertificateType)
@@ -100,36 +101,21 @@ Partial Class certificateform
         Me.panelFormFields.Size = New System.Drawing.Size(375, 570)
         Me.panelFormFields.TabIndex = 1
         '
-        'dtpIssuedDate
+        'GroupBoxStatus
         '
-        Me.dtpIssuedDate.Location = New System.Drawing.Point(22, 244)
-        Me.dtpIssuedDate.Margin = New System.Windows.Forms.Padding(2)
-        Me.dtpIssuedDate.Name = "dtpIssuedDate"
-        Me.dtpIssuedDate.Size = New System.Drawing.Size(188, 20)
-        Me.dtpIssuedDate.TabIndex = 7
-        '
-        'txtYearsStayed
-        '
-        Me.txtYearsStayed.Location = New System.Drawing.Point(22, 203)
-        Me.txtYearsStayed.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtYearsStayed.Name = "txtYearsStayed"
-        Me.txtYearsStayed.Size = New System.Drawing.Size(76, 20)
-        Me.txtYearsStayed.TabIndex = 6
-        Me.txtYearsStayed.Text = "Years Stayed"
-        '
-        'txtAddress
-        '
-        Me.txtAddress.Location = New System.Drawing.Point(22, 162)
-        Me.txtAddress.Margin = New System.Windows.Forms.Padding(2)
-        Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.Size = New System.Drawing.Size(301, 20)
-        Me.txtAddress.TabIndex = 5
-        Me.txtAddress.Text = "Address"
+        Me.GroupBoxStatus.Controls.Add(Me.rbMarried)
+        Me.GroupBoxStatus.Controls.Add(Me.rbSingle)
+        Me.GroupBoxStatus.Location = New System.Drawing.Point(114, 109)
+        Me.GroupBoxStatus.Name = "GroupBoxStatus"
+        Me.GroupBoxStatus.Size = New System.Drawing.Size(200, 36)
+        Me.GroupBoxStatus.TabIndex = 8
+        Me.GroupBoxStatus.TabStop = False
+        Me.GroupBoxStatus.Text = "GroupBox1"
         '
         'rbMarried
         '
         Me.rbMarried.AutoSize = True
-        Me.rbMarried.Location = New System.Drawing.Point(188, 122)
+        Me.rbMarried.Location = New System.Drawing.Point(96, 14)
         Me.rbMarried.Margin = New System.Windows.Forms.Padding(2)
         Me.rbMarried.Name = "rbMarried"
         Me.rbMarried.Size = New System.Drawing.Size(60, 17)
@@ -141,7 +127,7 @@ Partial Class certificateform
         '
         Me.rbSingle.AutoSize = True
         Me.rbSingle.Checked = True
-        Me.rbSingle.Location = New System.Drawing.Point(112, 122)
+        Me.rbSingle.Location = New System.Drawing.Point(20, 14)
         Me.rbSingle.Margin = New System.Windows.Forms.Padding(2)
         Me.rbSingle.Name = "rbSingle"
         Me.rbSingle.Size = New System.Drawing.Size(54, 17)
@@ -150,8 +136,38 @@ Partial Class certificateform
         Me.rbSingle.Text = "Single"
         Me.rbSingle.UseVisualStyleBackColor = True
         '
+        'dtpIssuedDate
+        '
+        Me.dtpIssuedDate.Location = New System.Drawing.Point(22, 244)
+        Me.dtpIssuedDate.Margin = New System.Windows.Forms.Padding(2)
+        Me.dtpIssuedDate.Name = "dtpIssuedDate"
+        Me.dtpIssuedDate.Size = New System.Drawing.Size(188, 20)
+        Me.dtpIssuedDate.TabIndex = 7
+        '
+        'txtPurpose
+        '
+        Me.txtPurpose.ForeColor = System.Drawing.Color.Silver
+        Me.txtPurpose.Location = New System.Drawing.Point(22, 203)
+        Me.txtPurpose.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtPurpose.Name = "txtPurpose"
+        Me.txtPurpose.Size = New System.Drawing.Size(301, 20)
+        Me.txtPurpose.TabIndex = 6
+        Me.txtPurpose.Text = "Purpose/Application"
+        '
+        'txtAddress
+        '
+        Me.txtAddress.BackColor = System.Drawing.SystemColors.Window
+        Me.txtAddress.ForeColor = System.Drawing.Color.Silver
+        Me.txtAddress.Location = New System.Drawing.Point(22, 162)
+        Me.txtAddress.Margin = New System.Windows.Forms.Padding(2)
+        Me.txtAddress.Name = "txtAddress"
+        Me.txtAddress.Size = New System.Drawing.Size(301, 20)
+        Me.txtAddress.TabIndex = 5
+        Me.txtAddress.Text = "Address"
+        '
         'txtAge
         '
+        Me.txtAge.ForeColor = System.Drawing.Color.Silver
         Me.txtAge.Location = New System.Drawing.Point(22, 122)
         Me.txtAge.Margin = New System.Windows.Forms.Padding(2)
         Me.txtAge.Name = "txtAge"
@@ -161,6 +177,7 @@ Partial Class certificateform
         '
         'txtName
         '
+        Me.txtName.ForeColor = System.Drawing.Color.Silver
         Me.txtName.Location = New System.Drawing.Point(22, 81)
         Me.txtName.Margin = New System.Windows.Forms.Padding(2)
         Me.txtName.Name = "txtName"
@@ -329,6 +346,8 @@ Partial Class certificateform
         Me.panelLeft.ResumeLayout(False)
         Me.panelFormFields.ResumeLayout(False)
         Me.panelFormFields.PerformLayout()
+        Me.GroupBoxStatus.ResumeLayout(False)
+        Me.GroupBoxStatus.PerformLayout()
         Me.panelLeftHeader.ResumeLayout(False)
         Me.panelRight.ResumeLayout(False)
         Me.panelButtons.ResumeLayout(False)
@@ -345,7 +364,7 @@ Partial Class certificateform
     Friend WithEvents panelLeft As Panel
     Friend WithEvents panelFormFields As Panel
     Friend WithEvents dtpIssuedDate As DateTimePicker
-    Friend WithEvents txtYearsStayed As TextBox
+    Friend WithEvents txtPurpose As TextBox
     Friend WithEvents txtAddress As TextBox
     Friend WithEvents rbMarried As RadioButton
     Friend WithEvents rbSingle As RadioButton
@@ -364,4 +383,5 @@ Partial Class certificateform
     Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents pnlPic As Panel
+    Friend WithEvents GroupBoxStatus As GroupBox
 End Class

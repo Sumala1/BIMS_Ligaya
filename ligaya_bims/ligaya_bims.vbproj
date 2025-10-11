@@ -219,6 +219,8 @@
     </Compile>
     <Compile Include="DataAccessCommand.vb" />
     <Compile Include="Database.vb" />
+    <Compile Include="SharedCertificateData.vb" />
+    <Compile Include="CertificateFormManager.vb" />
     <Compile Include="reportsform.Designer.vb">
       <DependentUpon>reportsform.vb</DependentUpon>
     </Compile>
