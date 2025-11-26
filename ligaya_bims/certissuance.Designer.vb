@@ -326,10 +326,10 @@ Partial Class certissuance
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents btnCreateCertificate As RoundedButton
+    Friend WithEvents btnCreateCertificate As ligaya_bims.RoundedButton
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents RoundedButton3 As RoundedButton
-    Friend WithEvents RoundedButton4 As RoundedButton
-    Friend WithEvents RoundedButton5 As RoundedButton
+    Friend WithEvents RoundedButton3 As ligaya_bims.RoundedButton
+    Friend WithEvents RoundedButton4 As ligaya_bims.RoundedButton
+    Friend WithEvents RoundedButton5 As ligaya_bims.RoundedButton
 End Class

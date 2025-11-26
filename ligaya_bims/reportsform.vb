@@ -8,12 +8,27 @@ Partial Class reportsform
     Public Event IncidentSubmitted()
     Private lastGeneratedCaseNumber As String = String.Empty
 
+    Public Sub New()
+        InitializeComponent()
+        ApplyFixedWindowBounds()
+    End Sub
+
+    Private Sub ApplyFixedWindowBounds()
+        If Me.FormBorderStyle <> FormBorderStyle.None AndAlso Me.TopLevel Then
+            Dim currentSize As Size = Me.Size
+            Me.MinimumSize = currentSize
+            Me.MaximumSize = currentSize
+        End If
+    End Sub
+
     ' Method to handle when form is displayed as child form in dashboard
     Public Sub SetAsChildForm()
         ' Ensure the form is properly configured for child display
         Me.FormBorderStyle = FormBorderStyle.None
         Me.Dock = DockStyle.Fill
         Me.TopLevel = False
+        Me.MinimumSize = Size.Empty
+        Me.MaximumSize = Size.Empty
     End Sub
 
     Private Function ValidateIncidentFields() As Boolean
@@ -135,12 +150,9 @@ Partial Class reportsform
         ' Set default date/time values
         dtpFrom.Value = DateTime.Now.AddHours(-1)
         dtpTo.Value = DateTime.Now
+        ApplyFixedWindowBounds()
         ' Hide extra buttons to merge preview and print
-        Try
-            If btnPreview IsNot Nothing Then btnPreview.Visible = False
-            If btnPageSetup IsNot Nothing Then btnPageSetup.Visible = False
-        Catch
-        End Try
+
     End Sub
 
     Private Sub PrintDocument1_BeginPrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles PrintDocument1.BeginPrint
@@ -322,7 +334,7 @@ Partial Class reportsform
         Return New RectangleF(x, y, w, h)
     End Function
 
-    Private Sub btnPreview_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
+    Private Sub btnPreview_Click(sender As Object, e As EventArgs)
         Try
             ' Configure the print preview dialog
             PrintPreviewDialog1.Document = PrintDocument1
@@ -336,7 +348,7 @@ Partial Class reportsform
         End Try
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
         ' Merged flow: show preview dialog which has built-in print button
         Try
             PrintPreviewDialog1.Document = PrintDocument1
@@ -348,7 +360,7 @@ Partial Class reportsform
         End Try
     End Sub
 
-    Private Sub btnPageSetup_Click(sender As Object, e As EventArgs) Handles btnPageSetup.Click
+    Private Sub btnPageSetup_Click(sender As Object, e As EventArgs)
         PageSetupDialog1.Document = PrintDocument1
         PageSetupDialog1.ShowDialog()
     End Sub

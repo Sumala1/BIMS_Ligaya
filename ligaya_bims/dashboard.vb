@@ -31,7 +31,7 @@ Public Class dashboard
     End Sub
 
     Private Sub navReports_Click(sender As Object, e As EventArgs) Handles navReports.Click
-        Dim blotterform As New blotterform()
+        Dim blotterform As New blotterrecords()
         blotterform.SetAsChildForm()
         OpenChildForm(blotterform)
     End Sub

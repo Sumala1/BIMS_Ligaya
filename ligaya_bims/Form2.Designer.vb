@@ -182,13 +182,13 @@ Partial Class Form2
 
     End Sub
     Friend WithEvents panelLeft As Panel
-    Friend WithEvents btnNewResident As RoundedButton
+    Friend WithEvents btnNewResident As ligaya_bims.RoundedButton
     Friend WithEvents panelRight As Panel
     Friend WithEvents pnlPic As Panel
-    Friend WithEvents RoundedButton2 As RoundedButton
-    Friend WithEvents RoundedButton1 As RoundedButton
+    Friend WithEvents RoundedButton2 As ligaya_bims.RoundedButton
+    Friend WithEvents RoundedButton1 As ligaya_bims.RoundedButton
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents RoundedButton3 As RoundedButton
-    Friend WithEvents RoundedButton4 As RoundedButton
-    Friend WithEvents RoundedButton5 As RoundedButton
+    Friend WithEvents RoundedButton3 As ligaya_bims.RoundedButton
+    Friend WithEvents RoundedButton4 As ligaya_bims.RoundedButton
+    Friend WithEvents RoundedButton5 As ligaya_bims.RoundedButton
 End Class

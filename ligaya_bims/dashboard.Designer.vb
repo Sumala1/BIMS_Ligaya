@@ -41,7 +41,6 @@ Partial Class dashboard
         Me.navDashboard = New ligaya_bims.RoundedButton()
         Me.leftHeader = New System.Windows.Forms.Panel()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.lblBrand = New System.Windows.Forms.Label()
         Me.topBar = New System.Windows.Forms.Panel()
         Me.lblWelcome = New System.Windows.Forms.Label()
@@ -62,48 +61,48 @@ Partial Class dashboard
         Me.colGenderDashboard = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblDashboardResidentsTitle = New System.Windows.Forms.Label()
         Me.Panel4 = New ligaya_bims.RoundedPanel()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Panel3 = New ligaya_bims.RoundedPanel()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel2 = New ligaya_bims.RoundedPanel()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Panel1 = New ligaya_bims.RoundedPanel()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.panelOfficials = New ligaya_bims.RoundedPanel()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.lblOfficialsMore = New System.Windows.Forms.Label()
         Me.lblOfficialsTitle = New System.Windows.Forms.Label()
         Me.lblOfficialsCount = New System.Windows.Forms.Label()
         Me.panelCertificates = New ligaya_bims.RoundedPanel()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.lblCertificatesMore = New System.Windows.Forms.Label()
         Me.lblCertificatesTitle = New System.Windows.Forms.Label()
         Me.lblCertificatesCount = New System.Windows.Forms.Label()
         Me.panelBlotter = New ligaya_bims.RoundedPanel()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.lblBlotterMore = New System.Windows.Forms.Label()
         Me.lblBlotterTitle = New System.Windows.Forms.Label()
         Me.lblBlotterCount = New System.Windows.Forms.Label()
         Me.panelResidents = New ligaya_bims.RoundedPanel()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblResidentsMore = New System.Windows.Forms.Label()
         Me.lblResidentsTitle = New System.Windows.Forms.Label()
         Me.lblResidentsCount = New System.Windows.Forms.Label()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.leftNav.SuspendLayout()
         Me.leftHeader.SuspendLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.topBar.SuspendLayout()
         Me.contentHost.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -113,21 +112,22 @@ Partial Class dashboard
         Me.panelLeft.SuspendLayout()
         CType(Me.dgvDashboardResidents, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelOfficials.SuspendLayout()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelCertificates.SuspendLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelBlotter.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelResidents.SuspendLayout()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'leftNav
@@ -304,20 +304,9 @@ Partial Class dashboard
         Me.Label13.ForeColor = System.Drawing.Color.White
         Me.Label13.Location = New System.Drawing.Point(7, 170)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(232, 28)
+        Me.Label13.Size = New System.Drawing.Size(189, 21)
         Me.Label13.TabIndex = 2
         Me.Label13.Text = "Welcome Administrator!"
-        '
-        'PictureBox9
-        '
-        Me.PictureBox9.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox9.Image = Global.ligaya_bims.My.Resources.Resources.brgy_ligaya_logo_removebg_preview_removebg_preview
-        Me.PictureBox9.Location = New System.Drawing.Point(44, 48)
-        Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(111, 110)
-        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox9.TabIndex = 1
-        Me.PictureBox9.TabStop = False
         '
         'lblBrand
         '
@@ -326,7 +315,7 @@ Partial Class dashboard
         Me.lblBrand.ForeColor = System.Drawing.Color.White
         Me.lblBrand.Location = New System.Drawing.Point(40, 17)
         Me.lblBrand.Name = "lblBrand"
-        Me.lblBrand.Size = New System.Drawing.Size(140, 28)
+        Me.lblBrand.Size = New System.Drawing.Size(115, 21)
         Me.lblBrand.TabIndex = 0
         Me.lblBrand.Text = "eLIGAYA BIMS"
         '
@@ -363,7 +352,7 @@ Partial Class dashboard
         Me.lblAppTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         Me.lblAppTitle.Location = New System.Drawing.Point(16, 13)
         Me.lblAppTitle.Name = "lblAppTitle"
-        Me.lblAppTitle.Size = New System.Drawing.Size(128, 28)
+        Me.lblAppTitle.Size = New System.Drawing.Size(103, 21)
         Me.lblAppTitle.TabIndex = 0
         Me.lblAppTitle.Text = "eBaryo v1.1.0"
         '
@@ -381,9 +370,9 @@ Partial Class dashboard
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 4
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.45576!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.20868!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.21035!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.panelRight, 2, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.panelLeft, 0, 2)
@@ -413,9 +402,9 @@ Partial Class dashboard
         Me.panelRight.Controls.Add(Me.chartDemographics)
         Me.panelRight.Controls.Add(Me.lblChartsTitle)
         Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelRight.Location = New System.Drawing.Point(601, 237)
+        Me.panelRight.Location = New System.Drawing.Point(586, 237)
         Me.panelRight.Name = "panelRight"
-        Me.panelRight.Size = New System.Drawing.Size(594, 540)
+        Me.panelRight.Size = New System.Drawing.Size(609, 540)
         Me.panelRight.TabIndex = 30
         '
         'chartPurokPopulation
@@ -434,7 +423,7 @@ Partial Class dashboard
         Me.chartPurokPopulation.Series.Add(Series3)
         Me.chartPurokPopulation.Series.Add(Series4)
         Me.chartPurokPopulation.Series.Add(Series5)
-        Me.chartPurokPopulation.Size = New System.Drawing.Size(568, 197)
+        Me.chartPurokPopulation.Size = New System.Drawing.Size(583, 197)
         Me.chartPurokPopulation.TabIndex = 2
         Me.chartPurokPopulation.Text = "Purok Population"
         '
@@ -447,7 +436,7 @@ Partial Class dashboard
         Me.chartDemographics.ChartAreas.Add(ChartArea1)
         Me.chartDemographics.Location = New System.Drawing.Point(15, 263)
         Me.chartDemographics.Name = "chartDemographics"
-        Me.chartDemographics.Size = New System.Drawing.Size(568, 236)
+        Me.chartDemographics.Size = New System.Drawing.Size(583, 236)
         Me.chartDemographics.TabIndex = 1
         Me.chartDemographics.Text = "Demographics"
         '
@@ -458,7 +447,7 @@ Partial Class dashboard
         Me.lblChartsTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.lblChartsTitle.Location = New System.Drawing.Point(15, 15)
         Me.lblChartsTitle.Name = "lblChartsTitle"
-        Me.lblChartsTitle.Size = New System.Drawing.Size(248, 37)
+        Me.lblChartsTitle.Size = New System.Drawing.Size(199, 30)
         Me.lblChartsTitle.TabIndex = 0
         Me.lblChartsTitle.Text = "Population Charts"
         '
@@ -471,7 +460,7 @@ Partial Class dashboard
         Me.panelLeft.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelLeft.Location = New System.Drawing.Point(3, 237)
         Me.panelLeft.Name = "panelLeft"
-        Me.panelLeft.Size = New System.Drawing.Size(592, 540)
+        Me.panelLeft.Size = New System.Drawing.Size(577, 540)
         Me.panelLeft.TabIndex = 29
         '
         'dgvDashboardResidents
@@ -497,7 +486,7 @@ Partial Class dashboard
         Me.dgvDashboardResidents.RowHeadersVisible = False
         Me.dgvDashboardResidents.RowHeadersWidth = 51
         Me.dgvDashboardResidents.RowTemplate.Height = 40
-        Me.dgvDashboardResidents.Size = New System.Drawing.Size(560, 449)
+        Me.dgvDashboardResidents.Size = New System.Drawing.Size(545, 449)
         Me.dgvDashboardResidents.TabIndex = 1
         '
         'chkSelectAllDashboard
@@ -549,7 +538,7 @@ Partial Class dashboard
         Me.lblDashboardResidentsTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
         Me.lblDashboardResidentsTitle.Location = New System.Drawing.Point(15, 15)
         Me.lblDashboardResidentsTitle.Name = "lblDashboardResidentsTitle"
-        Me.lblDashboardResidentsTitle.Size = New System.Drawing.Size(234, 37)
+        Me.lblDashboardResidentsTitle.Size = New System.Drawing.Size(188, 30)
         Me.lblDashboardResidentsTitle.TabIndex = 0
         Me.lblDashboardResidentsTitle.Text = "Recent Residents"
         '
@@ -567,17 +556,6 @@ Partial Class dashboard
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(295, 111)
         Me.Panel4.TabIndex = 28
-        '
-        'PictureBox5
-        '
-        Me.PictureBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox5.Image = Global.ligaya_bims.My.Resources.Resources.old
-        Me.PictureBox5.Location = New System.Drawing.Point(201, 15)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox5.TabIndex = 7
-        Me.PictureBox5.TabStop = False
         '
         'Label10
         '
@@ -601,7 +579,7 @@ Partial Class dashboard
         Me.Label11.ForeColor = System.Drawing.Color.White
         Me.Label11.Location = New System.Drawing.Point(15, 65)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(128, 23)
+        Me.Label11.Size = New System.Drawing.Size(99, 17)
         Me.Label11.TabIndex = 1
         Me.Label11.Text = "Senior Citizens"
         '
@@ -612,7 +590,7 @@ Partial Class dashboard
         Me.Label12.ForeColor = System.Drawing.Color.White
         Me.Label12.Location = New System.Drawing.Point(15, 15)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(69, 54)
+        Me.Label12.Size = New System.Drawing.Size(56, 45)
         Me.Label12.TabIndex = 0
         Me.Label12.Text = "11"
         '
@@ -626,21 +604,10 @@ Partial Class dashboard
         Me.Panel3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel3.Location = New System.Drawing.Point(601, 120)
+        Me.Panel3.Location = New System.Drawing.Point(586, 120)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(293, 111)
+        Me.Panel3.Size = New System.Drawing.Size(308, 111)
         Me.Panel3.TabIndex = 27
-        '
-        'PictureBox6
-        '
-        Me.PictureBox6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox6.Image = Global.ligaya_bims.My.Resources.Resources.wheelchair
-        Me.PictureBox6.Location = New System.Drawing.Point(199, 15)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox6.TabIndex = 8
-        Me.PictureBox6.TabStop = False
         '
         'Label7
         '
@@ -652,7 +619,7 @@ Partial Class dashboard
         Me.Label7.ForeColor = System.Drawing.Color.White
         Me.Label7.Location = New System.Drawing.Point(0, 86)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(293, 25)
+        Me.Label7.Size = New System.Drawing.Size(308, 25)
         Me.Label7.TabIndex = 2
         Me.Label7.Text = "More info →"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -664,7 +631,7 @@ Partial Class dashboard
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(15, 65)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(101, 23)
+        Me.Label8.Size = New System.Drawing.Size(80, 17)
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Total PWDs"
         '
@@ -675,7 +642,7 @@ Partial Class dashboard
         Me.Label9.ForeColor = System.Drawing.Color.White
         Me.Label9.Location = New System.Drawing.Point(15, 15)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(69, 54)
+        Me.Label9.Size = New System.Drawing.Size(56, 45)
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "11"
         '
@@ -689,21 +656,10 @@ Partial Class dashboard
         Me.Panel2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Panel2.Location = New System.Drawing.Point(302, 120)
+        Me.Panel2.Location = New System.Drawing.Point(284, 120)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(293, 111)
+        Me.Panel2.Size = New System.Drawing.Size(296, 111)
         Me.Panel2.TabIndex = 26
-        '
-        'PictureBox7
-        '
-        Me.PictureBox7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox7.Image = Global.ligaya_bims.My.Resources.Resources.check
-        Me.PictureBox7.Location = New System.Drawing.Point(198, 15)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox7.TabIndex = 9
-        Me.PictureBox7.TabStop = False
         '
         'Label4
         '
@@ -715,7 +671,7 @@ Partial Class dashboard
         Me.Label4.ForeColor = System.Drawing.Color.White
         Me.Label4.Location = New System.Drawing.Point(0, 86)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(293, 25)
+        Me.Label4.Size = New System.Drawing.Size(296, 25)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "More info →"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -727,7 +683,7 @@ Partial Class dashboard
         Me.Label5.ForeColor = System.Drawing.Color.White
         Me.Label5.Location = New System.Drawing.Point(15, 65)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(115, 23)
+        Me.Label5.Size = New System.Drawing.Size(89, 17)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Active Voters"
         '
@@ -738,7 +694,7 @@ Partial Class dashboard
         Me.Label6.ForeColor = System.Drawing.Color.White
         Me.Label6.Location = New System.Drawing.Point(15, 15)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(69, 54)
+        Me.Label6.Size = New System.Drawing.Size(56, 45)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "11"
         '
@@ -754,19 +710,8 @@ Partial Class dashboard
         Me.Panel1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel1.Location = New System.Drawing.Point(3, 120)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(293, 111)
+        Me.Panel1.Size = New System.Drawing.Size(275, 111)
         Me.Panel1.TabIndex = 25
-        '
-        'PictureBox8
-        '
-        Me.PictureBox8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox8.Image = Global.ligaya_bims.My.Resources.Resources.house__1_
-        Me.PictureBox8.Location = New System.Drawing.Point(201, 15)
-        Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox8.TabIndex = 10
-        Me.PictureBox8.TabStop = False
         '
         'Label1
         '
@@ -778,7 +723,7 @@ Partial Class dashboard
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(0, 86)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(293, 25)
+        Me.Label1.Size = New System.Drawing.Size(275, 25)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "More info →"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -790,7 +735,7 @@ Partial Class dashboard
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(15, 65)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(146, 23)
+        Me.Label2.Size = New System.Drawing.Size(116, 17)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Total Households"
         '
@@ -801,7 +746,7 @@ Partial Class dashboard
         Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(15, 15)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(69, 54)
+        Me.Label3.Size = New System.Drawing.Size(56, 45)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "11"
         '
@@ -819,17 +764,6 @@ Partial Class dashboard
         Me.panelOfficials.Name = "panelOfficials"
         Me.panelOfficials.Size = New System.Drawing.Size(295, 111)
         Me.panelOfficials.TabIndex = 24
-        '
-        'PictureBox4
-        '
-        Me.PictureBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox4.Image = Global.ligaya_bims.My.Resources.Resources.multiple_users_silhouette
-        Me.PictureBox4.Location = New System.Drawing.Point(201, 15)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 6
-        Me.PictureBox4.TabStop = False
         '
         'lblOfficialsMore
         '
@@ -853,7 +787,7 @@ Partial Class dashboard
         Me.lblOfficialsTitle.ForeColor = System.Drawing.Color.White
         Me.lblOfficialsTitle.Location = New System.Drawing.Point(15, 65)
         Me.lblOfficialsTitle.Name = "lblOfficialsTitle"
-        Me.lblOfficialsTitle.Size = New System.Drawing.Size(168, 23)
+        Me.lblOfficialsTitle.Size = New System.Drawing.Size(131, 17)
         Me.lblOfficialsTitle.TabIndex = 1
         Me.lblOfficialsTitle.Text = "Cedula Transactions"
         '
@@ -864,7 +798,7 @@ Partial Class dashboard
         Me.lblOfficialsCount.ForeColor = System.Drawing.Color.White
         Me.lblOfficialsCount.Location = New System.Drawing.Point(15, 15)
         Me.lblOfficialsCount.Name = "lblOfficialsCount"
-        Me.lblOfficialsCount.Size = New System.Drawing.Size(46, 54)
+        Me.lblOfficialsCount.Size = New System.Drawing.Size(38, 45)
         Me.lblOfficialsCount.TabIndex = 0
         Me.lblOfficialsCount.Text = "6"
         '
@@ -878,21 +812,10 @@ Partial Class dashboard
         Me.panelCertificates.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panelCertificates.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelCertificates.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panelCertificates.Location = New System.Drawing.Point(601, 3)
+        Me.panelCertificates.Location = New System.Drawing.Point(586, 3)
         Me.panelCertificates.Name = "panelCertificates"
-        Me.panelCertificates.Size = New System.Drawing.Size(293, 111)
+        Me.panelCertificates.Size = New System.Drawing.Size(308, 111)
         Me.panelCertificates.TabIndex = 19
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox3.Image = Global.ligaya_bims.My.Resources.Resources.certificate
-        Me.PictureBox3.Location = New System.Drawing.Point(199, 15)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 5
-        Me.PictureBox3.TabStop = False
         '
         'lblCertificatesMore
         '
@@ -904,7 +827,7 @@ Partial Class dashboard
         Me.lblCertificatesMore.ForeColor = System.Drawing.Color.White
         Me.lblCertificatesMore.Location = New System.Drawing.Point(0, 86)
         Me.lblCertificatesMore.Name = "lblCertificatesMore"
-        Me.lblCertificatesMore.Size = New System.Drawing.Size(293, 25)
+        Me.lblCertificatesMore.Size = New System.Drawing.Size(308, 25)
         Me.lblCertificatesMore.TabIndex = 2
         Me.lblCertificatesMore.Text = "More info →"
         Me.lblCertificatesMore.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -916,7 +839,7 @@ Partial Class dashboard
         Me.lblCertificatesTitle.ForeColor = System.Drawing.Color.White
         Me.lblCertificatesTitle.Location = New System.Drawing.Point(15, 65)
         Me.lblCertificatesTitle.Name = "lblCertificatesTitle"
-        Me.lblCertificatesTitle.Size = New System.Drawing.Size(101, 23)
+        Me.lblCertificatesTitle.Size = New System.Drawing.Size(77, 17)
         Me.lblCertificatesTitle.TabIndex = 1
         Me.lblCertificatesTitle.Text = "Certificates"
         '
@@ -927,7 +850,7 @@ Partial Class dashboard
         Me.lblCertificatesCount.ForeColor = System.Drawing.Color.White
         Me.lblCertificatesCount.Location = New System.Drawing.Point(15, 15)
         Me.lblCertificatesCount.Name = "lblCertificatesCount"
-        Me.lblCertificatesCount.Size = New System.Drawing.Size(46, 54)
+        Me.lblCertificatesCount.Size = New System.Drawing.Size(38, 45)
         Me.lblCertificatesCount.TabIndex = 0
         Me.lblCertificatesCount.Text = "7"
         '
@@ -941,21 +864,10 @@ Partial Class dashboard
         Me.panelBlotter.Cursor = System.Windows.Forms.Cursors.Hand
         Me.panelBlotter.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelBlotter.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panelBlotter.Location = New System.Drawing.Point(302, 3)
+        Me.panelBlotter.Location = New System.Drawing.Point(284, 3)
         Me.panelBlotter.Name = "panelBlotter"
-        Me.panelBlotter.Size = New System.Drawing.Size(293, 111)
+        Me.panelBlotter.Size = New System.Drawing.Size(296, 111)
         Me.panelBlotter.TabIndex = 18
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox2.Image = Global.ligaya_bims.My.Resources.Resources.report
-        Me.PictureBox2.Location = New System.Drawing.Point(198, 15)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 4
-        Me.PictureBox2.TabStop = False
         '
         'lblBlotterMore
         '
@@ -967,7 +879,7 @@ Partial Class dashboard
         Me.lblBlotterMore.ForeColor = System.Drawing.Color.White
         Me.lblBlotterMore.Location = New System.Drawing.Point(0, 86)
         Me.lblBlotterMore.Name = "lblBlotterMore"
-        Me.lblBlotterMore.Size = New System.Drawing.Size(293, 25)
+        Me.lblBlotterMore.Size = New System.Drawing.Size(296, 25)
         Me.lblBlotterMore.TabIndex = 2
         Me.lblBlotterMore.Text = "More info →"
         Me.lblBlotterMore.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -979,7 +891,7 @@ Partial Class dashboard
         Me.lblBlotterTitle.ForeColor = System.Drawing.Color.White
         Me.lblBlotterTitle.Location = New System.Drawing.Point(15, 65)
         Me.lblBlotterTitle.Name = "lblBlotterTitle"
-        Me.lblBlotterTitle.Size = New System.Drawing.Size(117, 23)
+        Me.lblBlotterTitle.Size = New System.Drawing.Size(91, 17)
         Me.lblBlotterTitle.TabIndex = 1
         Me.lblBlotterTitle.Text = "Total Blotters"
         '
@@ -990,7 +902,7 @@ Partial Class dashboard
         Me.lblBlotterCount.ForeColor = System.Drawing.Color.White
         Me.lblBlotterCount.Location = New System.Drawing.Point(15, 15)
         Me.lblBlotterCount.Name = "lblBlotterCount"
-        Me.lblBlotterCount.Size = New System.Drawing.Size(46, 54)
+        Me.lblBlotterCount.Size = New System.Drawing.Size(38, 45)
         Me.lblBlotterCount.TabIndex = 0
         Me.lblBlotterCount.Text = "2"
         '
@@ -1007,19 +919,8 @@ Partial Class dashboard
         Me.panelResidents.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panelResidents.Location = New System.Drawing.Point(3, 3)
         Me.panelResidents.Name = "panelResidents"
-        Me.panelResidents.Size = New System.Drawing.Size(293, 111)
+        Me.panelResidents.Size = New System.Drawing.Size(275, 111)
         Me.panelResidents.TabIndex = 17
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox1.Image = Global.ligaya_bims.My.Resources.Resources.multiple_users_silhouette
-        Me.PictureBox1.Location = New System.Drawing.Point(201, 15)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
         '
         'lblResidentsMore
         '
@@ -1031,7 +932,7 @@ Partial Class dashboard
         Me.lblResidentsMore.ForeColor = System.Drawing.Color.White
         Me.lblResidentsMore.Location = New System.Drawing.Point(0, 86)
         Me.lblResidentsMore.Name = "lblResidentsMore"
-        Me.lblResidentsMore.Size = New System.Drawing.Size(293, 25)
+        Me.lblResidentsMore.Size = New System.Drawing.Size(275, 25)
         Me.lblResidentsMore.TabIndex = 2
         Me.lblResidentsMore.Text = "More info →"
         Me.lblResidentsMore.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1043,7 +944,7 @@ Partial Class dashboard
         Me.lblResidentsTitle.ForeColor = System.Drawing.Color.White
         Me.lblResidentsTitle.Location = New System.Drawing.Point(15, 65)
         Me.lblResidentsTitle.Name = "lblResidentsTitle"
-        Me.lblResidentsTitle.Size = New System.Drawing.Size(130, 23)
+        Me.lblResidentsTitle.Size = New System.Drawing.Size(102, 17)
         Me.lblResidentsTitle.TabIndex = 1
         Me.lblResidentsTitle.Text = "Total Residents"
         '
@@ -1054,13 +955,112 @@ Partial Class dashboard
         Me.lblResidentsCount.ForeColor = System.Drawing.Color.White
         Me.lblResidentsCount.Location = New System.Drawing.Point(15, 15)
         Me.lblResidentsCount.Name = "lblResidentsCount"
-        Me.lblResidentsCount.Size = New System.Drawing.Size(69, 54)
+        Me.lblResidentsCount.Size = New System.Drawing.Size(56, 45)
         Me.lblResidentsCount.TabIndex = 0
         Me.lblResidentsCount.Text = "11"
         '
+        'PictureBox5
+        '
+        Me.PictureBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox5.Image = Global.ligaya_bims.My.Resources.Resources.old
+        Me.PictureBox5.Location = New System.Drawing.Point(201, 15)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox5.TabIndex = 7
+        Me.PictureBox5.TabStop = False
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox6.Image = Global.ligaya_bims.My.Resources.Resources.wheelchair
+        Me.PictureBox6.Location = New System.Drawing.Point(214, 15)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox6.TabIndex = 8
+        Me.PictureBox6.TabStop = False
+        '
+        'PictureBox7
+        '
+        Me.PictureBox7.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox7.Image = Global.ligaya_bims.My.Resources.Resources.check
+        Me.PictureBox7.Location = New System.Drawing.Point(201, 15)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox7.TabIndex = 9
+        Me.PictureBox7.TabStop = False
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox8.Image = Global.ligaya_bims.My.Resources.Resources.house__1_
+        Me.PictureBox8.Location = New System.Drawing.Point(183, 15)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox8.TabIndex = 10
+        Me.PictureBox8.TabStop = False
+        '
+        'PictureBox4
+        '
+        Me.PictureBox4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox4.Image = Global.ligaya_bims.My.Resources.Resources.multiple_users_silhouette
+        Me.PictureBox4.Location = New System.Drawing.Point(201, 15)
+        Me.PictureBox4.Name = "PictureBox4"
+        Me.PictureBox4.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox4.TabIndex = 6
+        Me.PictureBox4.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox3.Image = Global.ligaya_bims.My.Resources.Resources.certificate
+        Me.PictureBox3.Location = New System.Drawing.Point(214, 15)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 5
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.Image = Global.ligaya_bims.My.Resources.Resources.report
+        Me.PictureBox2.Location = New System.Drawing.Point(201, 15)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 4
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Image = Global.ligaya_bims.My.Resources.Resources.multiple_users_silhouette
+        Me.PictureBox1.Location = New System.Drawing.Point(183, 15)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(60, 60)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 3
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox9
+        '
+        Me.PictureBox9.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox9.Image = Global.ligaya_bims.My.Resources.Resources.brgy_ligaya_logo_removebg_preview_removebg_preview
+        Me.PictureBox9.Location = New System.Drawing.Point(44, 48)
+        Me.PictureBox9.Name = "PictureBox9"
+        Me.PictureBox9.Size = New System.Drawing.Size(111, 110)
+        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox9.TabIndex = 1
+        Me.PictureBox9.TabStop = False
+        '
         'dashboard
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(188, Byte), Integer), CType(CType(212, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1424, 861)
@@ -1075,7 +1075,6 @@ Partial Class dashboard
         Me.leftNav.ResumeLayout(False)
         Me.leftHeader.ResumeLayout(False)
         Me.leftHeader.PerformLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.topBar.ResumeLayout(False)
         Me.topBar.PerformLayout()
         Me.contentHost.ResumeLayout(False)
@@ -1089,28 +1088,29 @@ Partial Class dashboard
         CType(Me.dgvDashboardResidents, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelOfficials.ResumeLayout(False)
         Me.panelOfficials.PerformLayout()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelCertificates.ResumeLayout(False)
         Me.panelCertificates.PerformLayout()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelBlotter.ResumeLayout(False)
         Me.panelBlotter.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelResidents.ResumeLayout(False)
         Me.panelResidents.PerformLayout()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

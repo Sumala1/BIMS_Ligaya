@@ -188,10 +188,10 @@ Partial Class BackupRestore
     End Sub
 
     Private WithEvents pnlHeader As System.Windows.Forms.Panel
-    Private WithEvents btnBackup As RoundedButton
-    Private WithEvents btnResident As RoundedButton
-    Private WithEvents btnCedula As RoundedButton
-    Private WithEvents btnCertificate As RoundedButton
+    Private WithEvents btnBackup As ligaya_bims.RoundedButton
+    Private WithEvents btnResident As ligaya_bims.RoundedButton
+    Private WithEvents btnCedula As ligaya_bims.RoundedButton
+    Private WithEvents btnCertificate As ligaya_bims.RoundedButton
     Private WithEvents txtSearch As System.Windows.Forms.TextBox
     Private WithEvents lblSearch As System.Windows.Forms.Label
     Private WithEvents lblSubtitle As System.Windows.Forms.Label

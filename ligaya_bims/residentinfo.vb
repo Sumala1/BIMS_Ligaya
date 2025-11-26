@@ -1,12 +1,102 @@
 ﻿Public Class residentinfo
     Private residentForm As residentform
     Private residentsList As New List(Of ResidentData)
+    Private currentResidentLastName As String = String.Empty
+    Private currentResidentFirstName As String = String.Empty
+    Private currentResidentMiddleName As String = String.Empty
+    Private currentResidentBirthDate As DateTime = DateTime.MinValue
+    Private currentPicturePath As String = String.Empty
+    Private newPicturePath As String = String.Empty
+    Private residentColumnRequirements As New Dictionary(Of String, Boolean)(StringComparer.OrdinalIgnoreCase)
+    Private deleteIconImage As Image
+    Private Shared ReadOnly deleteIconBase64 As String = "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"
 
     Public Sub New()
         InitializeComponent()
-        InitializeComboBoxes()
-        LoadResidents()
-        InitializeSelectAllCheckbox()
+    End Sub
+
+    Private Sub residentinfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Only run initialization at runtime, not in designer
+        If Not DesignMode Then
+            LoadResidentColumnRequirements()
+            InitializeComboBoxes()
+            EnableDetailEditing()
+            LoadResidents()
+            InitializeSelectAllCheckbox()
+            PositionHeaderCheckBox()
+            InitializeDeleteIcon()
+        End If
+    End Sub
+    Private Sub LoadResidentColumnRequirements()
+        residentColumnRequirements.Clear()
+
+        Try
+            Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
+                conn.Open()
+                Dim schemaName As String = conn.Database
+                Dim sql As String = "SELECT COLUMN_NAME, IS_NULLABLE FROM information_schema.columns WHERE table_schema = @schema AND table_name = 'tbl_residentinfo'"
+                Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@schema", schemaName)
+                    Using reader As Global.MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            Dim columnName As String = reader.GetString(0)
+                            Dim isNullable As String = reader.GetString(1)
+                            residentColumnRequirements(columnName) = String.Equals(isNullable, "NO", StringComparison.OrdinalIgnoreCase)
+                        End While
+                    End Using
+                End Using
+            End Using
+        Catch
+            ' If schema lookup fails, keep dictionary empty so default logic applies
+        End Try
+    End Sub
+
+    Private Sub InitializeDeleteIcon()
+        Try
+            If deleteIconImage IsNot Nothing Then
+                deleteIconImage.Dispose()
+                deleteIconImage = Nothing
+            End If
+
+            deleteIconImage = CreateDeleteIconImage()
+            Dim actionColumn = TryCast(dgvResidents.Columns("colAction"), DataGridViewImageColumn)
+            If actionColumn IsNot Nothing Then
+                actionColumn.Image = deleteIconImage
+                actionColumn.ImageLayout = DataGridViewImageCellLayout.Zoom
+            End If
+        Catch
+            ' Ignore icon creation failures silently
+        End Try
+    End Sub
+
+
+    Private Sub EnableDetailEditing()
+        Dim editableTextBoxes As TextBox() = {
+            txtLastName,
+            txtFirstName,
+            txtMiddleName,
+            txtAge,
+            txtCitizenship,
+            txtPhoneNumber,
+            txtFathersName,
+            txtMothersName,
+            txtSpouse,
+            txtReligion,
+            txtHeight,
+            txtWeight,
+            txtAddress
+        }
+
+        For Each tb As TextBox In editableTextBoxes
+            If tb IsNot Nothing Then
+                tb.ReadOnly = False
+            End If
+        Next
+
+        If cmbGender IsNot Nothing Then cmbGender.Enabled = True
+        If cmbCivilStatus IsNot Nothing Then cmbCivilStatus.Enabled = True
+        If cmbVotersStatus IsNot Nothing Then cmbVotersStatus.Enabled = True
+        If dtpBirthdate IsNot Nothing Then dtpBirthdate.Enabled = True
     End Sub
 
     ' Method to handle when form is displayed as child form in dashboard
@@ -146,8 +236,8 @@
             Dim lastName As String = If(dgvResidents.Rows(e.RowIndex).Cells("colLastName").Value IsNot Nothing, dgvResidents.Rows(e.RowIndex).Cells("colLastName").Value.ToString(), "")
             Dim firstName As String = If(dgvResidents.Rows(e.RowIndex).Cells("colFirstName").Value IsNot Nothing, dgvResidents.Rows(e.RowIndex).Cells("colFirstName").Value.ToString(), "")
 
-            ' Check if the Delete icon column was clicked
-            If e.ColumnIndex = dgvResidents.Columns("colDelete").Index Then
+            ' Check if the Action (Delete) icon column was clicked
+            If dgvResidents.Columns.Contains("colAction") AndAlso e.ColumnIndex = dgvResidents.Columns("colAction").Index Then
                 DeleteResidentRow(e.RowIndex)
             Else
                 ' Load and display resident details in the right panel
@@ -319,7 +409,12 @@
                                 resident.IdPicture = String.Empty
                             End If
                             resident.MobileNo = resident.PhoneNumber
-
+                            currentResidentLastName = resident.LastName
+                            currentResidentFirstName = resident.FirstName
+                            currentResidentMiddleName = resident.MiddleName
+                            currentResidentBirthDate = resident.BirthDate
+                            currentPicturePath = If(Not String.IsNullOrEmpty(resident.IdPicture), resident.IdPicture, String.Empty)
+                            newPicturePath = String.Empty
                             ' Populate all controls with resident data
                             txtLastName.Text = resident.LastName
                             txtFirstName.Text = resident.FirstName
@@ -564,10 +659,6 @@
 
     End Sub
 
-    Private Sub residentinfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Ensure header checkbox is positioned on initial load
-        PositionHeaderCheckBox()
-    End Sub
 
     Private Sub DeleteResidentRow(rowIndex As Integer)
         If rowIndex < 0 OrElse rowIndex >= dgvResidents.Rows.Count Then Return
@@ -682,5 +773,208 @@
             MessageBox.Show("Failed to delete resident: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        If String.IsNullOrWhiteSpace(currentResidentLastName) OrElse String.IsNullOrWhiteSpace(currentResidentFirstName) Then
+            MessageBox.Show("Select a resident from the list before updating.", "No Resident Selected", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
 
+        Dim computedAge As Integer = CalculateAge(dtpBirthdate.Value)
+        txtAge.Text = computedAge.ToString()
+
+        If Not ValidateResidentInputs() Then
+            Return
+        End If
+
+        Try
+            Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
+                conn.Open()
+
+                Dim existsSql As String = "SELECT COUNT(*) FROM tbl_residentinfo WHERE lastname=@oldln AND firstname=@oldfn AND ((@oldmn IS NULL AND (middlename IS NULL OR TRIM(middlename) = '')) OR middlename=@oldmn) AND ((@oldbd IS NULL AND birthdate IS NULL) OR birthdate=@oldbd)"
+                Using checkCmd As New Global.MySql.Data.MySqlClient.MySqlCommand(existsSql, conn)
+                    checkCmd.Parameters.AddWithValue("@oldln", currentResidentLastName)
+                    checkCmd.Parameters.AddWithValue("@oldfn", currentResidentFirstName)
+                    checkCmd.Parameters.AddWithValue("@oldmn", If(String.IsNullOrWhiteSpace(currentResidentMiddleName), CType(DBNull.Value, Object), currentResidentMiddleName))
+                    checkCmd.Parameters.AddWithValue("@oldbd", If(currentResidentBirthDate = DateTime.MinValue, CType(DBNull.Value, Object), CType(currentResidentBirthDate, Object)))
+
+                    Dim count As Integer = Convert.ToInt32(checkCmd.ExecuteScalar())
+                    If count = 0 Then
+                        MessageBox.Show("The selected resident no longer exists in the database. Please refresh the list.", "Record Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        LoadResidents()
+                        Return
+                    End If
+                End Using
+
+                Dim updatePicture As Boolean = Not String.IsNullOrWhiteSpace(newPicturePath)
+                Dim updateSql As String = "UPDATE tbl_residentinfo SET lastname=@ln, firstname=@fn, middlename=@mn, gender=@gender, birthdate=@bd, age=@age, phoneno=@phone, civilstatus=@cstat, citizenship=@cit, fathersname=@father, mothersname=@mother, spouse=@spouse, voterstatus=@vstatus, weight=@weight, height=@height, address=@address, religion=@religion"
+                If updatePicture Then
+                    updateSql &= ", idpic=@idpic"
+                End If
+                updateSql &= " WHERE lastname=@oldln AND firstname=@oldfn AND ((@oldmn IS NULL AND (middlename IS NULL OR TRIM(middlename) = '')) OR middlename=@oldmn) AND ((@oldbd IS NULL AND birthdate IS NULL) OR birthdate=@oldbd)"
+
+                Using updateCmd As New Global.MySql.Data.MySqlClient.MySqlCommand(updateSql, conn)
+                    updateCmd.Parameters.AddWithValue("@ln", txtLastName.Text.Trim())
+                    updateCmd.Parameters.AddWithValue("@fn", txtFirstName.Text.Trim())
+                    updateCmd.Parameters.AddWithValue("@mn", If(String.IsNullOrWhiteSpace(txtMiddleName.Text), CType(DBNull.Value, Object), txtMiddleName.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@gender", cmbGender.SelectedItem.ToString())
+                    updateCmd.Parameters.AddWithValue("@bd", dtpBirthdate.Value)
+                    updateCmd.Parameters.AddWithValue("@age", computedAge)
+                    updateCmd.Parameters.AddWithValue("@phone", If(String.IsNullOrWhiteSpace(txtPhoneNumber.Text), CType(DBNull.Value, Object), txtPhoneNumber.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@cstat", cmbCivilStatus.SelectedItem.ToString())
+                    updateCmd.Parameters.AddWithValue("@cit", If(String.IsNullOrWhiteSpace(txtCitizenship.Text), CType(DBNull.Value, Object), txtCitizenship.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@father", If(String.IsNullOrWhiteSpace(txtFathersName.Text), CType(DBNull.Value, Object), txtFathersName.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@mother", If(String.IsNullOrWhiteSpace(txtMothersName.Text), CType(DBNull.Value, Object), txtMothersName.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@spouse", If(String.IsNullOrWhiteSpace(txtSpouse.Text), CType(DBNull.Value, Object), txtSpouse.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@vstatus", cmbVotersStatus.SelectedItem.ToString())
+                    updateCmd.Parameters.AddWithValue("@weight", If(String.IsNullOrWhiteSpace(txtWeight.Text), CType(DBNull.Value, Object), txtWeight.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@height", If(String.IsNullOrWhiteSpace(txtHeight.Text), CType(DBNull.Value, Object), txtHeight.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@address", If(String.IsNullOrWhiteSpace(txtAddress.Text), CType(DBNull.Value, Object), txtAddress.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@religion", If(String.IsNullOrWhiteSpace(txtReligion.Text), CType(DBNull.Value, Object), txtReligion.Text.Trim()))
+                    updateCmd.Parameters.AddWithValue("@oldln", currentResidentLastName)
+                    updateCmd.Parameters.AddWithValue("@oldfn", currentResidentFirstName)
+                    updateCmd.Parameters.AddWithValue("@oldmn", If(String.IsNullOrWhiteSpace(currentResidentMiddleName), CType(DBNull.Value, Object), currentResidentMiddleName))
+                    updateCmd.Parameters.AddWithValue("@oldbd", If(currentResidentBirthDate = DateTime.MinValue, CType(DBNull.Value, Object), CType(currentResidentBirthDate, Object)))
+                    If updatePicture Then
+                        updateCmd.Parameters.AddWithValue("@idpic", newPicturePath)
+                    End If
+
+                    updateCmd.ExecuteNonQuery()
+                End Using
+
+                MessageBox.Show("Resident information updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                currentResidentLastName = txtLastName.Text.Trim()
+                currentResidentFirstName = txtFirstName.Text.Trim()
+                currentResidentMiddleName = txtMiddleName.Text.Trim()
+                currentResidentBirthDate = dtpBirthdate.Value
+                If Not String.IsNullOrWhiteSpace(newPicturePath) Then
+                    currentPicturePath = newPicturePath
+                    newPicturePath = String.Empty
+                End If
+
+                LoadResidents()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Failed to update resident: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub picProfile_Click(sender As Object, e As EventArgs) Handles picProfile.Click
+        Dim openDialog As New OpenFileDialog With {
+            .Filter = "Image Files (*.jpg; *.jpeg; *.png; *.bmp; *.gif)|*.jpg; *.jpeg; *.png; *.bmp; *.gif|All Files (*.*)|*.*",
+            .Title = "Select Resident Photo",
+            .InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
+        }
+
+        If openDialog.ShowDialog() = DialogResult.OK Then
+            Try
+                Dim fileBytes As Byte() = System.IO.File.ReadAllBytes(openDialog.FileName)
+                Dim clonedImage As Image
+                Using ms As New System.IO.MemoryStream(fileBytes)
+                    Using tempImage As Image = Image.FromStream(ms)
+                        clonedImage = CType(tempImage.Clone(), Image)
+                    End Using
+                End Using
+
+                If picProfile.Image IsNot Nothing Then
+                    picProfile.Image.Dispose()
+                End If
+
+                picProfile.Image = clonedImage
+                picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                picProfile.Refresh()
+
+                newPicturePath = openDialog.FileName
+            Catch ex As Exception
+                MessageBox.Show("Unable to load the selected picture: " & ex.Message, "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Function ValidateResidentInputs() As Boolean
+        Dim missingFields As New List(Of String)()
+
+        ValidateTextField("Last Name", txtLastName, "lastname", missingFields, defaultRequired:=True)
+        ValidateTextField("First Name", txtFirstName, "firstname", missingFields, defaultRequired:=True)
+        ValidateTextField("Middle Name", txtMiddleName, "middlename", missingFields)
+        ValidateComboField("Gender", cmbGender, "gender", missingFields)
+        ValidateDateField("Birthdate", dtpBirthdate, "birthdate", missingFields, defaultRequired:=True)
+        ValidateTextField("Age", txtAge, "age", missingFields)
+        ValidateComboField("Civil Status", cmbCivilStatus, "civilstatus", missingFields)
+        ValidateTextField("Citizenship", txtCitizenship, "citizenship", missingFields)
+        ValidateTextField("Phone Number", txtPhoneNumber, "phoneno", missingFields)
+        ValidateTextField("Father's Name", txtFathersName, "fathersname", missingFields)
+        ValidateTextField("Mother's Name", txtMothersName, "mothersname", missingFields)
+        ValidateTextField("Spouse", txtSpouse, "spouse", missingFields)
+        ValidateComboField("Voters Status", cmbVotersStatus, "voterstatus", missingFields)
+        ValidateTextField("Religion", txtReligion, "religion", missingFields)
+        ValidateTextField("Height", txtHeight, "height", missingFields)
+        ValidateTextField("Weight", txtWeight, "weight", missingFields)
+        ValidateTextField("Address", txtAddress, "address", missingFields)
+
+        If missingFields.Count > 0 Then
+            MessageBox.Show("Please fill out the following required fields:" & Environment.NewLine & String.Join(Environment.NewLine, missingFields), "Incomplete Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        End If
+
+        Return True
+    End Function
+
+    Private Sub ValidateTextField(fieldName As String, control As TextBox, columnKey As String, missingFields As List(Of String), Optional defaultRequired As Boolean = False)
+        If Not FieldIsRequired(columnKey, defaultRequired) Then Return
+        If control Is Nothing OrElse String.IsNullOrWhiteSpace(control.Text) Then
+            missingFields.Add(fieldName)
+        End If
+    End Sub
+
+    Private Sub ValidateComboField(fieldName As String, control As ComboBox, columnKey As String, missingFields As List(Of String), Optional defaultRequired As Boolean = False)
+        If Not FieldIsRequired(columnKey, defaultRequired) Then Return
+        If control Is Nothing OrElse control.SelectedIndex < 0 Then
+            missingFields.Add(fieldName)
+        End If
+    End Sub
+
+    Private Sub ValidateDateField(fieldName As String, control As DateTimePicker, columnKey As String, missingFields As List(Of String), Optional defaultRequired As Boolean = False)
+        If Not FieldIsRequired(columnKey, defaultRequired) Then Return
+        If control Is Nothing Then
+            missingFields.Add(fieldName)
+        End If
+    End Sub
+
+    Private Function FieldIsRequired(columnKey As String, defaultRequirement As Boolean) As Boolean
+        If residentColumnRequirements IsNot Nothing AndAlso residentColumnRequirements.ContainsKey(columnKey) Then
+            Return residentColumnRequirements(columnKey)
+        End If
+        Return defaultRequirement
+    End Function
+
+    Private Function CalculateAge(birthDate As DateTime) As Integer
+        Dim today As DateTime = DateTime.Today
+        Dim age As Integer = today.Year - birthDate.Year
+        If birthDate.Date > today.AddYears(-age) Then
+            age -= 1
+        End If
+        Return age
+    End Function
+
+    Private Function CreateDeleteIconImage() As Image
+        Try
+            Dim bytes As Byte() = Convert.FromBase64String(deleteIconBase64)
+            Using ms As New System.IO.MemoryStream(bytes)
+                Using loaded As Image = Image.FromStream(ms)
+                    Return CType(loaded.Clone(), Image)
+                End Using
+            End Using
+        Catch
+            Return New Bitmap(48, 48)
+        End Try
+    End Function
+
+    Protected Overrides Sub OnFormClosed(e As FormClosedEventArgs)
+        If deleteIconImage IsNot Nothing Then
+            deleteIconImage.Dispose()
+            deleteIconImage = Nothing
+        End If
+        MyBase.OnFormClosed(e)
+    End Sub
 End Class

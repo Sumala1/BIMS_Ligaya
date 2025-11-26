@@ -359,6 +359,6 @@ Partial Class certificateform
     Friend WithEvents certAnnual As PictureBox
     Friend WithEvents certCC As PictureBox
     Friend WithEvents certSC As PictureBox
-    Friend WithEvents btnCancel As RoundedButton
+    Friend WithEvents btnCancel As ligaya_bims.RoundedButton
     Friend WithEvents Label1 As Label
 End Class

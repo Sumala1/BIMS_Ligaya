@@ -31,6 +31,7 @@ Partial Class residentinfo
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(residentinfo))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.panelRight = New System.Windows.Forms.Panel()
+        Me.btnUpdate = New ligaya_bims.RoundedButton()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.lblAddress = New System.Windows.Forms.Label()
         Me.txtWeight = New System.Windows.Forms.TextBox()
@@ -81,7 +82,7 @@ Partial Class residentinfo
         Me.colMiddleName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colMobileNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colGender = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colDelete = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colAction = New System.Windows.Forms.DataGridViewImageColumn()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.panelRight.SuspendLayout()
         CType(Me.picProfile, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,7 +110,9 @@ Partial Class residentinfo
         Me.panelRight.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panelRight.AutoScroll = True
         Me.panelRight.BackColor = System.Drawing.Color.White
+        Me.panelRight.Controls.Add(Me.btnUpdate)
         Me.panelRight.Controls.Add(Me.txtAddress)
         Me.panelRight.Controls.Add(Me.lblAddress)
         Me.panelRight.Controls.Add(Me.txtWeight)
@@ -148,8 +151,24 @@ Partial Class residentinfo
         Me.panelRight.Controls.Add(Me.lblInfoTitle)
         Me.panelRight.Location = New System.Drawing.Point(690, 3)
         Me.panelRight.Name = "panelRight"
+        Me.panelRight.Padding = New System.Windows.Forms.Padding(20)
         Me.panelRight.Size = New System.Drawing.Size(682, 794)
         Me.panelRight.TabIndex = 4
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.BackColor = System.Drawing.Color.Cyan
+        Me.btnUpdate.BorderRadius = 15
+        Me.btnUpdate.FlatAppearance.BorderSize = 0
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUpdate.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnUpdate.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.btnUpdate.Location = New System.Drawing.Point(190, 689)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(176, 47)
+        Me.btnUpdate.TabIndex = 50
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = False
         '
         'txtAddress
         '
@@ -567,7 +586,7 @@ Partial Class residentinfo
         Me.dgvResidents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvResidents.ColumnHeadersHeight = 45
         Me.dgvResidents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvResidents.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colID, Me.colLastName, Me.colFirstName, Me.colMiddleName, Me.colMobileNo, Me.colGender, Me.colDelete})
+        Me.dgvResidents.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colID, Me.colLastName, Me.colFirstName, Me.colMiddleName, Me.colMobileNo, Me.colGender, Me.colAction})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
@@ -696,14 +715,14 @@ Partial Class residentinfo
         Me.colGender.Name = "colGender"
         Me.colGender.ReadOnly = True
         '
-        'colDelete
+        'colAction
         '
-        Me.colDelete.HeaderText = "Delete"
-        Me.colDelete.Image = CType(resources.GetObject("colDelete.Image"), System.Drawing.Image)
-        Me.colDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
-        Me.colDelete.MinimumWidth = 6
-        Me.colDelete.Name = "colDelete"
-        Me.colDelete.ReadOnly = True
+        Me.colAction.HeaderText = "Action"
+        Me.colAction.Image = CType(resources.GetObject("colAction.Image"), System.Drawing.Image)
+        Me.colAction.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.colAction.MinimumWidth = 6
+        Me.colAction.Name = "colAction"
+        Me.colAction.ReadOnly = True
         '
         'residentinfo
         '
@@ -773,11 +792,12 @@ Partial Class residentinfo
     Friend WithEvents lblLastName As Label
     Friend WithEvents picProfile As PictureBox
     Friend WithEvents lblInfoTitle As Label
+    Friend WithEvents btnUpdate As RoundedButton
     Friend WithEvents colID As DataGridViewTextBoxColumn
     Friend WithEvents colLastName As DataGridViewTextBoxColumn
     Friend WithEvents colFirstName As DataGridViewTextBoxColumn
     Friend WithEvents colMiddleName As DataGridViewTextBoxColumn
     Friend WithEvents colMobileNo As DataGridViewTextBoxColumn
     Friend WithEvents colGender As DataGridViewTextBoxColumn
-    Friend WithEvents colDelete As DataGridViewImageColumn
+    Friend WithEvents colAction As DataGridViewImageColumn
 End Class
