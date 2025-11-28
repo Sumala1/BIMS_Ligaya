@@ -1,21 +1,19 @@
 ﻿Partial Class cedulaform
+    Inherits System.Windows.Forms.Form
+
 	Public Sub New()
 		InitializeComponent()
 		' Half-size window relative to typical 1200x700 main: set to 600x440 in designer
 	End Sub
 
 	Private Function ValidateInputs() As Boolean
-		' Middlename is optional; all other fields required
+		' Validate required fields
 		If String.IsNullOrWhiteSpace(txtCTC.Text) Then
 			MessageBox.Show("Please enter CTC Number.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 			Return False
 		End If
-		If String.IsNullOrWhiteSpace(txtLast.Text) Then
-			MessageBox.Show("Please enter Last Name.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-			Return False
-		End If
-		If String.IsNullOrWhiteSpace(txtFirst.Text) Then
-			MessageBox.Show("Please enter First Name.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+		If String.IsNullOrWhiteSpace(txtFullname.Text) Then
+			MessageBox.Show("Please enter Fullname.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 			Return False
 		End If
 		If String.IsNullOrWhiteSpace(txtAddress.Text) Then
@@ -42,16 +40,20 @@
 		Try
 			Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
 				conn.Open()
-				Dim sql As String = "INSERT INTO tbl_cedulatracker (ctcnumber, lastname, firstname, middlename, address, placeissued, dateissued) VALUES (@ctc, @ln, @fn, @mn, @addr, @place, @date)"
+				Dim sql As String = "INSERT INTO tbl_cedulatracker (ctcnumber, year, placeissued, fullname, address, gender, dateissued, citizenship, placeofbirth, civilstatus, dateofbirth, profession) VALUES (@ctc, @year, @place, @fullname, @addr, @gender, @date, @citizenship, @placeofbirth, @civilstatus, @dateofbirth, @profession)"
 				Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(sql, conn)
 					cmd.Parameters.AddWithValue("@ctc", ctcNumberInt)
-					cmd.Parameters.AddWithValue("@ln", txtLast.Text.Trim())
-					cmd.Parameters.AddWithValue("@fn", txtFirst.Text.Trim())
-					Dim middle As Object = If(String.IsNullOrWhiteSpace(txtMiddle.Text), DBNull.Value, CType(txtMiddle.Text.Trim(), Object))
-					cmd.Parameters.AddWithValue("@mn", middle)
-					cmd.Parameters.AddWithValue("@addr", txtAddress.Text.Trim())
+					cmd.Parameters.AddWithValue("@year", If(cmbYear.SelectedItem Is Nothing OrElse String.IsNullOrWhiteSpace(cmbYear.SelectedItem.ToString()), DBNull.Value, CType(cmbYear.SelectedItem.ToString(), Object)))
 					cmd.Parameters.AddWithValue("@place", txtPlace.Text.Trim())
-					cmd.Parameters.AddWithValue("@date", DateTime.Now)
+					cmd.Parameters.AddWithValue("@fullname", txtFullname.Text.Trim())
+					cmd.Parameters.AddWithValue("@addr", txtAddress.Text.Trim())
+					cmd.Parameters.AddWithValue("@gender", If(cmbGender.SelectedItem IsNot Nothing, cmbGender.SelectedItem.ToString(), DBNull.Value))
+					cmd.Parameters.AddWithValue("@date", dtpIssued.Value)
+					cmd.Parameters.AddWithValue("@citizenship", If(String.IsNullOrWhiteSpace(txtCitizenship.Text), DBNull.Value, CType(txtCitizenship.Text.Trim(), Object)))
+					cmd.Parameters.AddWithValue("@placeofbirth", If(String.IsNullOrWhiteSpace(txtPlaceOfBirth.Text), DBNull.Value, CType(txtPlaceOfBirth.Text.Trim(), Object)))
+					cmd.Parameters.AddWithValue("@civilstatus", If(cmbCivilStatus.SelectedItem IsNot Nothing, cmbCivilStatus.SelectedItem.ToString(), DBNull.Value))
+					cmd.Parameters.AddWithValue("@dateofbirth", If(dtpDateOfBirth.Checked, CType(dtpDateOfBirth.Value, Object), DBNull.Value))
+					cmd.Parameters.AddWithValue("@profession", If(String.IsNullOrWhiteSpace(txtProfession.Text), DBNull.Value, CType(txtProfession.Text.Trim(), Object)))
 
 					cmd.ExecuteNonQuery()
 				End Using

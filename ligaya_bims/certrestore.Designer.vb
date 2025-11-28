@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Imports ligaya_bims
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class certrestore
     Inherits System.Windows.Forms.Form
 
@@ -34,9 +36,9 @@ Partial Class certrestore
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlPagination = New System.Windows.Forms.Panel()
-        Me.btnNext = New System.Windows.Forms.Button()
+        Me.btnNext = New ligaya_bims.RoundedButton()
         Me.lblPageNumber = New System.Windows.Forms.Label()
-        Me.btnPrevious = New System.Windows.Forms.Button()
+        Me.btnPrevious = New ligaya_bims.RoundedButton()
         Me.lblShowEntries = New System.Windows.Forms.Label()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.colRestore = New System.Windows.Forms.DataGridViewImageColumn()
@@ -158,11 +160,12 @@ Partial Class certrestore
         'btnNext
         '
         Me.btnNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNext.BackColor = System.Drawing.Color.White
-        Me.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.btnNext.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnNext.BorderRadius = 15
+        Me.btnNext.FlatAppearance.BorderSize = 0
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNext.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnNext.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.btnNext.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnNext.ForeColor = System.Drawing.Color.White
         Me.btnNext.Location = New System.Drawing.Point(1029, 8)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(60, 25)
@@ -186,11 +189,12 @@ Partial Class certrestore
         'btnPrevious
         '
         Me.btnPrevious.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnPrevious.BackColor = System.Drawing.Color.White
-        Me.btnPrevious.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.btnPrevious.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnPrevious.BorderRadius = 15
+        Me.btnPrevious.FlatAppearance.BorderSize = 0
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPrevious.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnPrevious.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.btnPrevious.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPrevious.ForeColor = System.Drawing.Color.White
         Me.btnPrevious.Location = New System.Drawing.Point(909, 8)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(60, 25)
@@ -250,9 +254,9 @@ Partial Class certrestore
     Private WithEvents pnlContent As Panel
     Private WithEvents dgvCert As DataGridView
     Private WithEvents pnlPagination As Panel
-    Private WithEvents btnNext As Button
+    Private WithEvents btnNext As RoundedButton
     Private WithEvents lblPageNumber As Label
-    Private WithEvents btnPrevious As Button
+    Private WithEvents btnPrevious As RoundedButton
     Private WithEvents lblShowEntries As Label
     Friend WithEvents DataGridViewImageColumn1 As DataGridViewImageColumn
     Friend WithEvents colSelect As DataGridViewCheckBoxColumn

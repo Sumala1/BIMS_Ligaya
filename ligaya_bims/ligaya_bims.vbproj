@@ -174,6 +174,12 @@
     <Compile Include="blotterrecords.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="blotterrecordsrestore.Designer.vb">
+      <DependentUpon>blotterrecordsrestore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="blotterrecordsrestore.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="cedulaform.Designer.vb">
       <DependentUpon>cedulaform.vb</DependentUpon>
     </Compile>
@@ -317,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="blotterrecords.resx">
       <DependentUpon>blotterrecords.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="blotterrecordsrestore.resx">
+      <DependentUpon>blotterrecordsrestore.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cedulaform.resx">
       <DependentUpon>cedulaform.vb</DependentUpon>

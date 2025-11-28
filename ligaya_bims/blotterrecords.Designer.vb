@@ -1,4 +1,4 @@
-﻿Imports ligaya_bims
+Imports ligaya_bims
 
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class blotterrecords
@@ -26,28 +26,46 @@ Partial Class blotterrecords
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.pnlMain = New System.Windows.Forms.Panel()
         Me.pnlDataArea = New System.Windows.Forms.Panel()
+        Me.tblDataLayout = New System.Windows.Forms.TableLayoutPanel()
+        Me.pnlLeftTable = New System.Windows.Forms.Panel()
+        Me.dgvBlotterRecords = New System.Windows.Forms.DataGridView()
+        Me.CaseNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComplainantName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComplainantAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComplaintName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IncidentDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocationOfIncident = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InvolvedPerson = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NarrativeIncident = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colEdit = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colDelete = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.pnlBlotterButtons = New System.Windows.Forms.Panel()
+        Me.lblBlotterTitle = New System.Windows.Forms.Label()
         Me.pnlRightTable = New System.Windows.Forms.Panel()
         Me.dgvSchedule = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colSummonLevel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colCaseDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colStartTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colEndTime = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colSettlementStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.pnlScheduleActionBackground = New ligaya_bims.RoundedPanel()
-        Me.flpScheduleActions = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnAddSchedule = New ligaya_bims.RoundedButton()
         Me.btnEditSchedule = New ligaya_bims.RoundedButton()
         Me.btnDeleteSchedule = New ligaya_bims.RoundedButton()
         Me.btnUpdateSettlementStatus = New ligaya_bims.RoundedButton()
         Me.pnlScheduleButtons = New System.Windows.Forms.Panel()
         Me.lblComplainantVsRespondent = New System.Windows.Forms.Label()
-        Me.pnlLeftTable = New System.Windows.Forms.Panel()
-        Me.dgvBlotterRecords = New System.Windows.Forms.DataGridView()
-        Me.pnlBlotterButtons = New System.Windows.Forms.Panel()
-        Me.lblBlotterTitle = New System.Windows.Forms.Label()
         Me.pnlSearch = New System.Windows.Forms.Panel()
         Me.btnAddNew = New ligaya_bims.RoundedButton()
         Me.txtSearch = New System.Windows.Forms.TextBox()
@@ -55,14 +73,14 @@ Partial Class blotterrecords
         Me.lblSearchBy = New System.Windows.Forms.Label()
         Me.pnlMain.SuspendLayout()
         Me.pnlDataArea.SuspendLayout()
-        Me.pnlRightTable.SuspendLayout()
-        CType(Me.dgvSchedule, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlScheduleActionBackground.SuspendLayout()
-        Me.flpScheduleActions.SuspendLayout()
-        Me.pnlScheduleButtons.SuspendLayout()
+        Me.tblDataLayout.SuspendLayout()
         Me.pnlLeftTable.SuspendLayout()
         CType(Me.dgvBlotterRecords, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlBlotterButtons.SuspendLayout()
+        Me.pnlRightTable.SuspendLayout()
+        CType(Me.dgvSchedule, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlScheduleActionBackground.SuspendLayout()
+        Me.pnlScheduleButtons.SuspendLayout()
         Me.pnlSearch.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -79,8 +97,7 @@ Partial Class blotterrecords
         '
         'pnlDataArea
         '
-        Me.pnlDataArea.Controls.Add(Me.pnlRightTable)
-        Me.pnlDataArea.Controls.Add(Me.pnlLeftTable)
+        Me.pnlDataArea.Controls.Add(Me.tblDataLayout)
         Me.pnlDataArea.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlDataArea.Location = New System.Drawing.Point(0, 60)
         Me.pnlDataArea.Name = "pnlDataArea"
@@ -88,32 +105,47 @@ Partial Class blotterrecords
         Me.pnlDataArea.Size = New System.Drawing.Size(1236, 790)
         Me.pnlDataArea.TabIndex = 2
         '
-        'pnlRightTable
+        'tblDataLayout
         '
-        Me.pnlRightTable.Controls.Add(Me.dgvSchedule)
-        Me.pnlRightTable.Controls.Add(Me.pnlScheduleActionBackground)
-        Me.pnlRightTable.Controls.Add(Me.pnlScheduleButtons)
-        Me.pnlRightTable.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlRightTable.Location = New System.Drawing.Point(544, 10)
-        Me.pnlRightTable.Name = "pnlRightTable"
-        Me.pnlRightTable.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.pnlRightTable.Size = New System.Drawing.Size(672, 770)
-        Me.pnlRightTable.TabIndex = 1
+        Me.tblDataLayout.ColumnCount = 2
+        Me.tblDataLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tblDataLayout.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.tblDataLayout.Controls.Add(Me.pnlLeftTable, 0, 0)
+        Me.tblDataLayout.Controls.Add(Me.pnlRightTable, 1, 0)
+        Me.tblDataLayout.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tblDataLayout.Location = New System.Drawing.Point(20, 10)
+        Me.tblDataLayout.Name = "tblDataLayout"
+        Me.tblDataLayout.RowCount = 1
+        Me.tblDataLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tblDataLayout.Size = New System.Drawing.Size(1196, 770)
+        Me.tblDataLayout.TabIndex = 0
         '
-        'dgvSchedule
+        'pnlLeftTable
         '
-        Me.dgvSchedule.AllowUserToAddRows = False
-        Me.dgvSchedule.AllowUserToDeleteRows = False
-        Me.dgvSchedule.AllowUserToResizeRows = False
+        Me.pnlLeftTable.Controls.Add(Me.dgvBlotterRecords)
+        Me.pnlLeftTable.Controls.Add(Me.pnlBlotterButtons)
+        Me.pnlLeftTable.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlLeftTable.Location = New System.Drawing.Point(0, 0)
+        Me.pnlLeftTable.Margin = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.pnlLeftTable.Name = "pnlLeftTable"
+        Me.pnlLeftTable.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.pnlLeftTable.Size = New System.Drawing.Size(588, 770)
+        Me.pnlLeftTable.TabIndex = 0
+        '
+        'dgvBlotterRecords
+        '
+        Me.dgvBlotterRecords.AllowUserToAddRows = False
+        Me.dgvBlotterRecords.AllowUserToDeleteRows = False
+        Me.dgvBlotterRecords.AllowUserToResizeRows = False
         DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(246, Byte), Integer))
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        Me.dgvSchedule.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvSchedule.BackgroundColor = System.Drawing.Color.White
-        Me.dgvSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvBlotterRecords.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvBlotterRecords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvBlotterRecords.BackgroundColor = System.Drawing.Color.White
+        Me.dgvBlotterRecords.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
@@ -121,17 +153,184 @@ Partial Class blotterrecords
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvSchedule.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvBlotterRecords.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvBlotterRecords.ColumnHeadersHeight = 45
+        Me.dgvBlotterRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvBlotterRecords.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CaseNumber, Me.ComplainantName, Me.ComplainantAddress, Me.ComplaintName, Me.IncidentDate, Me.LocationOfIncident, Me.InvolvedPerson, Me.NarrativeIncident, Me.colEdit, Me.colDelete})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvBlotterRecords.DefaultCellStyle = DataGridViewCellStyle4
+        Me.dgvBlotterRecords.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvBlotterRecords.EnableHeadersVisualStyles = False
+        Me.dgvBlotterRecords.GridColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.dgvBlotterRecords.Location = New System.Drawing.Point(0, 56)
+        Me.dgvBlotterRecords.MultiSelect = False
+        Me.dgvBlotterRecords.Name = "dgvBlotterRecords"
+        Me.dgvBlotterRecords.ReadOnly = True
+        Me.dgvBlotterRecords.RowHeadersVisible = False
+        Me.dgvBlotterRecords.RowHeadersWidth = 51
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        Me.dgvBlotterRecords.RowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.dgvBlotterRecords.RowTemplate.Height = 40
+        Me.dgvBlotterRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvBlotterRecords.Size = New System.Drawing.Size(578, 714)
+        Me.dgvBlotterRecords.TabIndex = 0
+        '
+        'CaseNumber
+        '
+        Me.CaseNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CaseNumber.HeaderText = "Case #"
+        Me.CaseNumber.MinimumWidth = 90
+        Me.CaseNumber.Name = "CaseNumber"
+        Me.CaseNumber.ReadOnly = True
+        Me.CaseNumber.Width = 90
+        '
+        'ComplainantName
+        '
+        Me.ComplainantName.HeaderText = "Complainant Name"
+        Me.ComplainantName.MinimumWidth = 140
+        Me.ComplainantName.Name = "ComplainantName"
+        Me.ComplainantName.ReadOnly = True
+        '
+        'ComplainantAddress
+        '
+        Me.ComplainantAddress.HeaderText = "Complainant Address"
+        Me.ComplainantAddress.MinimumWidth = 150
+        Me.ComplainantAddress.Name = "ComplainantAddress"
+        Me.ComplainantAddress.ReadOnly = True
+        '
+        'ComplaintName
+        '
+        Me.ComplaintName.HeaderText = "Complaint Details"
+        Me.ComplaintName.MinimumWidth = 160
+        Me.ComplaintName.Name = "ComplaintName"
+        Me.ComplaintName.ReadOnly = True
+        '
+        'IncidentDate
+        '
+        DataGridViewCellStyle3.Format = "MMM dd, yyyy hh:mm tt"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.IncidentDate.DefaultCellStyle = DataGridViewCellStyle3
+        Me.IncidentDate.HeaderText = "Incident Date/Time"
+        Me.IncidentDate.MinimumWidth = 140
+        Me.IncidentDate.Name = "IncidentDate"
+        Me.IncidentDate.ReadOnly = True
+        '
+        'LocationOfIncident
+        '
+        Me.LocationOfIncident.HeaderText = "Location"
+        Me.LocationOfIncident.MinimumWidth = 130
+        Me.LocationOfIncident.Name = "LocationOfIncident"
+        Me.LocationOfIncident.ReadOnly = True
+        '
+        'InvolvedPerson
+        '
+        Me.InvolvedPerson.HeaderText = "Involved Person(s)"
+        Me.InvolvedPerson.MinimumWidth = 140
+        Me.InvolvedPerson.Name = "InvolvedPerson"
+        Me.InvolvedPerson.ReadOnly = True
+        '
+        'NarrativeIncident
+        '
+        Me.NarrativeIncident.HeaderText = "Narrative"
+        Me.NarrativeIncident.MinimumWidth = 180
+        Me.NarrativeIncident.Name = "NarrativeIncident"
+        Me.NarrativeIncident.ReadOnly = True
+        '
+        'colEdit
+        '
+        Me.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colEdit.HeaderText = ""
+        Me.colEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.colEdit.MinimumWidth = 50
+        Me.colEdit.Name = "colEdit"
+        Me.colEdit.ReadOnly = True
+        Me.colEdit.ToolTipText = "Edit record"
+        Me.colEdit.Width = 50
+        '
+        'colDelete
+        '
+        Me.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colDelete.HeaderText = ""
+        Me.colDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.colDelete.MinimumWidth = 50
+        Me.colDelete.Name = "colDelete"
+        Me.colDelete.ReadOnly = True
+        Me.colDelete.ToolTipText = "Delete record"
+        Me.colDelete.Width = 50
+        '
+        'pnlBlotterButtons
+        '
+        Me.pnlBlotterButtons.BackColor = System.Drawing.Color.White
+        Me.pnlBlotterButtons.Controls.Add(Me.lblBlotterTitle)
+        Me.pnlBlotterButtons.Dock = System.Windows.Forms.DockStyle.Top
+        Me.pnlBlotterButtons.Location = New System.Drawing.Point(0, 0)
+        Me.pnlBlotterButtons.Name = "pnlBlotterButtons"
+        Me.pnlBlotterButtons.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
+        Me.pnlBlotterButtons.Size = New System.Drawing.Size(578, 56)
+        Me.pnlBlotterButtons.TabIndex = 1
+        '
+        'lblBlotterTitle
+        '
+        Me.lblBlotterTitle.AutoSize = True
+        Me.lblBlotterTitle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBlotterTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.lblBlotterTitle.Location = New System.Drawing.Point(0, 16)
+        Me.lblBlotterTitle.Name = "lblBlotterTitle"
+        Me.lblBlotterTitle.Size = New System.Drawing.Size(126, 21)
+        Me.lblBlotterTitle.TabIndex = 4
+        Me.lblBlotterTitle.Text = "Blotter Records"
+        '
+        'pnlRightTable
+        '
+        Me.pnlRightTable.Controls.Add(Me.dgvSchedule)
+        Me.pnlRightTable.Controls.Add(Me.pnlScheduleActionBackground)
+        Me.pnlRightTable.Controls.Add(Me.pnlScheduleButtons)
+        Me.pnlRightTable.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlRightTable.Location = New System.Drawing.Point(608, 0)
+        Me.pnlRightTable.Margin = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.pnlRightTable.Name = "pnlRightTable"
+        Me.pnlRightTable.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.pnlRightTable.Size = New System.Drawing.Size(588, 770)
+        Me.pnlRightTable.TabIndex = 1
+        '
+        'dgvSchedule
+        '
+        Me.dgvSchedule.AllowUserToAddRows = False
+        Me.dgvSchedule.AllowUserToDeleteRows = False
+        Me.dgvSchedule.AllowUserToResizeRows = False
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.dgvSchedule.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        Me.dgvSchedule.BackgroundColor = System.Drawing.Color.White
+        Me.dgvSchedule.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvSchedule.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.dgvSchedule.ColumnHeadersHeight = 45
         Me.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvSchedule.DefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvSchedule.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.colSummonLevel, Me.colCaseDate, Me.colStartTime, Me.colEndTime, Me.colSettlementStatus})
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvSchedule.DefaultCellStyle = DataGridViewCellStyle9
         Me.dgvSchedule.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvSchedule.EnableHeadersVisualStyles = False
         Me.dgvSchedule.GridColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
@@ -141,12 +340,62 @@ Partial Class blotterrecords
         Me.dgvSchedule.ReadOnly = True
         Me.dgvSchedule.RowHeadersVisible = False
         Me.dgvSchedule.RowHeadersWidth = 51
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        Me.dgvSchedule.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
+        Me.dgvSchedule.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.dgvSchedule.RowTemplate.Height = 40
         Me.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSchedule.Size = New System.Drawing.Size(662, 610)
+        Me.dgvSchedule.Size = New System.Drawing.Size(578, 610)
         Me.dgvSchedule.TabIndex = 0
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "CaseNumber"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
+        '
+        'colSummonLevel
+        '
+        Me.colSummonLevel.HeaderText = "Summon Level"
+        Me.colSummonLevel.MinimumWidth = 90
+        Me.colSummonLevel.Name = "colSummonLevel"
+        Me.colSummonLevel.ReadOnly = True
+        Me.colSummonLevel.Width = 90
+        '
+        'colCaseDate
+        '
+        DataGridViewCellStyle8.Format = "MMM dd, yyyy hh:mm tt"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.colCaseDate.DefaultCellStyle = DataGridViewCellStyle8
+        Me.colCaseDate.HeaderText = "Schedule Date"
+        Me.colCaseDate.MinimumWidth = 130
+        Me.colCaseDate.Name = "colCaseDate"
+        Me.colCaseDate.ReadOnly = True
+        Me.colCaseDate.Width = 130
+        '
+        'colStartTime
+        '
+        Me.colStartTime.HeaderText = "Start Time"
+        Me.colStartTime.MinimumWidth = 80
+        Me.colStartTime.Name = "colStartTime"
+        Me.colStartTime.ReadOnly = True
+        Me.colStartTime.Width = 80
+        '
+        'colEndTime
+        '
+        Me.colEndTime.HeaderText = "End Time"
+        Me.colEndTime.MinimumWidth = 80
+        Me.colEndTime.Name = "colEndTime"
+        Me.colEndTime.ReadOnly = True
+        Me.colEndTime.Width = 80
+        '
+        'colSettlementStatus
+        '
+        Me.colSettlementStatus.HeaderText = "Settlement Status"
+        Me.colSettlementStatus.MinimumWidth = 120
+        Me.colSettlementStatus.Name = "colSettlementStatus"
+        Me.colSettlementStatus.ReadOnly = True
+        Me.colSettlementStatus.Width = 120
         '
         'pnlScheduleActionBackground
         '
@@ -154,38 +403,26 @@ Partial Class blotterrecords
         Me.pnlScheduleActionBackground.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
         Me.pnlScheduleActionBackground.BorderRadius = 25
         Me.pnlScheduleActionBackground.BorderThickness = 1
-        Me.pnlScheduleActionBackground.Controls.Add(Me.flpScheduleActions)
+        Me.pnlScheduleActionBackground.Controls.Add(Me.btnAddSchedule)
+        Me.pnlScheduleActionBackground.Controls.Add(Me.btnEditSchedule)
+        Me.pnlScheduleActionBackground.Controls.Add(Me.btnDeleteSchedule)
+        Me.pnlScheduleActionBackground.Controls.Add(Me.btnUpdateSettlementStatus)
         Me.pnlScheduleActionBackground.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.pnlScheduleActionBackground.Location = New System.Drawing.Point(10, 670)
         Me.pnlScheduleActionBackground.Name = "pnlScheduleActionBackground"
         Me.pnlScheduleActionBackground.Padding = New System.Windows.Forms.Padding(15)
-        Me.pnlScheduleActionBackground.Size = New System.Drawing.Size(662, 100)
+        Me.pnlScheduleActionBackground.Size = New System.Drawing.Size(578, 100)
         Me.pnlScheduleActionBackground.TabIndex = 4
-        '
-        'flpScheduleActions
-        '
-        Me.flpScheduleActions.BackColor = System.Drawing.Color.Transparent
-        Me.flpScheduleActions.Controls.Add(Me.btnAddSchedule)
-        Me.flpScheduleActions.Controls.Add(Me.btnEditSchedule)
-        Me.flpScheduleActions.Controls.Add(Me.btnDeleteSchedule)
-        Me.flpScheduleActions.Controls.Add(Me.btnUpdateSettlementStatus)
-        Me.flpScheduleActions.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.flpScheduleActions.Location = New System.Drawing.Point(15, 15)
-        Me.flpScheduleActions.Name = "flpScheduleActions"
-        Me.flpScheduleActions.Padding = New System.Windows.Forms.Padding(5, 5, 5, 0)
-        Me.flpScheduleActions.Size = New System.Drawing.Size(632, 70)
-        Me.flpScheduleActions.TabIndex = 0
-        Me.flpScheduleActions.WrapContents = False
         '
         'btnAddSchedule
         '
-        Me.btnAddSchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnAddSchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnAddSchedule.BorderRadius = 15
         Me.btnAddSchedule.FlatAppearance.BorderSize = 0
         Me.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddSchedule.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddSchedule.ForeColor = System.Drawing.Color.White
-        Me.btnAddSchedule.Location = New System.Drawing.Point(10, 10)
+        Me.btnAddSchedule.Location = New System.Drawing.Point(20, 5)
         Me.btnAddSchedule.Margin = New System.Windows.Forms.Padding(5)
         Me.btnAddSchedule.Name = "btnAddSchedule"
         Me.btnAddSchedule.Size = New System.Drawing.Size(120, 40)
@@ -201,7 +438,7 @@ Partial Class blotterrecords
         Me.btnEditSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditSchedule.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEditSchedule.ForeColor = System.Drawing.Color.White
-        Me.btnEditSchedule.Location = New System.Drawing.Point(140, 10)
+        Me.btnEditSchedule.Location = New System.Drawing.Point(223, 5)
         Me.btnEditSchedule.Margin = New System.Windows.Forms.Padding(5)
         Me.btnEditSchedule.Name = "btnEditSchedule"
         Me.btnEditSchedule.Size = New System.Drawing.Size(120, 40)
@@ -211,13 +448,13 @@ Partial Class blotterrecords
         '
         'btnDeleteSchedule
         '
-        Me.btnDeleteSchedule.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnDeleteSchedule.BackColor = System.Drawing.Color.Red
         Me.btnDeleteSchedule.BorderRadius = 15
         Me.btnDeleteSchedule.FlatAppearance.BorderSize = 0
         Me.btnDeleteSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDeleteSchedule.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDeleteSchedule.ForeColor = System.Drawing.Color.White
-        Me.btnDeleteSchedule.Location = New System.Drawing.Point(270, 10)
+        Me.btnDeleteSchedule.Location = New System.Drawing.Point(438, 5)
         Me.btnDeleteSchedule.Margin = New System.Windows.Forms.Padding(5)
         Me.btnDeleteSchedule.Name = "btnDeleteSchedule"
         Me.btnDeleteSchedule.Size = New System.Drawing.Size(120, 40)
@@ -234,7 +471,7 @@ Partial Class blotterrecords
         Me.btnUpdateSettlementStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnUpdateSettlementStatus.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUpdateSettlementStatus.ForeColor = System.Drawing.Color.White
-        Me.btnUpdateSettlementStatus.Location = New System.Drawing.Point(400, 10)
+        Me.btnUpdateSettlementStatus.Location = New System.Drawing.Point(174, 55)
         Me.btnUpdateSettlementStatus.Margin = New System.Windows.Forms.Padding(5)
         Me.btnUpdateSettlementStatus.Name = "btnUpdateSettlementStatus"
         Me.btnUpdateSettlementStatus.Size = New System.Drawing.Size(217, 40)
@@ -250,7 +487,7 @@ Partial Class blotterrecords
         Me.pnlScheduleButtons.Location = New System.Drawing.Point(10, 0)
         Me.pnlScheduleButtons.Name = "pnlScheduleButtons"
         Me.pnlScheduleButtons.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.pnlScheduleButtons.Size = New System.Drawing.Size(662, 60)
+        Me.pnlScheduleButtons.Size = New System.Drawing.Size(578, 60)
         Me.pnlScheduleButtons.TabIndex = 1
         '
         'lblComplainantVsRespondent
@@ -263,87 +500,6 @@ Partial Class blotterrecords
         Me.lblComplainantVsRespondent.Size = New System.Drawing.Size(214, 21)
         Me.lblComplainantVsRespondent.TabIndex = 4
         Me.lblComplainantVsRespondent.Text = "Complainant vs Respondent"
-        '
-        'pnlLeftTable
-        '
-        Me.pnlLeftTable.Controls.Add(Me.dgvBlotterRecords)
-        Me.pnlLeftTable.Controls.Add(Me.pnlBlotterButtons)
-        Me.pnlLeftTable.Dock = System.Windows.Forms.DockStyle.Left
-        Me.pnlLeftTable.Location = New System.Drawing.Point(20, 10)
-        Me.pnlLeftTable.Name = "pnlLeftTable"
-        Me.pnlLeftTable.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.pnlLeftTable.Size = New System.Drawing.Size(524, 770)
-        Me.pnlLeftTable.TabIndex = 0
-        '
-        'dgvBlotterRecords
-        '
-        Me.dgvBlotterRecords.AllowUserToAddRows = False
-        Me.dgvBlotterRecords.AllowUserToDeleteRows = False
-        Me.dgvBlotterRecords.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(246, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        Me.dgvBlotterRecords.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
-        Me.dgvBlotterRecords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvBlotterRecords.BackgroundColor = System.Drawing.Color.White
-        Me.dgvBlotterRecords.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvBlotterRecords.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dgvBlotterRecords.ColumnHeadersHeight = 45
-        Me.dgvBlotterRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvBlotterRecords.DefaultCellStyle = DataGridViewCellStyle7
-        Me.dgvBlotterRecords.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvBlotterRecords.EnableHeadersVisualStyles = False
-        Me.dgvBlotterRecords.GridColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.dgvBlotterRecords.Location = New System.Drawing.Point(0, 56)
-        Me.dgvBlotterRecords.MultiSelect = False
-        Me.dgvBlotterRecords.Name = "dgvBlotterRecords"
-        Me.dgvBlotterRecords.ReadOnly = True
-        Me.dgvBlotterRecords.RowHeadersVisible = False
-        Me.dgvBlotterRecords.RowHeadersWidth = 51
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
-        Me.dgvBlotterRecords.RowsDefaultCellStyle = DataGridViewCellStyle8
-        Me.dgvBlotterRecords.RowTemplate.Height = 40
-        Me.dgvBlotterRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBlotterRecords.Size = New System.Drawing.Size(514, 714)
-        Me.dgvBlotterRecords.TabIndex = 0
-        '
-        'pnlBlotterButtons
-        '
-        Me.pnlBlotterButtons.BackColor = System.Drawing.Color.White
-        Me.pnlBlotterButtons.Controls.Add(Me.lblBlotterTitle)
-        Me.pnlBlotterButtons.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlBlotterButtons.Location = New System.Drawing.Point(0, 0)
-        Me.pnlBlotterButtons.Name = "pnlBlotterButtons"
-        Me.pnlBlotterButtons.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.pnlBlotterButtons.Size = New System.Drawing.Size(514, 56)
-        Me.pnlBlotterButtons.TabIndex = 1
-        '
-        'lblBlotterTitle
-        '
-        Me.lblBlotterTitle.AutoSize = True
-        Me.lblBlotterTitle.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBlotterTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        Me.lblBlotterTitle.Location = New System.Drawing.Point(0, 16)
-        Me.lblBlotterTitle.Name = "lblBlotterTitle"
-        Me.lblBlotterTitle.Size = New System.Drawing.Size(126, 21)
-        Me.lblBlotterTitle.TabIndex = 4
-        Me.lblBlotterTitle.Text = "Blotter Records"
         '
         'pnlSearch
         '
@@ -362,13 +518,13 @@ Partial Class blotterrecords
         'btnAddNew
         '
         Me.btnAddNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddNew.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnAddNew.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.btnAddNew.BorderRadius = 15
         Me.btnAddNew.FlatAppearance.BorderSize = 0
         Me.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddNew.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddNew.ForeColor = System.Drawing.Color.White
-        Me.btnAddNew.Location = New System.Drawing.Point(23, 12)
+        Me.btnAddNew.Location = New System.Drawing.Point(20, 12)
         Me.btnAddNew.Name = "btnAddNew"
         Me.btnAddNew.Size = New System.Drawing.Size(110, 32)
         Me.btnAddNew.TabIndex = 0
@@ -390,7 +546,7 @@ Partial Class blotterrecords
         Me.cmbSearchBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmbSearchBy.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSearchBy.FormattingEnabled = True
-        Me.cmbSearchBy.Items.AddRange(New Object() {"ALL", "Brgy. Case #", "Accusation", "Complainant's Name", "Purok"})
+        Me.cmbSearchBy.Items.AddRange(New Object() {"ALL", "Case #", "Complainant Name", "Complainant Address", "Complaint Details", "Location"})
         Me.cmbSearchBy.Location = New System.Drawing.Point(827, 16)
         Me.cmbSearchBy.Name = "cmbSearchBy"
         Me.cmbSearchBy.Size = New System.Drawing.Size(75, 25)
@@ -419,16 +575,16 @@ Partial Class blotterrecords
         Me.Text = "Blotter Records"
         Me.pnlMain.ResumeLayout(False)
         Me.pnlDataArea.ResumeLayout(False)
-        Me.pnlRightTable.ResumeLayout(False)
-        CType(Me.dgvSchedule, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlScheduleActionBackground.ResumeLayout(False)
-        Me.flpScheduleActions.ResumeLayout(False)
-        Me.pnlScheduleButtons.ResumeLayout(False)
-        Me.pnlScheduleButtons.PerformLayout()
+        Me.tblDataLayout.ResumeLayout(False)
         Me.pnlLeftTable.ResumeLayout(False)
         CType(Me.dgvBlotterRecords, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlBlotterButtons.ResumeLayout(False)
         Me.pnlBlotterButtons.PerformLayout()
+        Me.pnlRightTable.ResumeLayout(False)
+        CType(Me.dgvSchedule, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlScheduleActionBackground.ResumeLayout(False)
+        Me.pnlScheduleButtons.ResumeLayout(False)
+        Me.pnlScheduleButtons.PerformLayout()
         Me.pnlSearch.ResumeLayout(False)
         Me.pnlSearch.PerformLayout()
         Me.ResumeLayout(False)
@@ -437,6 +593,7 @@ Partial Class blotterrecords
 
     Friend WithEvents pnlMain As Panel
     Friend WithEvents pnlDataArea As Panel
+    Friend WithEvents tblDataLayout As TableLayoutPanel
     Friend WithEvents pnlRightTable As Panel
     Friend WithEvents lblComplainantVsRespondent As Label
     Friend WithEvents dgvSchedule As DataGridView
@@ -447,13 +604,28 @@ Partial Class blotterrecords
     Friend WithEvents cmbSearchBy As ComboBox
     Friend WithEvents lblSearchBy As Label
     Friend WithEvents pnlScheduleButtons As Panel
-    Friend WithEvents btnUpdateSettlementStatus As RoundedButton
-    Friend WithEvents btnDeleteSchedule As RoundedButton
-    Friend WithEvents btnEditSchedule As RoundedButton
-    Friend WithEvents btnAddSchedule As RoundedButton
-    Friend WithEvents pnlScheduleActionBackground As RoundedPanel
-    Friend WithEvents flpScheduleActions As FlowLayoutPanel
+    Friend WithEvents btnUpdateSettlementStatus As ligaya_bims.RoundedButton
+    Friend WithEvents btnDeleteSchedule As ligaya_bims.RoundedButton
+    Friend WithEvents btnEditSchedule As ligaya_bims.RoundedButton
+    Friend WithEvents btnAddSchedule As ligaya_bims.RoundedButton
+    Friend WithEvents pnlScheduleActionBackground As ligaya_bims.RoundedPanel
     Friend WithEvents pnlBlotterButtons As Panel
-    Friend WithEvents btnAddNew As RoundedButton
+    Friend WithEvents btnAddNew As ligaya_bims.RoundedButton
     Friend WithEvents lblBlotterTitle As Label
+    Friend WithEvents CaseNumber As DataGridViewTextBoxColumn
+    Friend WithEvents ComplainantName As DataGridViewTextBoxColumn
+    Friend WithEvents ComplainantAddress As DataGridViewTextBoxColumn
+    Friend WithEvents ComplaintName As DataGridViewTextBoxColumn
+    Friend WithEvents IncidentDate As DataGridViewTextBoxColumn
+    Friend WithEvents LocationOfIncident As DataGridViewTextBoxColumn
+    Friend WithEvents InvolvedPerson As DataGridViewTextBoxColumn
+    Friend WithEvents NarrativeIncident As DataGridViewTextBoxColumn
+    Friend WithEvents colEdit As DataGridViewImageColumn
+    Friend WithEvents colDelete As DataGridViewImageColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents colSummonLevel As DataGridViewTextBoxColumn
+    Friend WithEvents colCaseDate As DataGridViewTextBoxColumn
+    Friend WithEvents colStartTime As DataGridViewTextBoxColumn
+    Friend WithEvents colEndTime As DataGridViewTextBoxColumn
+    Friend WithEvents colSettlementStatus As DataGridViewTextBoxColumn
 End Class

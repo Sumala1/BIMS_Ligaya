@@ -60,22 +60,55 @@ Partial Class reportsform
         Return True
     End Function
 
-    Private Function GenerateCaseNumber() As String
-        Return $"B-{DateTime.Now:yyyyMMddHHmmss}"
-    End Function
-
     Private Function SaveIncidentToDatabase() As Boolean
         Try
             Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
                 conn.Open()
-                Dim sql As String = "INSERT INTO tbl_blotter (case_number, accusation, complainant_name, purok) VALUES (@caseNumber, @accusation, @complainant, @purok)"
-                Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(sql, conn)
-                    lastGeneratedCaseNumber = GenerateCaseNumber()
-                    cmd.Parameters.AddWithValue("@caseNumber", lastGeneratedCaseNumber)
-                    cmd.Parameters.AddWithValue("@accusation", txtTypeOfIncident.Text.Trim())
-                    cmd.Parameters.AddWithValue("@complainant", txtComplainantName.Text.Trim())
-                    cmd.Parameters.AddWithValue("@purok", txtComplainantAddress.Text.Trim())
+                ' Ensure all values are trimmed and validated before inserting
+                Dim complainantName As String = txtComplainantName.Text.Trim()
+                Dim complainantAddress As String = txtComplainantAddress.Text.Trim()
+                
+                ' CRITICAL: Read type_of_incident value and verify it exists
+                Dim typeOfIncident As String = String.Empty
+                Try
+                    typeOfIncident = txtTypeOfIncident.Text.Trim()
+                Catch ex As Exception
+                    MessageBox.Show("Error reading Type of Incident field: " & ex.Message, "Control Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return False
+                End Try
+                
+                Dim location As String = txtExactLocation.Text.Trim()
+                Dim involvedPerson As String = txtInvolved.Text.Trim()
+                Dim narrative As String = txtNarrative.Text.Trim()
+                
+                ' CRITICAL: Verify type_of_incident has a value before proceeding
+                If String.IsNullOrEmpty(typeOfIncident) OrElse String.IsNullOrWhiteSpace(typeOfIncident) Then
+                    MessageBox.Show("Type of Incident cannot be empty. Current value: '" & typeOfIncident & "' (Length: " & typeOfIncident.Length & ")", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    txtTypeOfIncident.Focus()
+                    Return False
+                End If
+                
+                ' Build SQL statement - use simple approach that matches working SQL query
+                Dim insertSql As String = "INSERT INTO tbl_blotter (complainant_name, complainant_address, type_of_incident, date_time, location_of_incident, involved_person, narrative_incident) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7)"
+                
+                Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(insertSql, conn)
+                    ' Use simple AddWithValue - order is critical
+                    cmd.Parameters.AddWithValue("@p1", complainantName)
+                    cmd.Parameters.AddWithValue("@p2", complainantAddress)
+                    cmd.Parameters.AddWithValue("@p3", typeOfIncident)  ' CRITICAL: This is type_of_incident
+                    cmd.Parameters.AddWithValue("@p4", dtpFrom.Value)
+                    cmd.Parameters.AddWithValue("@p5", location)
+                    cmd.Parameters.AddWithValue("@p6", involvedPerson)
+                    cmd.Parameters.AddWithValue("@p7", narrative)
+                    
+                    ' Execute the command
                     cmd.ExecuteNonQuery()
+                End Using
+
+                Using idCmd As New Global.MySql.Data.MySqlClient.MySqlCommand("SELECT LAST_INSERT_ID();", conn)
+                    Dim insertedId As Object = idCmd.ExecuteScalar()
+                    Dim caseNumberValue As Integer = Convert.ToInt32(insertedId)
+                    lastGeneratedCaseNumber = caseNumberValue.ToString("0000")
                 End Using
             End Using
             Return True

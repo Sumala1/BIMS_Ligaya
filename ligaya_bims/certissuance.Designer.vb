@@ -31,7 +31,7 @@ Partial Class certissuance
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.panelRight = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button1 = New ligaya_bims.RoundedButton()
         Me.RoundedButton5 = New ligaya_bims.RoundedButton()
         Me.RoundedButton4 = New ligaya_bims.RoundedButton()
         Me.RoundedButton3 = New ligaya_bims.RoundedButton()
@@ -110,12 +110,18 @@ Partial Class certissuance
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.Button1.BorderRadius = 12
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(511, 95)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(52, 23)
         Me.Button1.TabIndex = 15
         Me.Button1.Text = "Search"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'RoundedButton5
         '
@@ -315,7 +321,7 @@ Partial Class certissuance
 
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents panelRight As Panel
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Button1 As RoundedButton
     Friend WithEvents Label3 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label2 As Label

@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Imports ligaya_bims
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class resirestore
     Inherits System.Windows.Forms.Form
 
@@ -33,9 +35,9 @@ Partial Class resirestore
         Me.colFullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colRestore = New System.Windows.Forms.DataGridViewImageColumn()
         Me.pnlPagination = New System.Windows.Forms.Panel()
-        Me.btnNext = New System.Windows.Forms.Button()
+        Me.btnNext = New ligaya_bims.RoundedButton()
         Me.lblPageNumber = New System.Windows.Forms.Label()
-        Me.btnPrevious = New System.Windows.Forms.Button()
+        Me.btnPrevious = New ligaya_bims.RoundedButton()
         Me.lblShowEntries = New System.Windows.Forms.Label()
         Me.pnlContent.SuspendLayout()
         CType(Me.dgvProfiles, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,11 +153,12 @@ Partial Class resirestore
         'btnNext
         '
         Me.btnNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNext.BackColor = System.Drawing.Color.White
-        Me.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.btnNext.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnNext.BorderRadius = 15
+        Me.btnNext.FlatAppearance.BorderSize = 0
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNext.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnNext.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.btnNext.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnNext.ForeColor = System.Drawing.Color.White
         Me.btnNext.Location = New System.Drawing.Point(1504, 10)
         Me.btnNext.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnNext.Name = "btnNext"
@@ -181,11 +184,12 @@ Partial Class resirestore
         'btnPrevious
         '
         Me.btnPrevious.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnPrevious.BackColor = System.Drawing.Color.White
-        Me.btnPrevious.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.btnPrevious.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnPrevious.BorderRadius = 15
+        Me.btnPrevious.FlatAppearance.BorderSize = 0
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPrevious.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnPrevious.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.btnPrevious.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPrevious.ForeColor = System.Drawing.Color.White
         Me.btnPrevious.Location = New System.Drawing.Point(1344, 10)
         Me.btnPrevious.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrevious.Name = "btnPrevious"
@@ -229,8 +233,8 @@ Partial Class resirestore
     Friend WithEvents colFullName As DataGridViewTextBoxColumn
     Friend WithEvents colRestore As DataGridViewImageColumn
     Private WithEvents pnlPagination As Panel
-    Private WithEvents btnNext As Button
+    Private WithEvents btnNext As RoundedButton
     Private WithEvents lblPageNumber As Label
-    Private WithEvents btnPrevious As Button
+    Private WithEvents btnPrevious As RoundedButton
     Private WithEvents lblShowEntries As Label
 End Class

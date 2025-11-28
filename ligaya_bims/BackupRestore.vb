@@ -3,6 +3,7 @@
     Private residentRestoreForm As resirestore
     Private cedulaRestoreForm As cedularestore
     Private certRestoreForm As certrestore
+    Private blotterRecordsRestoreForm As blotterrecordsrestore
 
     Public Sub New()
         InitializeComponent()
@@ -45,6 +46,16 @@
         certRestoreForm.Visible = False
         pnlContent.Controls.Add(certRestoreForm)
         certRestoreForm.Show()
+
+        ' Initialize blotter records restore form
+        blotterRecordsRestoreForm = New blotterrecordsrestore()
+        blotterRecordsRestoreForm.SetAsChildForm()
+        blotterRecordsRestoreForm.TopLevel = False
+        blotterRecordsRestoreForm.FormBorderStyle = FormBorderStyle.None
+        blotterRecordsRestoreForm.Dock = DockStyle.Fill
+        blotterRecordsRestoreForm.Visible = False
+        pnlContent.Controls.Add(blotterRecordsRestoreForm)
+        blotterRecordsRestoreForm.Show()
     End Sub
 
     Private Sub BackupRestore_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -70,6 +81,7 @@
         ' Hide other forms
         If cedulaRestoreForm IsNot Nothing Then cedulaRestoreForm.Visible = False
         If certRestoreForm IsNot Nothing Then certRestoreForm.Visible = False
+        If blotterRecordsRestoreForm IsNot Nothing Then blotterRecordsRestoreForm.Visible = False
 
         ' Show resident restore form
         If residentRestoreForm IsNot Nothing Then
@@ -82,6 +94,7 @@
         ' Hide other forms
         If residentRestoreForm IsNot Nothing Then residentRestoreForm.Visible = False
         If certRestoreForm IsNot Nothing Then certRestoreForm.Visible = False
+        If blotterRecordsRestoreForm IsNot Nothing Then blotterRecordsRestoreForm.Visible = False
 
         ' Show cedula restore form
         If cedulaRestoreForm IsNot Nothing Then
@@ -94,11 +107,25 @@
         ' Hide other forms
         If residentRestoreForm IsNot Nothing Then residentRestoreForm.Visible = False
         If cedulaRestoreForm IsNot Nothing Then cedulaRestoreForm.Visible = False
+        If blotterRecordsRestoreForm IsNot Nothing Then blotterRecordsRestoreForm.Visible = False
 
         ' Show certificate restore form
         If certRestoreForm IsNot Nothing Then
             certRestoreForm.Visible = True
             certRestoreForm.BringToFront()
+        End If
+    End Sub
+
+    Private Sub ShowBlotterRecordsView()
+        ' Hide other forms
+        If residentRestoreForm IsNot Nothing Then residentRestoreForm.Visible = False
+        If cedulaRestoreForm IsNot Nothing Then cedulaRestoreForm.Visible = False
+        If certRestoreForm IsNot Nothing Then certRestoreForm.Visible = False
+
+        ' Show blotter records restore form
+        If blotterRecordsRestoreForm IsNot Nothing Then
+            blotterRecordsRestoreForm.Visible = True
+            blotterRecordsRestoreForm.BringToFront()
         End If
     End Sub
 
@@ -244,5 +271,10 @@
 
     Private Sub pnlHeader_Paint(sender As Object, e As PaintEventArgs) Handles pnlHeader.Paint
 
+    End Sub
+
+    Private Sub btnBlotterRecords_Click(sender As Object, e As EventArgs) Handles btnBlotterRecords.Click
+        currentView = "BlotterRecords"
+        ShowBlotterRecordsView()
     End Sub
 End Class

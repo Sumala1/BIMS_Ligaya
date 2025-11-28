@@ -2,7 +2,9 @@ Imports System.Drawing
 Imports System.Drawing.Drawing2D
 Imports System.Windows.Forms
 Imports System.ComponentModel
+Imports System.Diagnostics
 
+Namespace Global.ligaya_bims
 Public Class RoundedPanel
     Inherits Panel
 
@@ -12,121 +14,115 @@ Public Class RoundedPanel
 
     <Category("Appearance")>
     <Description("The radius of the rounded corners")>
-    <DefaultValue(20)>
     Public Property BorderRadius As Integer
         Get
             Return _borderRadius
         End Get
-        Set(ByVal value As Integer)
+        Set(value As Integer)
             If value >= 0 Then
                 _borderRadius = value
-                Me.Invalidate() ' Redraw the panel
+                Invalidate()
             End If
         End Set
     End Property
 
     <Category("Appearance")>
-    <Description("The color of the border")>
-    <DefaultValue(GetType(Color), "Black")>
     Public Property BorderColor As Color
         Get
             Return _borderColor
         End Get
-        Set(ByVal value As Color)
+        Set(value As Color)
             _borderColor = value
-            Me.Invalidate()
+            Invalidate()
         End Set
     End Property
 
     <Category("Appearance")>
-    <Description("The thickness of the border")>
-    <DefaultValue(2)>
     Public Property BorderThickness As Integer
         Get
             Return _borderThickness
         End Get
-        Set(ByVal value As Integer)
+        Set(value As Integer)
             If value >= 0 Then
                 _borderThickness = value
-                Me.Invalidate()
+                Invalidate()
             End If
         End Set
     End Property
 
     Public Sub New()
         MyBase.New()
-        Me.DoubleBuffered = True
-        Me.BackColor = Color.White
+        DoubleBuffered = True
+        BackColor = Color.White
     End Sub
 
-    Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
+    Private Function IsInDesigner() As Boolean
+        Try
+            If DesignMode Then Return True
+        Catch
+        End Try
+        Try
+            If LicenseManager.UsageMode = LicenseUsageMode.Designtime Then Return True
+        Catch
+        End Try
+        Try
+            Dim procName As String = Process.GetCurrentProcess().ProcessName
+            If String.Equals(procName, "devenv", StringComparison.OrdinalIgnoreCase) Then Return True
+        Catch
+        End Try
+        Return False
+    End Function
+
+    Protected Overrides Sub OnPaint(e As PaintEventArgs)
         MyBase.OnPaint(e)
 
-        Dim graphics As Graphics = e.Graphics
-        graphics.SmoothingMode = SmoothingMode.AntiAlias
+        Dim rect As Rectangle = ClientRectangle
+        If rect.Width <= 0 OrElse rect.Height <= 0 Then Return
 
-        ' Create rounded rectangle path
-        Dim path As GraphicsPath = GetRoundedRectanglePath(Me.ClientRectangle, _borderRadius)
+        Using path As GraphicsPath = GetRoundedPath(rect, _borderRadius)
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias
 
-        ' Set the region to clip child controls
-        Me.Region = New Region(path)
+            If Not IsInDesigner() Then
+                Try
+                    Region = New Region(path)
+                Catch
+                End Try
+            End If
 
-        ' Fill the panel background
-        Using brush As New SolidBrush(Me.BackColor)
-            graphics.FillPath(brush, path)
-        End Using
-
-        ' Draw the border
-        If _borderThickness > 0 Then
-            Using pen As New Pen(_borderColor, _borderThickness)
-                graphics.DrawPath(pen, path)
+            Using brush As New SolidBrush(BackColor)
+                e.Graphics.FillPath(brush, path)
             End Using
-        End If
 
-        path.Dispose()
+            If _borderThickness > 0 Then
+                Using pen As New Pen(_borderColor, _borderThickness)
+                    e.Graphics.DrawPath(pen, path)
+                End Using
+            End If
+        End Using
     End Sub
 
-    Protected Overrides Sub OnResize(ByVal eventargs As EventArgs)
-        MyBase.OnResize(eventargs)
-        Me.Invalidate()
-    End Sub
-
-    Private Function GetRoundedRectanglePath(ByVal rect As Rectangle, ByVal radius As Integer) As GraphicsPath
+    Private Function GetRoundedPath(rect As Rectangle, radius As Integer) As GraphicsPath
         Dim path As New GraphicsPath()
-
         If radius <= 0 Then
             path.AddRectangle(rect)
             Return path
         End If
 
-        Dim diameter As Integer = radius * 2
+        Dim diameter As Integer = Math.Min(radius * 2, Math.Min(rect.Width, rect.Height))
 
-        ' Ensure diameter doesn't exceed rectangle dimensions
-        diameter = Math.Min(diameter, Math.Min(rect.Width, rect.Height))
-
-        ' Adjust rectangle for border thickness
-        If _borderThickness > 0 Then
-            rect = New Rectangle(
-                rect.X + _borderThickness \ 2,
-                rect.Y + _borderThickness \ 2,
-                rect.Width - _borderThickness,
-                rect.Height - _borderThickness
-            )
-        End If
-
-        ' Top left arc
         path.AddArc(rect.X, rect.Y, diameter, diameter, 180, 90)
-
-        ' Top right arc
         path.AddArc(rect.Right - diameter, rect.Y, diameter, diameter, 270, 90)
-
-        ' Bottom right arc
         path.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90)
-
-        ' Bottom left arc
         path.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90)
-
         path.CloseFigure()
+
         Return path
     End Function
+
+    Protected Overrides Sub OnResize(eventargs As EventArgs)
+        MyBase.OnResize(eventargs)
+        Invalidate()
+    End Sub
 End Class
+End Namespace
+

@@ -1,11 +1,12 @@
 ﻿Imports System.Drawing
 Imports System.Drawing.Drawing2D
 
-Public Class cedularestore
+Public Class blotterrecordsrestore
     Private currentPage As Integer = 1
     Private pageSize As Integer = 10
     Private totalRecords As Integer = 0
     Private totalPages As Integer = 0
+    Private restoreIcon As Image
 
     Public Sub SetAsChildForm()
         Me.FormBorderStyle = FormBorderStyle.None
@@ -13,16 +14,17 @@ Public Class cedularestore
         Me.TopLevel = False
     End Sub
 
-    Private Sub cedularestore_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub blotterrecordsrestore_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetRestoreIcon()
         LoadRestoreRecords()
     End Sub
 
     Private Sub SetRestoreIcon()
-        If dgvCedula IsNot Nothing AndAlso dgvCedula.Columns.Contains("DataGridViewImageColumn2") Then
-            Dim restoreColumn As DataGridViewImageColumn = TryCast(dgvCedula.Columns("DataGridViewImageColumn2"), DataGridViewImageColumn)
+        If dgvBlotterRecords IsNot Nothing AndAlso dgvBlotterRecords.Columns.Contains("colRestore") Then
+            restoreIcon = CreateCircularArrowIcon()
+            Dim restoreColumn As DataGridViewImageColumn = TryCast(dgvBlotterRecords.Columns("colRestore"), DataGridViewImageColumn)
             If restoreColumn IsNot Nothing Then
-                restoreColumn.Image = CreateCircularArrowIcon()
+                restoreColumn.Image = restoreIcon
             End If
         End If
     End Sub
@@ -77,14 +79,14 @@ Public Class cedularestore
     End Function
 
     Private Sub LoadRestoreRecords()
-        dgvCedula.Rows.Clear()
+        dgvBlotterRecords.Rows.Clear()
 
         Try
             Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
                 conn.Open()
 
                 ' Get total count
-                Dim countSql As String = "SELECT COUNT(*) FROM tbl_cedularestore"
+                Dim countSql As String = "SELECT COUNT(*) FROM tbl_blotterrestore"
                 Using countCmd As New Global.MySql.Data.MySqlClient.MySqlCommand(countSql, conn)
                     totalRecords = Convert.ToInt32(countCmd.ExecuteScalar())
                 End Using
@@ -103,31 +105,32 @@ Public Class cedularestore
 
                 ' Load data for current page with LIMIT and OFFSET
                 Dim offset As Integer = (currentPage - 1) * pageSize
-                Dim sql As String = $"SELECT ctcnumber, year, placeissued, fullname, address, gender, dateissued, citizenship, placeofbirth, civilstatus, dateofbirth, profession FROM tbl_cedularestore ORDER BY dateissued DESC LIMIT {pageSize} OFFSET {offset}"
+                Dim sql As String = $"SELECT case_number, complainant_name, complainant_address, type_of_incident, date_time, location_of_incident, involved_person, narrative_incident FROM tbl_blotterrestore ORDER BY case_number DESC LIMIT {pageSize} OFFSET {offset}"
                 
                 Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(sql, conn)
                     Using reader As Global.MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
                         While reader.Read()
-                            Dim metadata As New CedulaRestoreMetadata()
-                            metadata.CtcNumber = If(reader.IsDBNull(0), 0, reader.GetInt32(0))
-                            metadata.Year = If(reader.IsDBNull(1), DBNull.Value, CType(reader.GetInt32(1), Object))
-                            metadata.PlaceIssued = If(reader.IsDBNull(2), String.Empty, reader.GetString(2))
-                            metadata.FullName = If(reader.IsDBNull(3), String.Empty, reader.GetString(3))
-                            metadata.Address = If(reader.IsDBNull(4), String.Empty, reader.GetString(4))
-                            metadata.Gender = If(reader.IsDBNull(5), DBNull.Value, reader.GetString(5))
-                            metadata.DateIssued = If(reader.IsDBNull(6), DateTime.MinValue, reader.GetDateTime(6))
-                            metadata.Citizenship = If(reader.IsDBNull(7), DBNull.Value, reader.GetString(7))
-                            metadata.PlaceOfBirth = If(reader.IsDBNull(8), DBNull.Value, reader.GetString(8))
-                            metadata.CivilStatus = If(reader.IsDBNull(9), DBNull.Value, reader.GetString(9))
-                            metadata.DateOfBirth = If(reader.IsDBNull(10), DBNull.Value, reader.GetDateTime(10))
-                            metadata.Profession = If(reader.IsDBNull(11), DBNull.Value, reader.GetString(11))
+                            Dim metadata As New BlotterRestoreMetadata()
+                            metadata.CaseNumber = If(reader.IsDBNull(0), 0, reader.GetInt32(0))
+                            metadata.ComplainantName = If(reader.IsDBNull(1), String.Empty, reader.GetString(1))
+                            metadata.ComplainantAddress = If(reader.IsDBNull(2), String.Empty, reader.GetString(2))
+                            metadata.TypeOfIncident = If(reader.IsDBNull(3), String.Empty, reader.GetString(3))
+                            metadata.DateTime = If(reader.IsDBNull(4), DateTime.MinValue, reader.GetDateTime(4))
+                            metadata.LocationOfIncident = If(reader.IsDBNull(5), String.Empty, reader.GetString(5))
+                            metadata.InvolvedPerson = If(reader.IsDBNull(6), String.Empty, reader.GetString(6))
+                            metadata.NarrativeIncident = If(reader.IsDBNull(7), String.Empty, reader.GetString(7))
 
-                            Dim rowIndex As Integer = dgvCedula.Rows.Add()
-                            dgvCedula.Rows(rowIndex).Cells("DataGridViewCheckBoxColumn1").Value = False
-                            dgvCedula.Rows(rowIndex).Cells("CTCNumber").Value = metadata.CtcNumber.ToString()
-                            dgvCedula.Rows(rowIndex).Cells("DateIssued").Value = metadata.DateIssued.ToString("yyyy-MM-dd")
-                            dgvCedula.Rows(rowIndex).Cells("DataGridViewTextBoxColumn1").Value = metadata.FullName
-                            dgvCedula.Rows(rowIndex).Tag = metadata
+                            Dim rowIndex As Integer = dgvBlotterRecords.Rows.Add()
+                            dgvBlotterRecords.Rows(rowIndex).Cells("CaseNumber").Value = FormatCaseNumberValue(metadata.CaseNumber)
+                            dgvBlotterRecords.Rows(rowIndex).Cells("ComplainantName").Value = metadata.ComplainantName
+                            dgvBlotterRecords.Rows(rowIndex).Cells("ComplainantAddress").Value = metadata.ComplainantAddress
+                            dgvBlotterRecords.Rows(rowIndex).Cells("ComplaintName").Value = metadata.TypeOfIncident
+                            dgvBlotterRecords.Rows(rowIndex).Cells("IncidentDate").Value = If(metadata.DateTime <> DateTime.MinValue, metadata.DateTime.ToString("MMM dd, yyyy hh:mm tt"), String.Empty)
+                            dgvBlotterRecords.Rows(rowIndex).Cells("LocationOfIncident").Value = metadata.LocationOfIncident
+                            dgvBlotterRecords.Rows(rowIndex).Cells("InvolvedPerson").Value = metadata.InvolvedPerson
+                            dgvBlotterRecords.Rows(rowIndex).Cells("NarrativeIncident").Value = metadata.NarrativeIncident
+                            dgvBlotterRecords.Rows(rowIndex).Cells("colRestore").Value = restoreIcon
+                            dgvBlotterRecords.Rows(rowIndex).Tag = metadata
                         End While
                     End Using
                 End Using
@@ -140,23 +143,29 @@ Public Class cedularestore
         UpdateEntriesLabel()
     End Sub
 
+    Private Function FormatCaseNumberValue(value As Integer) As String
+        If value <= 0 Then
+            Return String.Empty
+        End If
+        Return value.ToString("0000")
+    End Function
 
-    Private Sub dgvCedula_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCedula.CellContentClick
+    Private Sub dgvBlotterRecords_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBlotterRecords.CellContentClick
         If e.RowIndex < 0 Then Return
-        If e.ColumnIndex = dgvCedula.Columns("DataGridViewImageColumn2").Index Then
+        If e.ColumnIndex = dgvBlotterRecords.Columns("colRestore").Index Then
             RestoreRecord(e.RowIndex)
         End If
     End Sub
 
     Private Sub RestoreRecord(rowIndex As Integer)
-        If rowIndex < 0 OrElse rowIndex >= dgvCedula.Rows.Count Then Return
+        If rowIndex < 0 OrElse rowIndex >= dgvBlotterRecords.Rows.Count Then Return
 
-        Dim row As DataGridViewRow = dgvCedula.Rows(rowIndex)
-        Dim fullName As String = Convert.ToString(row.Cells("DataGridViewTextBoxColumn1").Value)
-        Dim metadata As CedulaRestoreMetadata = TryCast(row.Tag, CedulaRestoreMetadata)
+        Dim row As DataGridViewRow = dgvBlotterRecords.Rows(rowIndex)
+        Dim caseNumber As String = Convert.ToString(row.Cells("CaseNumber").Value)
+        Dim metadata As BlotterRestoreMetadata = TryCast(row.Tag, BlotterRestoreMetadata)
         If metadata Is Nothing Then Return
 
-        Dim confirm = MessageBox.Show($"Restore {fullName} to cedula records?", "Restore", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim confirm = MessageBox.Show($"Restore blotter record Case #{caseNumber} to blotter records?", "Restore", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If confirm <> DialogResult.Yes Then Return
 
         Try
@@ -164,21 +173,17 @@ Public Class cedularestore
                 conn.Open()
                 Using tran = conn.BeginTransaction()
                     Try
-                        Dim insertSql As String = "INSERT INTO tbl_cedulatracker (ctcnumber, year, placeissued, fullname, address, gender, dateissued, citizenship, placeofbirth, civilstatus, dateofbirth, profession) VALUES (@ctcnumber, @year, @placeissued, @fullname, @address, @gender, @dateissued, @citizenship, @placeofbirth, @civilstatus, @dateofbirth, @profession)"
+                        Dim insertSql As String = "INSERT INTO tbl_blotter (case_number, complainant_name, complainant_address, type_of_incident, date_time, location_of_incident, involved_person, narrative_incident) VALUES (@case_number, @complainant_name, @complainant_address, @type_of_incident, @date_time, @location_of_incident, @involved_person, @narrative_incident)"
 
                         Using insertCmd As New Global.MySql.Data.MySqlClient.MySqlCommand(insertSql, conn, tran)
-                            insertCmd.Parameters.AddWithValue("@ctcnumber", metadata.CtcNumber)
-                            insertCmd.Parameters.AddWithValue("@year", metadata.Year)
-                            insertCmd.Parameters.AddWithValue("@placeissued", If(String.IsNullOrWhiteSpace(metadata.PlaceIssued), DBNull.Value, metadata.PlaceIssued))
-                            insertCmd.Parameters.AddWithValue("@fullname", If(String.IsNullOrWhiteSpace(metadata.FullName), DBNull.Value, metadata.FullName))
-                            insertCmd.Parameters.AddWithValue("@address", If(String.IsNullOrWhiteSpace(metadata.Address), DBNull.Value, metadata.Address))
-                            insertCmd.Parameters.AddWithValue("@gender", metadata.Gender)
-                            insertCmd.Parameters.AddWithValue("@dateissued", metadata.DateIssued)
-                            insertCmd.Parameters.AddWithValue("@citizenship", metadata.Citizenship)
-                            insertCmd.Parameters.AddWithValue("@placeofbirth", metadata.PlaceOfBirth)
-                            insertCmd.Parameters.AddWithValue("@civilstatus", metadata.CivilStatus)
-                            insertCmd.Parameters.AddWithValue("@dateofbirth", metadata.DateOfBirth)
-                            insertCmd.Parameters.AddWithValue("@profession", metadata.Profession)
+                            insertCmd.Parameters.AddWithValue("@case_number", metadata.CaseNumber)
+                            insertCmd.Parameters.AddWithValue("@complainant_name", If(String.IsNullOrWhiteSpace(metadata.ComplainantName), DBNull.Value, metadata.ComplainantName))
+                            insertCmd.Parameters.AddWithValue("@complainant_address", If(String.IsNullOrWhiteSpace(metadata.ComplainantAddress), DBNull.Value, metadata.ComplainantAddress))
+                            insertCmd.Parameters.AddWithValue("@type_of_incident", If(String.IsNullOrWhiteSpace(metadata.TypeOfIncident), DBNull.Value, metadata.TypeOfIncident))
+                            insertCmd.Parameters.AddWithValue("@date_time", If(metadata.DateTime = DateTime.MinValue, DBNull.Value, CType(metadata.DateTime, Object)))
+                            insertCmd.Parameters.AddWithValue("@location_of_incident", If(String.IsNullOrWhiteSpace(metadata.LocationOfIncident), DBNull.Value, metadata.LocationOfIncident))
+                            insertCmd.Parameters.AddWithValue("@involved_person", If(String.IsNullOrWhiteSpace(metadata.InvolvedPerson), DBNull.Value, metadata.InvolvedPerson))
+                            insertCmd.Parameters.AddWithValue("@narrative_incident", If(String.IsNullOrWhiteSpace(metadata.NarrativeIncident), DBNull.Value, metadata.NarrativeIncident))
 
                             Dim rowsInserted As Integer = insertCmd.ExecuteNonQuery()
                             If rowsInserted = 0 Then
@@ -186,10 +191,10 @@ Public Class cedularestore
                             End If
                         End Using
 
-                        Dim deleteSql As String = "DELETE FROM tbl_cedularestore WHERE ctcnumber = @ctcnumber LIMIT 1"
+                        Dim deleteSql As String = "DELETE FROM tbl_blotterrestore WHERE case_number = @case_number LIMIT 1"
 
                         Using deleteCmd As New Global.MySql.Data.MySqlClient.MySqlCommand(deleteSql, conn, tran)
-                            deleteCmd.Parameters.AddWithValue("@ctcnumber", metadata.CtcNumber)
+                            deleteCmd.Parameters.AddWithValue("@case_number", metadata.CaseNumber)
                             deleteCmd.ExecuteNonQuery()
                         End Using
 
@@ -201,9 +206,9 @@ Public Class cedularestore
                 End Using
             End Using
 
-            ' Reload data after restore (LoadRestoreRecords will handle page adjustment if needed)
+            ' Reload data after restore
             LoadRestoreRecords()
-            MessageBox.Show($"Restored {fullName}.", "Restore", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show($"Restored Case #{caseNumber}.", "Restore", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
             MessageBox.Show("Failed to restore record: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
@@ -256,18 +261,14 @@ Public Class cedularestore
         ' Page number label is read-only, no action needed
     End Sub
 
-    Private Class CedulaRestoreMetadata
-        Public Property CtcNumber As Integer
-        Public Property Year As Object
-        Public Property PlaceIssued As String
-        Public Property FullName As String
-        Public Property Address As String
-        Public Property Gender As Object
-        Public Property DateIssued As DateTime
-        Public Property Citizenship As Object
-        Public Property PlaceOfBirth As Object
-        Public Property CivilStatus As Object
-        Public Property DateOfBirth As Object
-        Public Property Profession As Object
+    Private Class BlotterRestoreMetadata
+        Public Property CaseNumber As Integer
+        Public Property ComplainantName As String
+        Public Property ComplainantAddress As String
+        Public Property TypeOfIncident As String
+        Public Property DateTime As DateTime
+        Public Property LocationOfIncident As String
+        Public Property InvolvedPerson As String
+        Public Property NarrativeIncident As String
     End Class
 End Class

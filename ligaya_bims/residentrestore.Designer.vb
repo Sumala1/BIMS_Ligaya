@@ -1,3 +1,5 @@
+Imports ligaya_bims
+
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class residentrestore
     Inherits System.Windows.Forms.Form
@@ -32,9 +34,9 @@ Partial Class residentrestore
         Me.colFullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colRestore = New System.Windows.Forms.DataGridViewImageColumn()
         Me.pnlPagination = New System.Windows.Forms.Panel()
-        Me.btnNext = New System.Windows.Forms.Button()
+        Me.btnNext = New ligaya_bims.RoundedButton()
         Me.lblPageNumber = New System.Windows.Forms.Label()
-        Me.btnPrevious = New System.Windows.Forms.Button()
+        Me.btnPrevious = New ligaya_bims.RoundedButton()
         Me.lblShowEntries = New System.Windows.Forms.Label()
         Me.pnlContent.SuspendLayout()
         CType(Me.dgvProfiles, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,11 +148,12 @@ Partial Class residentrestore
         'btnNext
         '
         Me.btnNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNext.BackColor = System.Drawing.Color.White
-        Me.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.btnNext.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnNext.BorderRadius = 15
+        Me.btnNext.FlatAppearance.BorderSize = 0
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNext.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnNext.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.btnNext.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnNext.ForeColor = System.Drawing.Color.White
         Me.btnNext.Location = New System.Drawing.Point(850, 8)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(60, 25)
@@ -174,11 +177,12 @@ Partial Class residentrestore
         'btnPrevious
         '
         Me.btnPrevious.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnPrevious.BackColor = System.Drawing.Color.White
-        Me.btnPrevious.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
+        Me.btnPrevious.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnPrevious.BorderRadius = 15
+        Me.btnPrevious.FlatAppearance.BorderSize = 0
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPrevious.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnPrevious.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.btnPrevious.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPrevious.ForeColor = System.Drawing.Color.White
         Me.btnPrevious.Location = New System.Drawing.Point(730, 8)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(60, 25)
@@ -219,9 +223,8 @@ Partial Class residentrestore
     Friend WithEvents colFullName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colRestore As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents pnlPagination As System.Windows.Forms.Panel
-    Friend WithEvents btnNext As System.Windows.Forms.Button
+    Friend WithEvents btnNext As RoundedButton
     Friend WithEvents lblPageNumber As System.Windows.Forms.Label
-    Friend WithEvents btnPrevious As System.Windows.Forms.Button
+    Friend WithEvents btnPrevious As RoundedButton
     Friend WithEvents lblShowEntries As System.Windows.Forms.Label
 End Class
-
