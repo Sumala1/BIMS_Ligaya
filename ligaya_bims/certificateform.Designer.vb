@@ -28,36 +28,39 @@ Partial Class certificateform
         Me.panelMain = New System.Windows.Forms.Panel()
         Me.panelRight = New System.Windows.Forms.Panel()
         Me.pnlPic = New System.Windows.Forms.Panel()
-        Me.certSC = New System.Windows.Forms.PictureBox()
-        Me.certCC = New System.Windows.Forms.PictureBox()
-        Me.certAnnual = New System.Windows.Forms.PictureBox()
-        Me.certResidency = New System.Windows.Forms.PictureBox()
+        Me.previewControl = New System.Windows.Forms.PrintPreviewControl()
         Me.panelButtons = New System.Windows.Forms.Panel()
+        Me.btnPreview = New ligaya_bims.RoundedButton()
         Me.btnSave = New ligaya_bims.RoundedButton()
         Me.btnCancel = New ligaya_bims.RoundedButton()
         Me.btnPrint = New ligaya_bims.RoundedButton()
         Me.panelLeft = New System.Windows.Forms.Panel()
         Me.panelFormFields = New System.Windows.Forms.Panel()
+        Me.layoutFields = New System.Windows.Forms.TableLayoutPanel()
+        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.txtStatus = New System.Windows.Forms.TextBox()
+        Me.txtParent = New System.Windows.Forms.TextBox()
+        Me.txtAddress = New System.Windows.Forms.TextBox()
+        Me.txtRequester = New System.Windows.Forms.TextBox()
+        Me.txtPurpose = New System.Windows.Forms.TextBox()
+        Me.txtDay = New System.Windows.Forms.TextBox()
+        Me.txtMonth = New System.Windows.Forms.TextBox()
+        Me.txtYear = New System.Windows.Forms.TextBox()
         Me.cmbCertificateType = New System.Windows.Forms.ComboBox()
         Me.panelLeftHeader = New System.Windows.Forms.Panel()
         Me.panelRightHeader = New System.Windows.Forms.Panel()
         Me.Guna2Panel1 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
+        Me.doc = New System.Drawing.Printing.PrintDocument()
+        Me.previewDialog = New System.Windows.Forms.PrintPreviewDialog()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.panelMain.SuspendLayout()
         Me.panelRight.SuspendLayout()
         Me.pnlPic.SuspendLayout()
-        CType(Me.certSC, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.certCC, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.certAnnual, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.certResidency, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelButtons.SuspendLayout()
         Me.panelLeft.SuspendLayout()
         Me.panelFormFields.SuspendLayout()
+        Me.layoutFields.SuspendLayout()
         Me.panelRightHeader.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -89,10 +92,7 @@ Partial Class certificateform
         'pnlPic
         '
         Me.pnlPic.BackColor = System.Drawing.Color.White
-        Me.pnlPic.Controls.Add(Me.certSC)
-        Me.pnlPic.Controls.Add(Me.certCC)
-        Me.pnlPic.Controls.Add(Me.certAnnual)
-        Me.pnlPic.Controls.Add(Me.certResidency)
+        Me.pnlPic.Controls.Add(Me.previewControl)
         Me.pnlPic.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlPic.Location = New System.Drawing.Point(0, 0)
         Me.pnlPic.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
@@ -100,64 +100,39 @@ Partial Class certificateform
         Me.pnlPic.Size = New System.Drawing.Size(1391, 993)
         Me.pnlPic.TabIndex = 4
         '
-        'certSC
+        'previewControl
         '
-        Me.certSC.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.certSC.Image = Global.ligaya_bims.My.Resources.Resources.CSC_2
-        Me.certSC.Location = New System.Drawing.Point(0, 0)
-        Me.certSC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.certSC.Name = "certSC"
-        Me.certSC.Size = New System.Drawing.Size(1391, 993)
-        Me.certSC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.certSC.TabIndex = 3
-        Me.certSC.TabStop = False
-        Me.certSC.Visible = False
-        '
-        'certCC
-        '
-        Me.certCC.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.certCC.Image = Global.ligaya_bims.My.Resources.Resources.CC_21
-        Me.certCC.Location = New System.Drawing.Point(0, 0)
-        Me.certCC.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.certCC.Name = "certCC"
-        Me.certCC.Size = New System.Drawing.Size(1391, 993)
-        Me.certCC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.certCC.TabIndex = 2
-        Me.certCC.TabStop = False
-        Me.certCC.Visible = False
-        '
-        'certAnnual
-        '
-        Me.certAnnual.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.certAnnual.Image = Global.ligaya_bims.My.Resources.Resources.CAI_2
-        Me.certAnnual.Location = New System.Drawing.Point(0, 0)
-        Me.certAnnual.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.certAnnual.Name = "certAnnual"
-        Me.certAnnual.Size = New System.Drawing.Size(1391, 993)
-        Me.certAnnual.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.certAnnual.TabIndex = 1
-        Me.certAnnual.TabStop = False
-        Me.certAnnual.Visible = False
-        '
-        'certResidency
-        '
-        Me.certResidency.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.certResidency.Image = Global.ligaya_bims.My.Resources.Resources.CR_21
-        Me.certResidency.Location = New System.Drawing.Point(0, 0)
-        Me.certResidency.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.certResidency.Name = "certResidency"
-        Me.certResidency.Size = New System.Drawing.Size(1391, 993)
-        Me.certResidency.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.certResidency.TabIndex = 0
-        Me.certResidency.TabStop = False
-        Me.certResidency.Visible = False
-        '
+        Me.previewControl.BackColor = System.Drawing.Color.White
+        Me.previewControl.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.previewControl.Document = Me.doc
+        Me.previewControl.Location = New System.Drawing.Point(0, 0)
+        Me.previewControl.Margin = New System.Windows.Forms.Padding(4)
+        Me.previewControl.Name = "previewControl"
+        Me.previewControl.Size = New System.Drawing.Size(1391, 993)
+        Me.previewControl.TabIndex = 4
+        Me.previewControl.Zoom = 1.0R
         'panelButtons
         '
         Me.panelButtons.BackColor = System.Drawing.Color.White
+        Me.panelButtons.Controls.Add(Me.btnPreview)
         Me.panelButtons.Controls.Add(Me.btnSave)
         Me.panelButtons.Controls.Add(Me.btnCancel)
         Me.panelButtons.Controls.Add(Me.btnPrint)
+        'btnPreview
+        '
+        Me.btnPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(71, Byte), Integer), CType(CType(161, Byte), Integer))
+        Me.btnPreview.BorderRadius = 15
+        Me.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPreview.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.btnPreview.ForeColor = System.Drawing.Color.White
+        Me.btnPreview.Location = New System.Drawing.Point(135, 12)
+        Me.btnPreview.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnPreview.Name = "btnPreview"
+        Me.btnPreview.Size = New System.Drawing.Size(133, 37)
+        Me.btnPreview.TabIndex = 3
+        Me.btnPreview.Text = "Preview"
+        Me.btnPreview.UseVisualStyleBackColor = False
+        '
         Me.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.panelButtons.Location = New System.Drawing.Point(0, 993)
         Me.panelButtons.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -225,6 +200,7 @@ Partial Class certificateform
         'panelFormFields
         '
         Me.panelFormFields.BackColor = System.Drawing.Color.White
+        Me.panelFormFields.Controls.Add(Me.layoutFields)
         Me.panelFormFields.Controls.Add(Me.Label1)
         Me.panelFormFields.Controls.Add(Me.cmbCertificateType)
         Me.panelFormFields.Dock = System.Windows.Forms.DockStyle.Fill
@@ -234,6 +210,166 @@ Partial Class certificateform
         Me.panelFormFields.Padding = New System.Windows.Forms.Padding(20, 20, 20, 20)
         Me.panelFormFields.Size = New System.Drawing.Size(533, 1055)
         Me.panelFormFields.TabIndex = 1
+        '
+        'layoutFields
+        '
+        Me.layoutFields.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.layoutFields.AutoSize = True
+        Me.layoutFields.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.layoutFields.ColumnCount = 2
+        Me.layoutFields.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.layoutFields.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.layoutFields.Controls.Add(Me.txtName, 1, 0)
+        Me.layoutFields.Controls.Add(Me.txtStatus, 1, 1)
+        Me.layoutFields.Controls.Add(Me.txtParent, 1, 2)
+        Me.layoutFields.Controls.Add(Me.txtAddress, 1, 3)
+        Me.layoutFields.Controls.Add(Me.txtRequester, 1, 4)
+        Me.layoutFields.Controls.Add(Me.txtPurpose, 1, 5)
+        Me.layoutFields.Controls.Add(Me.txtDay, 1, 6)
+        Me.layoutFields.Controls.Add(Me.txtMonth, 1, 7)
+        Me.layoutFields.Controls.Add(Me.txtYear, 1, 8)
+        Dim lblName As New System.Windows.Forms.Label()
+        lblName.AutoSize = True
+        lblName.Text = "Full Name:"
+        lblName.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblName, 0, 0)
+        Dim lblStatus As New System.Windows.Forms.Label()
+        lblStatus.AutoSize = True
+        lblStatus.Text = "Status:"
+        lblStatus.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblStatus, 0, 1)
+        Dim lblParent As New System.Windows.Forms.Label()
+        lblParent.AutoSize = True
+        lblParent.Text = "Parent:"
+        lblParent.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblParent, 0, 2)
+        Dim lblAddress As New System.Windows.Forms.Label()
+        lblAddress.AutoSize = True
+        lblAddress.Text = "Address:"
+        lblAddress.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblAddress, 0, 3)
+        Dim lblRequester As New System.Windows.Forms.Label()
+        lblRequester.AutoSize = True
+        lblRequester.Text = "Requester:"
+        lblRequester.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblRequester, 0, 4)
+        Dim lblPurpose As New System.Windows.Forms.Label()
+        lblPurpose.AutoSize = True
+        lblPurpose.Text = "Purpose:"
+        lblPurpose.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblPurpose, 0, 5)
+        Dim lblDay As New System.Windows.Forms.Label()
+        lblDay.AutoSize = True
+        lblDay.Text = "Day:"
+        lblDay.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblDay, 0, 6)
+        Dim lblMonth As New System.Windows.Forms.Label()
+        lblMonth.AutoSize = True
+        lblMonth.Text = "Month:"
+        lblMonth.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblMonth, 0, 7)
+        Dim lblYear As New System.Windows.Forms.Label()
+        lblYear.AutoSize = True
+        lblYear.Text = "Year:"
+        lblYear.Margin = New System.Windows.Forms.Padding(0, 6, 8, 0)
+        Me.layoutFields.Controls.Add(lblYear, 0, 8)
+        Me.layoutFields.Location = New System.Drawing.Point(29, 130)
+        Me.layoutFields.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.layoutFields.Name = "layoutFields"
+        Me.layoutFields.RowCount = 9
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutFields.Size = New System.Drawing.Size(475, 252)
+        Me.layoutFields.TabIndex = 2
+        '
+        'txtName
+        '
+        Me.txtName.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtName.Location = New System.Drawing.Point(139, 3)
+        Me.txtName.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtName.Name = "txtName"
+        Me.txtName.Size = New System.Drawing.Size(333, 22)
+        Me.txtName.TabIndex = 0
+        '
+        'txtStatus
+        '
+        Me.txtStatus.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtStatus.Location = New System.Drawing.Point(139, 38)
+        Me.txtStatus.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtStatus.Name = "txtStatus"
+        Me.txtStatus.Size = New System.Drawing.Size(333, 22)
+        Me.txtStatus.TabIndex = 1
+        '
+        'txtParent
+        '
+        Me.txtParent.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtParent.Location = New System.Drawing.Point(139, 73)
+        Me.txtParent.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtParent.Name = "txtParent"
+        Me.txtParent.Size = New System.Drawing.Size(333, 22)
+        Me.txtParent.TabIndex = 2
+        '
+        'txtAddress
+        '
+        Me.txtAddress.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtAddress.Location = New System.Drawing.Point(139, 108)
+        Me.txtAddress.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtAddress.Name = "txtAddress"
+        Me.txtAddress.Size = New System.Drawing.Size(333, 22)
+        Me.txtAddress.TabIndex = 3
+        '
+        'txtRequester
+        '
+        Me.txtRequester.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtRequester.Location = New System.Drawing.Point(139, 143)
+        Me.txtRequester.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtRequester.Name = "txtRequester"
+        Me.txtRequester.Size = New System.Drawing.Size(333, 22)
+        Me.txtRequester.TabIndex = 4
+        '
+        'txtPurpose
+        '
+        Me.txtPurpose.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtPurpose.Location = New System.Drawing.Point(139, 178)
+        Me.txtPurpose.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtPurpose.Name = "txtPurpose"
+        Me.txtPurpose.Size = New System.Drawing.Size(333, 22)
+        Me.txtPurpose.TabIndex = 5
+        '
+        'txtDay
+        '
+        Me.txtDay.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtDay.Location = New System.Drawing.Point(139, 213)
+        Me.txtDay.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtDay.Name = "txtDay"
+        Me.txtDay.Size = New System.Drawing.Size(333, 22)
+        Me.txtDay.TabIndex = 6
+        '
+        'txtMonth
+        '
+        Me.txtMonth.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtMonth.Location = New System.Drawing.Point(139, 248)
+        Me.txtMonth.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtMonth.Name = "txtMonth"
+        Me.txtMonth.Size = New System.Drawing.Size(333, 22)
+        Me.txtMonth.TabIndex = 7
+        '
+        'txtYear
+        '
+        Me.txtYear.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtYear.Location = New System.Drawing.Point(139, 283)
+        Me.txtYear.Margin = New System.Windows.Forms.Padding(3, 3, 3, 10)
+        Me.txtYear.Name = "txtYear"
+        Me.txtYear.Size = New System.Drawing.Size(333, 22)
+        Me.txtYear.TabIndex = 8
         '
         'cmbCertificateType
         '
@@ -279,28 +415,19 @@ Partial Class certificateform
         Me.Panel1.Size = New System.Drawing.Size(375, 450)
         Me.Panel1.TabIndex = 3
         '
-        'PrintDocument1
+        'doc
         '
         '
-        'PrintPreviewDialog1
+        'previewDialog
         '
-        Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
-        Me.PrintPreviewDialog1.Document = Me.PrintDocument1
-        Me.PrintPreviewDialog1.Enabled = True
-        Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
-        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
-        Me.PrintPreviewDialog1.Visible = False
-        '
-        'PrintDialog1
-        '
-        Me.PrintDialog1.Document = Me.PrintDocument1
-        Me.PrintDialog1.UseEXDialog = True
-        '
-        'PageSetupDialog1
-        '
-        Me.PageSetupDialog1.Document = Me.PrintDocument1
+        Me.previewDialog.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        Me.previewDialog.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        Me.previewDialog.ClientSize = New System.Drawing.Size(400, 300)
+        Me.previewDialog.Document = Me.doc
+        Me.previewDialog.Enabled = True
+        Me.previewDialog.Icon = CType(resources.GetObject("previewDialog.Icon"), System.Drawing.Icon)
+        Me.previewDialog.Name = "previewDialog"
+        Me.previewDialog.Visible = False
         '
         'Label1
         '
@@ -325,10 +452,6 @@ Partial Class certificateform
         Me.panelMain.ResumeLayout(False)
         Me.panelRight.ResumeLayout(False)
         Me.pnlPic.ResumeLayout(False)
-        CType(Me.certSC, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.certCC, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.certAnnual, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.certResidency, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelButtons.ResumeLayout(False)
         Me.panelLeft.ResumeLayout(False)
         Me.panelFormFields.ResumeLayout(False)
@@ -339,26 +462,33 @@ Partial Class certificateform
     End Sub
 
     Friend WithEvents panelMain As System.Windows.Forms.Panel
-    Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
-    Friend WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
-    Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
-    Friend WithEvents PageSetupDialog1 As System.Windows.Forms.PageSetupDialog
+    Friend WithEvents doc As System.Drawing.Printing.PrintDocument
+    Friend WithEvents previewDialog As System.Windows.Forms.PrintPreviewDialog
     Friend WithEvents panelLeft As System.Windows.Forms.Panel
     Friend WithEvents panelFormFields As System.Windows.Forms.Panel
     Friend WithEvents cmbCertificateType As ComboBox
     Friend WithEvents panelLeftHeader As System.Windows.Forms.Panel
     Friend WithEvents panelRight As System.Windows.Forms.Panel
     Friend WithEvents panelButtons As System.Windows.Forms.Panel
+    Friend WithEvents btnPreview As ligaya_bims.RoundedButton
     Friend WithEvents btnSave As ligaya_bims.RoundedButton
     Friend WithEvents btnPrint As ligaya_bims.RoundedButton
     Friend WithEvents panelRightHeader As System.Windows.Forms.Panel
     Friend WithEvents Guna2Panel1 As Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents pnlPic As System.Windows.Forms.Panel
-    Friend WithEvents certResidency As PictureBox
-    Friend WithEvents certAnnual As PictureBox
-    Friend WithEvents certCC As PictureBox
-    Friend WithEvents certSC As PictureBox
+    Friend WithEvents previewControl As System.Windows.Forms.PrintPreviewControl
     Friend WithEvents btnCancel As ligaya_bims.RoundedButton
     Friend WithEvents Label1 As Label
+    Friend WithEvents layoutFields As TableLayoutPanel
+    Friend WithEvents txtName As TextBox
+    Friend WithEvents txtStatus As TextBox
+    Friend WithEvents txtParent As TextBox
+    Friend WithEvents txtAddress As TextBox
+    Friend WithEvents txtRequester As TextBox
+    Friend WithEvents txtPurpose As TextBox
+    Friend WithEvents txtDay As TextBox
+    Friend WithEvents txtMonth As TextBox
+    Friend WithEvents txtYear As TextBox
 End Class
+

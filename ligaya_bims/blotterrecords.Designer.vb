@@ -92,7 +92,7 @@ Partial Class blotterrecords
         Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlMain.Location = New System.Drawing.Point(0, 0)
         Me.pnlMain.Name = "pnlMain"
-        Me.pnlMain.Size = New System.Drawing.Size(1236, 850)
+        Me.pnlMain.Size = New System.Drawing.Size(1222, 804)
         Me.pnlMain.TabIndex = 0
         '
         'pnlDataArea
@@ -101,8 +101,8 @@ Partial Class blotterrecords
         Me.pnlDataArea.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlDataArea.Location = New System.Drawing.Point(0, 60)
         Me.pnlDataArea.Name = "pnlDataArea"
-        Me.pnlDataArea.Padding = New System.Windows.Forms.Padding(20, 10, 20, 10)
-        Me.pnlDataArea.Size = New System.Drawing.Size(1236, 790)
+        Me.pnlDataArea.Padding = New System.Windows.Forms.Padding(16, 8, 16, 12)
+        Me.pnlDataArea.Size = New System.Drawing.Size(1222, 744)
         Me.pnlDataArea.TabIndex = 2
         '
         'tblDataLayout
@@ -113,11 +113,11 @@ Partial Class blotterrecords
         Me.tblDataLayout.Controls.Add(Me.pnlLeftTable, 0, 0)
         Me.tblDataLayout.Controls.Add(Me.pnlRightTable, 1, 0)
         Me.tblDataLayout.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tblDataLayout.Location = New System.Drawing.Point(20, 10)
+        Me.tblDataLayout.Location = New System.Drawing.Point(16, 8)
         Me.tblDataLayout.Name = "tblDataLayout"
         Me.tblDataLayout.RowCount = 1
         Me.tblDataLayout.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.tblDataLayout.Size = New System.Drawing.Size(1196, 770)
+        Me.tblDataLayout.Size = New System.Drawing.Size(1190, 724)
         Me.tblDataLayout.TabIndex = 0
         '
         'pnlLeftTable
@@ -126,10 +126,10 @@ Partial Class blotterrecords
         Me.pnlLeftTable.Controls.Add(Me.pnlBlotterButtons)
         Me.pnlLeftTable.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlLeftTable.Location = New System.Drawing.Point(0, 0)
-        Me.pnlLeftTable.Margin = New System.Windows.Forms.Padding(0, 0, 10, 0)
+        Me.pnlLeftTable.Margin = New System.Windows.Forms.Padding(0, 0, 8, 0)
         Me.pnlLeftTable.Name = "pnlLeftTable"
-        Me.pnlLeftTable.Padding = New System.Windows.Forms.Padding(0, 0, 10, 0)
-        Me.pnlLeftTable.Size = New System.Drawing.Size(588, 770)
+        Me.pnlLeftTable.Padding = New System.Windows.Forms.Padding(0, 0, 8, 0)
+        Me.pnlLeftTable.Size = New System.Drawing.Size(587, 724)
         Me.pnlLeftTable.TabIndex = 0
         '
         'dgvBlotterRecords
@@ -178,67 +178,77 @@ Partial Class blotterrecords
         Me.dgvBlotterRecords.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.dgvBlotterRecords.RowTemplate.Height = 40
         Me.dgvBlotterRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvBlotterRecords.Size = New System.Drawing.Size(578, 714)
+        Me.dgvBlotterRecords.Size = New System.Drawing.Size(579, 668)
         Me.dgvBlotterRecords.TabIndex = 0
         '
         'CaseNumber
         '
         Me.CaseNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.CaseNumber.HeaderText = "Case #"
-        Me.CaseNumber.MinimumWidth = 90
+        Me.CaseNumber.MinimumWidth = 70
         Me.CaseNumber.Name = "CaseNumber"
         Me.CaseNumber.ReadOnly = True
         Me.CaseNumber.Width = 90
         '
         'ComplainantName
         '
+        Me.ComplainantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ComplainantName.FillWeight = 130.0!
         Me.ComplainantName.HeaderText = "Complainant Name"
-        Me.ComplainantName.MinimumWidth = 140
+        Me.ComplainantName.MinimumWidth = 100
         Me.ComplainantName.Name = "ComplainantName"
         Me.ComplainantName.ReadOnly = True
         '
         'ComplainantAddress
         '
+        Me.ComplainantAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ComplainantAddress.FillWeight = 120.0!
         Me.ComplainantAddress.HeaderText = "Complainant Address"
-        Me.ComplainantAddress.MinimumWidth = 150
+        Me.ComplainantAddress.MinimumWidth = 100
         Me.ComplainantAddress.Name = "ComplainantAddress"
         Me.ComplainantAddress.ReadOnly = True
         '
         'ComplaintName
         '
+        Me.ComplaintName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ComplaintName.FillWeight = 140.0!
         Me.ComplaintName.HeaderText = "Complaint Details"
-        Me.ComplaintName.MinimumWidth = 160
+        Me.ComplaintName.MinimumWidth = 110
         Me.ComplaintName.Name = "ComplaintName"
         Me.ComplaintName.ReadOnly = True
         '
         'IncidentDate
         '
+        Me.IncidentDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         DataGridViewCellStyle3.Format = "MMM dd, yyyy hh:mm tt"
         DataGridViewCellStyle3.NullValue = Nothing
         Me.IncidentDate.DefaultCellStyle = DataGridViewCellStyle3
         Me.IncidentDate.HeaderText = "Incident Date/Time"
-        Me.IncidentDate.MinimumWidth = 140
+        Me.IncidentDate.MinimumWidth = 110
         Me.IncidentDate.Name = "IncidentDate"
         Me.IncidentDate.ReadOnly = True
         '
         'LocationOfIncident
         '
+        Me.LocationOfIncident.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.LocationOfIncident.HeaderText = "Location"
-        Me.LocationOfIncident.MinimumWidth = 130
+        Me.LocationOfIncident.MinimumWidth = 90
         Me.LocationOfIncident.Name = "LocationOfIncident"
         Me.LocationOfIncident.ReadOnly = True
         '
         'InvolvedPerson
         '
+        Me.InvolvedPerson.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.InvolvedPerson.HeaderText = "Involved Person(s)"
-        Me.InvolvedPerson.MinimumWidth = 140
+        Me.InvolvedPerson.MinimumWidth = 110
         Me.InvolvedPerson.Name = "InvolvedPerson"
         Me.InvolvedPerson.ReadOnly = True
         '
         'NarrativeIncident
         '
+        Me.NarrativeIncident.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.NarrativeIncident.HeaderText = "Narrative"
-        Me.NarrativeIncident.MinimumWidth = 180
+        Me.NarrativeIncident.MinimumWidth = 120
         Me.NarrativeIncident.Name = "NarrativeIncident"
         Me.NarrativeIncident.ReadOnly = True
         '
@@ -272,7 +282,7 @@ Partial Class blotterrecords
         Me.pnlBlotterButtons.Location = New System.Drawing.Point(0, 0)
         Me.pnlBlotterButtons.Name = "pnlBlotterButtons"
         Me.pnlBlotterButtons.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.pnlBlotterButtons.Size = New System.Drawing.Size(578, 56)
+        Me.pnlBlotterButtons.Size = New System.Drawing.Size(579, 56)
         Me.pnlBlotterButtons.TabIndex = 1
         '
         'lblBlotterTitle
@@ -282,7 +292,7 @@ Partial Class blotterrecords
         Me.lblBlotterTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         Me.lblBlotterTitle.Location = New System.Drawing.Point(0, 16)
         Me.lblBlotterTitle.Name = "lblBlotterTitle"
-        Me.lblBlotterTitle.Size = New System.Drawing.Size(126, 21)
+        Me.lblBlotterTitle.Size = New System.Drawing.Size(159, 28)
         Me.lblBlotterTitle.TabIndex = 4
         Me.lblBlotterTitle.Text = "Blotter Records"
         '
@@ -292,11 +302,11 @@ Partial Class blotterrecords
         Me.pnlRightTable.Controls.Add(Me.pnlScheduleActionBackground)
         Me.pnlRightTable.Controls.Add(Me.pnlScheduleButtons)
         Me.pnlRightTable.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlRightTable.Location = New System.Drawing.Point(608, 0)
-        Me.pnlRightTable.Margin = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.pnlRightTable.Location = New System.Drawing.Point(603, 0)
+        Me.pnlRightTable.Margin = New System.Windows.Forms.Padding(8, 0, 0, 0)
         Me.pnlRightTable.Name = "pnlRightTable"
-        Me.pnlRightTable.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.pnlRightTable.Size = New System.Drawing.Size(588, 770)
+        Me.pnlRightTable.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.pnlRightTable.Size = New System.Drawing.Size(587, 724)
         Me.pnlRightTable.TabIndex = 1
         '
         'dgvSchedule
@@ -334,7 +344,7 @@ Partial Class blotterrecords
         Me.dgvSchedule.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvSchedule.EnableHeadersVisualStyles = False
         Me.dgvSchedule.GridColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.dgvSchedule.Location = New System.Drawing.Point(10, 60)
+        Me.dgvSchedule.Location = New System.Drawing.Point(8, 60)
         Me.dgvSchedule.MultiSelect = False
         Me.dgvSchedule.Name = "dgvSchedule"
         Me.dgvSchedule.ReadOnly = True
@@ -344,58 +354,65 @@ Partial Class blotterrecords
         Me.dgvSchedule.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.dgvSchedule.RowTemplate.Height = 40
         Me.dgvSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSchedule.Size = New System.Drawing.Size(578, 610)
+        Me.dgvSchedule.Size = New System.Drawing.Size(579, 564)
         Me.dgvSchedule.TabIndex = 0
         '
         'Column1
         '
         Me.Column1.HeaderText = "CaseNumber"
+        Me.Column1.MinimumWidth = 6
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
         Me.Column1.Visible = False
+        Me.Column1.Width = 125
         '
         'colSummonLevel
         '
+        Me.colSummonLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.colSummonLevel.FillWeight = 90.0!
         Me.colSummonLevel.HeaderText = "Summon Level"
-        Me.colSummonLevel.MinimumWidth = 90
+        Me.colSummonLevel.MinimumWidth = 80
         Me.colSummonLevel.Name = "colSummonLevel"
         Me.colSummonLevel.ReadOnly = True
-        Me.colSummonLevel.Width = 90
         '
         'colCaseDate
         '
+        Me.colCaseDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         DataGridViewCellStyle8.Format = "MMM dd, yyyy hh:mm tt"
         DataGridViewCellStyle8.NullValue = Nothing
         Me.colCaseDate.DefaultCellStyle = DataGridViewCellStyle8
+        Me.colCaseDate.FillWeight = 130.0!
         Me.colCaseDate.HeaderText = "Schedule Date"
-        Me.colCaseDate.MinimumWidth = 130
+        Me.colCaseDate.MinimumWidth = 110
         Me.colCaseDate.Name = "colCaseDate"
         Me.colCaseDate.ReadOnly = True
-        Me.colCaseDate.Width = 130
         '
         'colStartTime
         '
+        Me.colStartTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.colStartTime.FillWeight = 80.0!
         Me.colStartTime.HeaderText = "Start Time"
-        Me.colStartTime.MinimumWidth = 80
+        Me.colStartTime.MinimumWidth = 70
         Me.colStartTime.Name = "colStartTime"
         Me.colStartTime.ReadOnly = True
-        Me.colStartTime.Width = 80
         '
         'colEndTime
         '
+        Me.colEndTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.colEndTime.FillWeight = 80.0!
         Me.colEndTime.HeaderText = "End Time"
-        Me.colEndTime.MinimumWidth = 80
+        Me.colEndTime.MinimumWidth = 70
         Me.colEndTime.Name = "colEndTime"
         Me.colEndTime.ReadOnly = True
-        Me.colEndTime.Width = 80
         '
         'colSettlementStatus
         '
+        Me.colSettlementStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.colSettlementStatus.FillWeight = 120.0!
         Me.colSettlementStatus.HeaderText = "Settlement Status"
-        Me.colSettlementStatus.MinimumWidth = 120
+        Me.colSettlementStatus.MinimumWidth = 100
         Me.colSettlementStatus.Name = "colSettlementStatus"
         Me.colSettlementStatus.ReadOnly = True
-        Me.colSettlementStatus.Width = 120
         '
         'pnlScheduleActionBackground
         '
@@ -408,10 +425,10 @@ Partial Class blotterrecords
         Me.pnlScheduleActionBackground.Controls.Add(Me.btnDeleteSchedule)
         Me.pnlScheduleActionBackground.Controls.Add(Me.btnUpdateSettlementStatus)
         Me.pnlScheduleActionBackground.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.pnlScheduleActionBackground.Location = New System.Drawing.Point(10, 670)
+        Me.pnlScheduleActionBackground.Location = New System.Drawing.Point(8, 624)
         Me.pnlScheduleActionBackground.Name = "pnlScheduleActionBackground"
         Me.pnlScheduleActionBackground.Padding = New System.Windows.Forms.Padding(15)
-        Me.pnlScheduleActionBackground.Size = New System.Drawing.Size(578, 100)
+        Me.pnlScheduleActionBackground.Size = New System.Drawing.Size(579, 100)
         Me.pnlScheduleActionBackground.TabIndex = 4
         '
         'btnAddSchedule
@@ -438,7 +455,7 @@ Partial Class blotterrecords
         Me.btnEditSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEditSchedule.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEditSchedule.ForeColor = System.Drawing.Color.White
-        Me.btnEditSchedule.Location = New System.Drawing.Point(223, 5)
+        Me.btnEditSchedule.Location = New System.Drawing.Point(250, 5)
         Me.btnEditSchedule.Margin = New System.Windows.Forms.Padding(5)
         Me.btnEditSchedule.Name = "btnEditSchedule"
         Me.btnEditSchedule.Size = New System.Drawing.Size(120, 40)
@@ -454,7 +471,7 @@ Partial Class blotterrecords
         Me.btnDeleteSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDeleteSchedule.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDeleteSchedule.ForeColor = System.Drawing.Color.White
-        Me.btnDeleteSchedule.Location = New System.Drawing.Point(438, 5)
+        Me.btnDeleteSchedule.Location = New System.Drawing.Point(470, 5)
         Me.btnDeleteSchedule.Margin = New System.Windows.Forms.Padding(5)
         Me.btnDeleteSchedule.Name = "btnDeleteSchedule"
         Me.btnDeleteSchedule.Size = New System.Drawing.Size(120, 40)
@@ -471,7 +488,7 @@ Partial Class blotterrecords
         Me.btnUpdateSettlementStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnUpdateSettlementStatus.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUpdateSettlementStatus.ForeColor = System.Drawing.Color.White
-        Me.btnUpdateSettlementStatus.Location = New System.Drawing.Point(174, 55)
+        Me.btnUpdateSettlementStatus.Location = New System.Drawing.Point(197, 55)
         Me.btnUpdateSettlementStatus.Margin = New System.Windows.Forms.Padding(5)
         Me.btnUpdateSettlementStatus.Name = "btnUpdateSettlementStatus"
         Me.btnUpdateSettlementStatus.Size = New System.Drawing.Size(217, 40)
@@ -484,10 +501,10 @@ Partial Class blotterrecords
         Me.pnlScheduleButtons.BackColor = System.Drawing.Color.White
         Me.pnlScheduleButtons.Controls.Add(Me.lblComplainantVsRespondent)
         Me.pnlScheduleButtons.Dock = System.Windows.Forms.DockStyle.Top
-        Me.pnlScheduleButtons.Location = New System.Drawing.Point(10, 0)
+        Me.pnlScheduleButtons.Location = New System.Drawing.Point(8, 0)
         Me.pnlScheduleButtons.Name = "pnlScheduleButtons"
         Me.pnlScheduleButtons.Padding = New System.Windows.Forms.Padding(0, 0, 0, 8)
-        Me.pnlScheduleButtons.Size = New System.Drawing.Size(578, 60)
+        Me.pnlScheduleButtons.Size = New System.Drawing.Size(579, 60)
         Me.pnlScheduleButtons.TabIndex = 1
         '
         'lblComplainantVsRespondent
@@ -497,7 +514,7 @@ Partial Class blotterrecords
         Me.lblComplainantVsRespondent.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         Me.lblComplainantVsRespondent.Location = New System.Drawing.Point(0, 18)
         Me.lblComplainantVsRespondent.Name = "lblComplainantVsRespondent"
-        Me.lblComplainantVsRespondent.Size = New System.Drawing.Size(214, 21)
+        Me.lblComplainantVsRespondent.Size = New System.Drawing.Size(267, 28)
         Me.lblComplainantVsRespondent.TabIndex = 4
         Me.lblComplainantVsRespondent.Text = "Complainant vs Respondent"
         '
@@ -512,7 +529,7 @@ Partial Class blotterrecords
         Me.pnlSearch.Location = New System.Drawing.Point(0, 0)
         Me.pnlSearch.Name = "pnlSearch"
         Me.pnlSearch.Padding = New System.Windows.Forms.Padding(20, 15, 20, 10)
-        Me.pnlSearch.Size = New System.Drawing.Size(1236, 60)
+        Me.pnlSearch.Size = New System.Drawing.Size(1222, 60)
         Me.pnlSearch.TabIndex = 1
         '
         'btnAddNew
@@ -524,7 +541,7 @@ Partial Class blotterrecords
         Me.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddNew.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddNew.ForeColor = System.Drawing.Color.White
-        Me.btnAddNew.Location = New System.Drawing.Point(20, 12)
+        Me.btnAddNew.Location = New System.Drawing.Point(-23, 12)
         Me.btnAddNew.Name = "btnAddNew"
         Me.btnAddNew.Size = New System.Drawing.Size(110, 32)
         Me.btnAddNew.TabIndex = 0
@@ -535,9 +552,9 @@ Partial Class blotterrecords
         '
         Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(908, 17)
+        Me.txtSearch.Location = New System.Drawing.Point(894, 17)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(300, 25)
+        Me.txtSearch.Size = New System.Drawing.Size(300, 30)
         Me.txtSearch.TabIndex = 2
         '
         'cmbSearchBy
@@ -547,9 +564,9 @@ Partial Class blotterrecords
         Me.cmbSearchBy.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSearchBy.FormattingEnabled = True
         Me.cmbSearchBy.Items.AddRange(New Object() {"ALL", "Case #", "Complainant Name", "Complainant Address", "Complaint Details", "Location"})
-        Me.cmbSearchBy.Location = New System.Drawing.Point(827, 16)
+        Me.cmbSearchBy.Location = New System.Drawing.Point(813, 16)
         Me.cmbSearchBy.Name = "cmbSearchBy"
-        Me.cmbSearchBy.Size = New System.Drawing.Size(75, 25)
+        Me.cmbSearchBy.Size = New System.Drawing.Size(75, 31)
         Me.cmbSearchBy.TabIndex = 1
         '
         'lblSearchBy
@@ -557,18 +574,17 @@ Partial Class blotterrecords
         Me.lblSearchBy.AutoSize = True
         Me.lblSearchBy.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSearchBy.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        Me.lblSearchBy.Location = New System.Drawing.Point(711, 17)
+        Me.lblSearchBy.Location = New System.Drawing.Point(697, 17)
         Me.lblSearchBy.Name = "lblSearchBy"
-        Me.lblSearchBy.Size = New System.Drawing.Size(103, 25)
+        Me.lblSearchBy.Size = New System.Drawing.Size(123, 31)
         Me.lblSearchBy.TabIndex = 0
         Me.lblSearchBy.Text = "Search by:"
         '
         'blotterrecords
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1236, 850)
+        Me.ClientSize = New System.Drawing.Size(1222, 804)
         Me.Controls.Add(Me.pnlMain)
         Me.Name = "blotterrecords"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

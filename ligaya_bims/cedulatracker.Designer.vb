@@ -57,18 +57,20 @@ Partial Class cedulatracker
         Me.panelMain.Controls.Add(Me.lblShowingEntries)
         Me.panelMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMain.Location = New System.Drawing.Point(0, 0)
+        Me.panelMain.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panelMain.Name = "panelMain"
-        Me.panelMain.Padding = New System.Windows.Forms.Padding(20)
-        Me.panelMain.Size = New System.Drawing.Size(1200, 700)
+        Me.panelMain.Padding = New System.Windows.Forms.Padding(27, 25, 27, 25)
+        Me.panelMain.Size = New System.Drawing.Size(1600, 862)
         Me.panelMain.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(880, 97)
+        Me.Label1.Location = New System.Drawing.Point(1121, 120)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(66, 18)
+        Me.Label1.Size = New System.Drawing.Size(82, 24)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Search:"
         '
@@ -77,9 +79,10 @@ Partial Class cedulatracker
         Me.lblTitle.AutoSize = True
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold)
         Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblTitle.Location = New System.Drawing.Point(23, 23)
+        Me.lblTitle.Location = New System.Drawing.Point(31, 28)
+        Me.lblTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(241, 45)
+        Me.lblTitle.Size = New System.Drawing.Size(299, 54)
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Cedula Tracker"
         '
@@ -93,9 +96,10 @@ Partial Class cedulatracker
         Me.btnTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnTransaction.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnTransaction.ForeColor = System.Drawing.Color.White
-        Me.btnTransaction.Location = New System.Drawing.Point(23, 85)
+        Me.btnTransaction.Location = New System.Drawing.Point(31, 105)
+        Me.btnTransaction.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnTransaction.Name = "btnTransaction"
-        Me.btnTransaction.Size = New System.Drawing.Size(150, 40)
+        Me.btnTransaction.Size = New System.Drawing.Size(200, 49)
         Me.btnTransaction.TabIndex = 1
         Me.btnTransaction.Text = "Transaction"
         Me.btnTransaction.UseVisualStyleBackColor = False
@@ -104,9 +108,10 @@ Partial Class cedulatracker
         '
         Me.txtSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtSearch.Location = New System.Drawing.Point(950, 95)
+        Me.txtSearch.Location = New System.Drawing.Point(1267, 117)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(200, 23)
+        Me.txtSearch.Size = New System.Drawing.Size(265, 27)
         Me.txtSearch.TabIndex = 2
         '
         'cmbFilter
@@ -114,9 +119,10 @@ Partial Class cedulatracker
         Me.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbFilter.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.cmbFilter.Items.AddRange(New Object() {"CTC Number", "Full Name", "Date Issued"})
-        Me.cmbFilter.Location = New System.Drawing.Point(190, 96)
+        Me.cmbFilter.Location = New System.Drawing.Point(253, 118)
+        Me.cmbFilter.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbFilter.Name = "cmbFilter"
-        Me.cmbFilter.Size = New System.Drawing.Size(130, 23)
+        Me.cmbFilter.Size = New System.Drawing.Size(172, 28)
         Me.cmbFilter.TabIndex = 3
         '
         'dgvCedula
@@ -156,7 +162,8 @@ Partial Class cedulatracker
         Me.dgvCedula.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvCedula.EnableHeadersVisualStyles = False
         Me.dgvCedula.GridColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.dgvCedula.Location = New System.Drawing.Point(23, 187)
+        Me.dgvCedula.Location = New System.Drawing.Point(31, 230)
+        Me.dgvCedula.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dgvCedula.MultiSelect = False
         Me.dgvCedula.Name = "dgvCedula"
         Me.dgvCedula.ReadOnly = True
@@ -166,7 +173,7 @@ Partial Class cedulatracker
         Me.dgvCedula.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvCedula.RowTemplate.Height = 40
         Me.dgvCedula.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCedula.Size = New System.Drawing.Size(1154, 350)
+        Me.dgvCedula.Size = New System.Drawing.Size(1539, 431)
         Me.dgvCedula.TabIndex = 4
         '
         'lblShowingEntries
@@ -174,9 +181,10 @@ Partial Class cedulatracker
         Me.lblShowingEntries.AutoSize = True
         Me.lblShowingEntries.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblShowingEntries.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblShowingEntries.Location = New System.Drawing.Point(23, 560)
+        Me.lblShowingEntries.Location = New System.Drawing.Point(31, 689)
+        Me.lblShowingEntries.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblShowingEntries.Name = "lblShowingEntries"
-        Me.lblShowingEntries.Size = New System.Drawing.Size(146, 15)
+        Me.lblShowingEntries.Size = New System.Drawing.Size(186, 20)
         Me.lblShowingEntries.TabIndex = 5
         Me.lblShowingEntries.Text = "Showing 1 to 0 of 0 entries"
         '
@@ -194,7 +202,7 @@ Partial Class cedulatracker
         Me.colCTCNumber.MinimumWidth = 6
         Me.colCTCNumber.Name = "colCTCNumber"
         Me.colCTCNumber.ReadOnly = True
-        Me.colCTCNumber.Width = 260
+        Me.colCTCNumber.Width = 400
         '
         'colFullName
         '
@@ -202,7 +210,7 @@ Partial Class cedulatracker
         Me.colFullName.MinimumWidth = 6
         Me.colFullName.Name = "colFullName"
         Me.colFullName.ReadOnly = True
-        Me.colFullName.Width = 405
+        Me.colFullName.Width = 530
         '
         'colDateIssued
         '
@@ -210,7 +218,7 @@ Partial Class cedulatracker
         Me.colDateIssued.MinimumWidth = 6
         Me.colDateIssued.Name = "colDateIssued"
         Me.colDateIssued.ReadOnly = True
-        Me.colDateIssued.Width = 180
+        Me.colDateIssued.Width = 300
         '
         'colDelete
         '
@@ -223,11 +231,12 @@ Partial Class cedulatracker
         '
         'cedulatracker
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1200, 700)
+        Me.ClientSize = New System.Drawing.Size(1600, 862)
         Me.Controls.Add(Me.panelMain)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "cedulatracker"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cedula Tracker"

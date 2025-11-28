@@ -24,14 +24,13 @@ Partial Class residentinfo
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(residentinfo))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.panelRight = New System.Windows.Forms.Panel()
-        Me.btnUpdate = New ligaya_bims.RoundedButton()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.lblAddress = New System.Windows.Forms.Label()
         Me.txtWeight = New System.Windows.Forms.TextBox()
@@ -78,10 +77,11 @@ Partial Class residentinfo
         Me.colGender = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colAction = New System.Windows.Forms.DataGridViewImageColumn()
         Me.lblShowEntries = New System.Windows.Forms.Label()
-        Me.Button1 = New ligaya_bims.RoundedButton()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblTitle = New System.Windows.Forms.Label()
+        Me.btnUpdate = New ligaya_bims.RoundedButton()
+        Me.Button1 = New ligaya_bims.RoundedButton()
         Me.btnNewResidentApp = New ligaya_bims.RoundedButton()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.panelRight.SuspendLayout()
@@ -93,23 +93,21 @@ Partial Class residentinfo
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.panelRight, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.panelLeft, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1375, 800)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1629, 814)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'panelRight
         '
-        Me.panelRight.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panelRight.AutoScroll = True
         Me.panelRight.BackColor = System.Drawing.Color.White
         Me.panelRight.Controls.Add(Me.btnUpdate)
@@ -149,35 +147,23 @@ Partial Class residentinfo
         Me.panelRight.Controls.Add(Me.lblLastName)
         Me.panelRight.Controls.Add(Me.picProfile)
         Me.panelRight.Controls.Add(Me.lblInfoTitle)
-        Me.panelRight.Location = New System.Drawing.Point(690, 3)
+        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelRight.Location = New System.Drawing.Point(737, 4)
+        Me.panelRight.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panelRight.Name = "panelRight"
-        Me.panelRight.Padding = New System.Windows.Forms.Padding(20)
-        Me.panelRight.Size = New System.Drawing.Size(682, 794)
+        Me.panelRight.Padding = New System.Windows.Forms.Padding(27, 25, 27, 25)
+        Me.panelRight.Size = New System.Drawing.Size(888, 806)
         Me.panelRight.TabIndex = 4
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
-        Me.btnUpdate.BorderRadius = 15
-        Me.btnUpdate.FlatAppearance.BorderSize = 0
-        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUpdate.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.btnUpdate.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.btnUpdate.Location = New System.Drawing.Point(190, 689)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(176, 47)
-        Me.btnUpdate.TabIndex = 50
-        Me.btnUpdate.Text = "Update"
-        Me.btnUpdate.UseVisualStyleBackColor = False
         '
         'txtAddress
         '
         Me.txtAddress.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtAddress.Location = New System.Drawing.Point(300, 568)
+        Me.txtAddress.Location = New System.Drawing.Point(400, 679)
+        Me.txtAddress.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.ReadOnly = True
-        Me.txtAddress.Size = New System.Drawing.Size(250, 73)
+        Me.txtAddress.Size = New System.Drawing.Size(332, 89)
         Me.txtAddress.TabIndex = 35
         '
         'lblAddress
@@ -185,19 +171,21 @@ Partial Class residentinfo
         Me.lblAddress.AutoSize = True
         Me.lblAddress.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblAddress.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblAddress.Location = New System.Drawing.Point(300, 550)
+        Me.lblAddress.Location = New System.Drawing.Point(400, 657)
+        Me.lblAddress.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAddress.Name = "lblAddress"
-        Me.lblAddress.Size = New System.Drawing.Size(52, 15)
+        Me.lblAddress.Size = New System.Drawing.Size(65, 20)
         Me.lblAddress.TabIndex = 34
         Me.lblAddress.Text = "Address:"
         '
         'txtWeight
         '
         Me.txtWeight.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtWeight.Location = New System.Drawing.Point(300, 518)
+        Me.txtWeight.Location = New System.Drawing.Point(400, 618)
+        Me.txtWeight.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtWeight.Name = "txtWeight"
         Me.txtWeight.ReadOnly = True
-        Me.txtWeight.Size = New System.Drawing.Size(250, 23)
+        Me.txtWeight.Size = New System.Drawing.Size(332, 27)
         Me.txtWeight.TabIndex = 33
         '
         'lblWeight
@@ -205,19 +193,21 @@ Partial Class residentinfo
         Me.lblWeight.AutoSize = True
         Me.lblWeight.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblWeight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblWeight.Location = New System.Drawing.Point(300, 500)
+        Me.lblWeight.Location = New System.Drawing.Point(400, 595)
+        Me.lblWeight.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblWeight.Name = "lblWeight"
-        Me.lblWeight.Size = New System.Drawing.Size(48, 15)
+        Me.lblWeight.Size = New System.Drawing.Size(59, 20)
         Me.lblWeight.TabIndex = 32
         Me.lblWeight.Text = "Weight:"
         '
         'txtHeight
         '
         Me.txtHeight.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtHeight.Location = New System.Drawing.Point(300, 468)
+        Me.txtHeight.Location = New System.Drawing.Point(400, 556)
+        Me.txtHeight.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtHeight.Name = "txtHeight"
         Me.txtHeight.ReadOnly = True
-        Me.txtHeight.Size = New System.Drawing.Size(250, 23)
+        Me.txtHeight.Size = New System.Drawing.Size(332, 27)
         Me.txtHeight.TabIndex = 31
         '
         'lblHeight
@@ -225,19 +215,21 @@ Partial Class residentinfo
         Me.lblHeight.AutoSize = True
         Me.lblHeight.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblHeight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblHeight.Location = New System.Drawing.Point(300, 450)
+        Me.lblHeight.Location = New System.Drawing.Point(400, 534)
+        Me.lblHeight.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblHeight.Name = "lblHeight"
-        Me.lblHeight.Size = New System.Drawing.Size(46, 15)
+        Me.lblHeight.Size = New System.Drawing.Size(57, 20)
         Me.lblHeight.TabIndex = 30
         Me.lblHeight.Text = "Height:"
         '
         'txtReligion
         '
         Me.txtReligion.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtReligion.Location = New System.Drawing.Point(300, 418)
+        Me.txtReligion.Location = New System.Drawing.Point(400, 494)
+        Me.txtReligion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtReligion.Name = "txtReligion"
         Me.txtReligion.ReadOnly = True
-        Me.txtReligion.Size = New System.Drawing.Size(250, 23)
+        Me.txtReligion.Size = New System.Drawing.Size(332, 27)
         Me.txtReligion.TabIndex = 29
         '
         'lblReligion
@@ -245,9 +237,10 @@ Partial Class residentinfo
         Me.lblReligion.AutoSize = True
         Me.lblReligion.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblReligion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblReligion.Location = New System.Drawing.Point(300, 400)
+        Me.lblReligion.Location = New System.Drawing.Point(400, 472)
+        Me.lblReligion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblReligion.Name = "lblReligion"
-        Me.lblReligion.Size = New System.Drawing.Size(53, 15)
+        Me.lblReligion.Size = New System.Drawing.Size(67, 20)
         Me.lblReligion.TabIndex = 28
         Me.lblReligion.Text = "Religion:"
         '
@@ -258,9 +251,10 @@ Partial Class residentinfo
         Me.cmbVotersStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.cmbVotersStatus.FormattingEnabled = True
         Me.cmbVotersStatus.Items.AddRange(New Object() {"Registered", "Not Registered"})
-        Me.cmbVotersStatus.Location = New System.Drawing.Point(300, 368)
+        Me.cmbVotersStatus.Location = New System.Drawing.Point(400, 433)
+        Me.cmbVotersStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbVotersStatus.Name = "cmbVotersStatus"
-        Me.cmbVotersStatus.Size = New System.Drawing.Size(250, 23)
+        Me.cmbVotersStatus.Size = New System.Drawing.Size(332, 28)
         Me.cmbVotersStatus.TabIndex = 27
         '
         'lblVotersStatus
@@ -268,19 +262,21 @@ Partial Class residentinfo
         Me.lblVotersStatus.AutoSize = True
         Me.lblVotersStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblVotersStatus.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblVotersStatus.Location = New System.Drawing.Point(300, 350)
+        Me.lblVotersStatus.Location = New System.Drawing.Point(400, 411)
+        Me.lblVotersStatus.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblVotersStatus.Name = "lblVotersStatus"
-        Me.lblVotersStatus.Size = New System.Drawing.Size(77, 15)
+        Me.lblVotersStatus.Size = New System.Drawing.Size(97, 20)
         Me.lblVotersStatus.TabIndex = 26
         Me.lblVotersStatus.Text = "Voters Status:"
         '
         'txtSpouse
         '
         Me.txtSpouse.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtSpouse.Location = New System.Drawing.Point(300, 318)
+        Me.txtSpouse.Location = New System.Drawing.Point(400, 371)
+        Me.txtSpouse.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtSpouse.Name = "txtSpouse"
         Me.txtSpouse.ReadOnly = True
-        Me.txtSpouse.Size = New System.Drawing.Size(250, 23)
+        Me.txtSpouse.Size = New System.Drawing.Size(332, 27)
         Me.txtSpouse.TabIndex = 25
         '
         'lblSpouse
@@ -288,19 +284,21 @@ Partial Class residentinfo
         Me.lblSpouse.AutoSize = True
         Me.lblSpouse.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblSpouse.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblSpouse.Location = New System.Drawing.Point(300, 300)
+        Me.lblSpouse.Location = New System.Drawing.Point(400, 349)
+        Me.lblSpouse.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblSpouse.Name = "lblSpouse"
-        Me.lblSpouse.Size = New System.Drawing.Size(48, 15)
+        Me.lblSpouse.Size = New System.Drawing.Size(60, 20)
         Me.lblSpouse.TabIndex = 24
         Me.lblSpouse.Text = "Spouse:"
         '
         'txtMothersName
         '
         Me.txtMothersName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtMothersName.Location = New System.Drawing.Point(300, 268)
+        Me.txtMothersName.Location = New System.Drawing.Point(400, 310)
+        Me.txtMothersName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtMothersName.Name = "txtMothersName"
         Me.txtMothersName.ReadOnly = True
-        Me.txtMothersName.Size = New System.Drawing.Size(250, 23)
+        Me.txtMothersName.Size = New System.Drawing.Size(332, 27)
         Me.txtMothersName.TabIndex = 23
         '
         'lblMothersName
@@ -308,19 +306,21 @@ Partial Class residentinfo
         Me.lblMothersName.AutoSize = True
         Me.lblMothersName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblMothersName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblMothersName.Location = New System.Drawing.Point(300, 250)
+        Me.lblMothersName.Location = New System.Drawing.Point(400, 288)
+        Me.lblMothersName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMothersName.Name = "lblMothersName"
-        Me.lblMothersName.Size = New System.Drawing.Size(92, 15)
+        Me.lblMothersName.Size = New System.Drawing.Size(113, 20)
         Me.lblMothersName.TabIndex = 22
         Me.lblMothersName.Text = "Mother's Name:"
         '
         'txtFathersName
         '
         Me.txtFathersName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtFathersName.Location = New System.Drawing.Point(300, 218)
+        Me.txtFathersName.Location = New System.Drawing.Point(400, 248)
+        Me.txtFathersName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFathersName.Name = "txtFathersName"
         Me.txtFathersName.ReadOnly = True
-        Me.txtFathersName.Size = New System.Drawing.Size(250, 23)
+        Me.txtFathersName.Size = New System.Drawing.Size(332, 27)
         Me.txtFathersName.TabIndex = 21
         '
         'lblFathersName
@@ -328,19 +328,21 @@ Partial Class residentinfo
         Me.lblFathersName.AutoSize = True
         Me.lblFathersName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblFathersName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblFathersName.Location = New System.Drawing.Point(300, 200)
+        Me.lblFathersName.Location = New System.Drawing.Point(400, 226)
+        Me.lblFathersName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFathersName.Name = "lblFathersName"
-        Me.lblFathersName.Size = New System.Drawing.Size(86, 15)
+        Me.lblFathersName.Size = New System.Drawing.Size(105, 20)
         Me.lblFathersName.TabIndex = 20
         Me.lblFathersName.Text = "Father's Name:"
         '
         'txtPhoneNumber
         '
         Me.txtPhoneNumber.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtPhoneNumber.Location = New System.Drawing.Point(20, 618)
+        Me.txtPhoneNumber.Location = New System.Drawing.Point(27, 741)
+        Me.txtPhoneNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtPhoneNumber.Name = "txtPhoneNumber"
         Me.txtPhoneNumber.ReadOnly = True
-        Me.txtPhoneNumber.Size = New System.Drawing.Size(250, 23)
+        Me.txtPhoneNumber.Size = New System.Drawing.Size(332, 27)
         Me.txtPhoneNumber.TabIndex = 19
         '
         'lblPhoneNumber
@@ -348,19 +350,21 @@ Partial Class residentinfo
         Me.lblPhoneNumber.AutoSize = True
         Me.lblPhoneNumber.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblPhoneNumber.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblPhoneNumber.Location = New System.Drawing.Point(20, 600)
+        Me.lblPhoneNumber.Location = New System.Drawing.Point(27, 718)
+        Me.lblPhoneNumber.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblPhoneNumber.Name = "lblPhoneNumber"
-        Me.lblPhoneNumber.Size = New System.Drawing.Size(91, 15)
+        Me.lblPhoneNumber.Size = New System.Drawing.Size(111, 20)
         Me.lblPhoneNumber.TabIndex = 18
         Me.lblPhoneNumber.Text = "Phone Number:"
         '
         'txtCitizenship
         '
         Me.txtCitizenship.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtCitizenship.Location = New System.Drawing.Point(20, 568)
+        Me.txtCitizenship.Location = New System.Drawing.Point(27, 679)
+        Me.txtCitizenship.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtCitizenship.Name = "txtCitizenship"
         Me.txtCitizenship.ReadOnly = True
-        Me.txtCitizenship.Size = New System.Drawing.Size(250, 23)
+        Me.txtCitizenship.Size = New System.Drawing.Size(332, 27)
         Me.txtCitizenship.TabIndex = 17
         '
         'lblCitizenship
@@ -368,9 +372,10 @@ Partial Class residentinfo
         Me.lblCitizenship.AutoSize = True
         Me.lblCitizenship.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblCitizenship.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblCitizenship.Location = New System.Drawing.Point(20, 550)
+        Me.lblCitizenship.Location = New System.Drawing.Point(27, 657)
+        Me.lblCitizenship.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCitizenship.Name = "lblCitizenship"
-        Me.lblCitizenship.Size = New System.Drawing.Size(68, 15)
+        Me.lblCitizenship.Size = New System.Drawing.Size(84, 20)
         Me.lblCitizenship.TabIndex = 16
         Me.lblCitizenship.Text = "Citizenship:"
         '
@@ -381,9 +386,10 @@ Partial Class residentinfo
         Me.cmbCivilStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.cmbCivilStatus.FormattingEnabled = True
         Me.cmbCivilStatus.Items.AddRange(New Object() {"Single", "Married", "Widowed", "Divorced", "Separated"})
-        Me.cmbCivilStatus.Location = New System.Drawing.Point(20, 518)
+        Me.cmbCivilStatus.Location = New System.Drawing.Point(27, 618)
+        Me.cmbCivilStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbCivilStatus.Name = "cmbCivilStatus"
-        Me.cmbCivilStatus.Size = New System.Drawing.Size(250, 23)
+        Me.cmbCivilStatus.Size = New System.Drawing.Size(332, 28)
         Me.cmbCivilStatus.TabIndex = 15
         '
         'lblCivilStatus
@@ -391,19 +397,21 @@ Partial Class residentinfo
         Me.lblCivilStatus.AutoSize = True
         Me.lblCivilStatus.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblCivilStatus.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblCivilStatus.Location = New System.Drawing.Point(20, 500)
+        Me.lblCivilStatus.Location = New System.Drawing.Point(27, 595)
+        Me.lblCivilStatus.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCivilStatus.Name = "lblCivilStatus"
-        Me.lblCivilStatus.Size = New System.Drawing.Size(68, 15)
+        Me.lblCivilStatus.Size = New System.Drawing.Size(84, 20)
         Me.lblCivilStatus.TabIndex = 14
         Me.lblCivilStatus.Text = "Civil Status:"
         '
         'txtAge
         '
         Me.txtAge.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtAge.Location = New System.Drawing.Point(20, 468)
+        Me.txtAge.Location = New System.Drawing.Point(27, 556)
+        Me.txtAge.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtAge.Name = "txtAge"
         Me.txtAge.ReadOnly = True
-        Me.txtAge.Size = New System.Drawing.Size(250, 23)
+        Me.txtAge.Size = New System.Drawing.Size(332, 27)
         Me.txtAge.TabIndex = 13
         '
         'lblAge
@@ -411,9 +419,10 @@ Partial Class residentinfo
         Me.lblAge.AutoSize = True
         Me.lblAge.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblAge.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblAge.Location = New System.Drawing.Point(20, 450)
+        Me.lblAge.Location = New System.Drawing.Point(27, 534)
+        Me.lblAge.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblAge.Name = "lblAge"
-        Me.lblAge.Size = New System.Drawing.Size(31, 15)
+        Me.lblAge.Size = New System.Drawing.Size(39, 20)
         Me.lblAge.TabIndex = 12
         Me.lblAge.Text = "Age:"
         '
@@ -422,9 +431,10 @@ Partial Class residentinfo
         Me.dtpBirthdate.Enabled = False
         Me.dtpBirthdate.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.dtpBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpBirthdate.Location = New System.Drawing.Point(20, 418)
+        Me.dtpBirthdate.Location = New System.Drawing.Point(27, 494)
+        Me.dtpBirthdate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpBirthdate.Name = "dtpBirthdate"
-        Me.dtpBirthdate.Size = New System.Drawing.Size(250, 23)
+        Me.dtpBirthdate.Size = New System.Drawing.Size(332, 27)
         Me.dtpBirthdate.TabIndex = 11
         '
         'lblBirthdate
@@ -432,9 +442,10 @@ Partial Class residentinfo
         Me.lblBirthdate.AutoSize = True
         Me.lblBirthdate.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblBirthdate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblBirthdate.Location = New System.Drawing.Point(20, 400)
+        Me.lblBirthdate.Location = New System.Drawing.Point(27, 472)
+        Me.lblBirthdate.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblBirthdate.Name = "lblBirthdate"
-        Me.lblBirthdate.Size = New System.Drawing.Size(58, 15)
+        Me.lblBirthdate.Size = New System.Drawing.Size(73, 20)
         Me.lblBirthdate.TabIndex = 10
         Me.lblBirthdate.Text = "Birthdate:"
         '
@@ -445,9 +456,10 @@ Partial Class residentinfo
         Me.cmbGender.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.cmbGender.FormattingEnabled = True
         Me.cmbGender.Items.AddRange(New Object() {"Male", "Female"})
-        Me.cmbGender.Location = New System.Drawing.Point(20, 368)
+        Me.cmbGender.Location = New System.Drawing.Point(27, 433)
+        Me.cmbGender.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.cmbGender.Name = "cmbGender"
-        Me.cmbGender.Size = New System.Drawing.Size(250, 23)
+        Me.cmbGender.Size = New System.Drawing.Size(332, 28)
         Me.cmbGender.TabIndex = 9
         '
         'lblGender
@@ -455,19 +467,21 @@ Partial Class residentinfo
         Me.lblGender.AutoSize = True
         Me.lblGender.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblGender.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblGender.Location = New System.Drawing.Point(20, 350)
+        Me.lblGender.Location = New System.Drawing.Point(27, 411)
+        Me.lblGender.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblGender.Name = "lblGender"
-        Me.lblGender.Size = New System.Drawing.Size(48, 15)
+        Me.lblGender.Size = New System.Drawing.Size(60, 20)
         Me.lblGender.TabIndex = 8
         Me.lblGender.Text = "Gender:"
         '
         'txtMiddleName
         '
         Me.txtMiddleName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtMiddleName.Location = New System.Drawing.Point(20, 318)
+        Me.txtMiddleName.Location = New System.Drawing.Point(27, 371)
+        Me.txtMiddleName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtMiddleName.Name = "txtMiddleName"
         Me.txtMiddleName.ReadOnly = True
-        Me.txtMiddleName.Size = New System.Drawing.Size(250, 23)
+        Me.txtMiddleName.Size = New System.Drawing.Size(332, 27)
         Me.txtMiddleName.TabIndex = 7
         '
         'lblMiddleName
@@ -475,19 +489,21 @@ Partial Class residentinfo
         Me.lblMiddleName.AutoSize = True
         Me.lblMiddleName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblMiddleName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblMiddleName.Location = New System.Drawing.Point(20, 300)
+        Me.lblMiddleName.Location = New System.Drawing.Point(27, 349)
+        Me.lblMiddleName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblMiddleName.Name = "lblMiddleName"
-        Me.lblMiddleName.Size = New System.Drawing.Size(82, 15)
+        Me.lblMiddleName.Size = New System.Drawing.Size(103, 20)
         Me.lblMiddleName.TabIndex = 6
         Me.lblMiddleName.Text = "Middle Name:"
         '
         'txtFirstName
         '
         Me.txtFirstName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtFirstName.Location = New System.Drawing.Point(20, 268)
+        Me.txtFirstName.Location = New System.Drawing.Point(27, 310)
+        Me.txtFirstName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtFirstName.Name = "txtFirstName"
         Me.txtFirstName.ReadOnly = True
-        Me.txtFirstName.Size = New System.Drawing.Size(250, 23)
+        Me.txtFirstName.Size = New System.Drawing.Size(332, 27)
         Me.txtFirstName.TabIndex = 5
         '
         'lblFirstName
@@ -495,19 +511,21 @@ Partial Class residentinfo
         Me.lblFirstName.AutoSize = True
         Me.lblFirstName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblFirstName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblFirstName.Location = New System.Drawing.Point(20, 250)
+        Me.lblFirstName.Location = New System.Drawing.Point(27, 288)
+        Me.lblFirstName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblFirstName.Name = "lblFirstName"
-        Me.lblFirstName.Size = New System.Drawing.Size(67, 15)
+        Me.lblFirstName.Size = New System.Drawing.Size(83, 20)
         Me.lblFirstName.TabIndex = 4
         Me.lblFirstName.Text = "First Name:"
         '
         'txtLastName
         '
         Me.txtLastName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtLastName.Location = New System.Drawing.Point(20, 218)
+        Me.txtLastName.Location = New System.Drawing.Point(27, 248)
+        Me.txtLastName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.ReadOnly = True
-        Me.txtLastName.Size = New System.Drawing.Size(250, 23)
+        Me.txtLastName.Size = New System.Drawing.Size(332, 27)
         Me.txtLastName.TabIndex = 3
         '
         'lblLastName
@@ -515,9 +533,10 @@ Partial Class residentinfo
         Me.lblLastName.AutoSize = True
         Me.lblLastName.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblLastName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lblLastName.Location = New System.Drawing.Point(20, 200)
+        Me.lblLastName.Location = New System.Drawing.Point(27, 226)
+        Me.lblLastName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLastName.Name = "lblLastName"
-        Me.lblLastName.Size = New System.Drawing.Size(66, 15)
+        Me.lblLastName.Size = New System.Drawing.Size(82, 20)
         Me.lblLastName.TabIndex = 2
         Me.lblLastName.Text = "Last Name:"
         '
@@ -525,9 +544,10 @@ Partial Class residentinfo
         '
         Me.picProfile.BackColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.picProfile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.picProfile.Location = New System.Drawing.Point(20, 60)
+        Me.picProfile.Location = New System.Drawing.Point(27, 54)
+        Me.picProfile.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.picProfile.Name = "picProfile"
-        Me.picProfile.Size = New System.Drawing.Size(120, 120)
+        Me.picProfile.Size = New System.Drawing.Size(159, 147)
         Me.picProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picProfile.TabIndex = 1
         Me.picProfile.TabStop = False
@@ -537,17 +557,15 @@ Partial Class residentinfo
         Me.lblInfoTitle.AutoSize = True
         Me.lblInfoTitle.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.lblInfoTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.lblInfoTitle.Location = New System.Drawing.Point(20, 20)
+        Me.lblInfoTitle.Location = New System.Drawing.Point(27, 5)
+        Me.lblInfoTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInfoTitle.Name = "lblInfoTitle"
-        Me.lblInfoTitle.Size = New System.Drawing.Size(159, 32)
+        Me.lblInfoTitle.Size = New System.Drawing.Size(196, 41)
         Me.lblInfoTitle.TabIndex = 0
         Me.lblInfoTitle.Text = "Information:"
         '
         'panelLeft
         '
-        Me.panelLeft.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panelLeft.BackColor = System.Drawing.Color.FromArgb(CType(CType(245, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(245, Byte), Integer))
         Me.panelLeft.Controls.Add(Me.dgvResidents)
         Me.panelLeft.Controls.Add(Me.lblShowEntries)
@@ -556,10 +574,12 @@ Partial Class residentinfo
         Me.panelLeft.Controls.Add(Me.Label1)
         Me.panelLeft.Controls.Add(Me.lblTitle)
         Me.panelLeft.Controls.Add(Me.btnNewResidentApp)
-        Me.panelLeft.Location = New System.Drawing.Point(3, 3)
+        Me.panelLeft.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelLeft.Location = New System.Drawing.Point(4, 4)
+        Me.panelLeft.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panelLeft.Name = "panelLeft"
-        Me.panelLeft.Padding = New System.Windows.Forms.Padding(20)
-        Me.panelLeft.Size = New System.Drawing.Size(681, 794)
+        Me.panelLeft.Padding = New System.Windows.Forms.Padding(27, 25, 27, 25)
+        Me.panelLeft.Size = New System.Drawing.Size(725, 806)
         Me.panelLeft.TabIndex = 3
         '
         'dgvResidents
@@ -567,46 +587,50 @@ Partial Class residentinfo
         Me.dgvResidents.AllowUserToAddRows = False
         Me.dgvResidents.AllowUserToDeleteRows = False
         Me.dgvResidents.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(246, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        Me.dgvResidents.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(246, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        Me.dgvResidents.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvResidents.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvResidents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvResidents.BackgroundColor = System.Drawing.Color.White
         Me.dgvResidents.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvResidents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(76, Byte), Integer), CType(CType(26, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvResidents.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.dgvResidents.ColumnHeadersHeight = 45
         Me.dgvResidents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvResidents.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colID, Me.colLastName, Me.colFirstName, Me.colMiddleName, Me.colMobileNo, Me.colGender, Me.colAction})
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvResidents.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvResidents.DefaultCellStyle = DataGridViewCellStyle3
         Me.dgvResidents.EnableHeadersVisualStyles = False
         Me.dgvResidents.GridColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.dgvResidents.Location = New System.Drawing.Point(23, 200)
+        Me.dgvResidents.Location = New System.Drawing.Point(31, 246)
+        Me.dgvResidents.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dgvResidents.MultiSelect = False
         Me.dgvResidents.Name = "dgvResidents"
         Me.dgvResidents.ReadOnly = True
         Me.dgvResidents.RowHeadersVisible = False
         Me.dgvResidents.RowHeadersWidth = 51
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
-        Me.dgvResidents.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        Me.dgvResidents.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvResidents.RowTemplate.Height = 40
-        Me.dgvResidents.Size = New System.Drawing.Size(635, 525)
+        Me.dgvResidents.Size = New System.Drawing.Size(664, 470)
         Me.dgvResidents.TabIndex = 7
         '
         'colID
@@ -666,11 +690,60 @@ Partial Class residentinfo
         Me.lblShowEntries.AutoSize = True
         Me.lblShowEntries.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.lblShowEntries.ForeColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
-        Me.lblShowEntries.Location = New System.Drawing.Point(23, 731)
+        Me.lblShowEntries.Location = New System.Drawing.Point(31, 900)
+        Me.lblShowEntries.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblShowEntries.Name = "lblShowEntries"
-        Me.lblShowEntries.Size = New System.Drawing.Size(53, 15)
+        Me.lblShowEntries.Size = New System.Drawing.Size(66, 20)
         Me.lblShowEntries.TabIndex = 8
         Me.lblShowEntries.Text = "Showing"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.txtSearch.Location = New System.Drawing.Point(305, 201)
+        Me.txtSearch.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(265, 27)
+        Me.txtSearch.TabIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(217, 203)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(82, 24)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "Search:"
+        '
+        'lblTitle
+        '
+        Me.lblTitle.AutoSize = True
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.lblTitle.Location = New System.Drawing.Point(20, 25)
+        Me.lblTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(423, 54)
+        Me.lblTitle.TabIndex = 0
+        Me.lblTitle.Text = "Resident Information"
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
+        Me.btnUpdate.BorderRadius = 15
+        Me.btnUpdate.FlatAppearance.BorderSize = 0
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUpdate.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnUpdate.ForeColor = System.Drawing.SystemColors.WindowText
+        Me.btnUpdate.Location = New System.Drawing.Point(438, 87)
+        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(235, 58)
+        Me.btnUpdate.TabIndex = 50
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = False
         '
         'Button1
         '
@@ -680,41 +753,13 @@ Partial Class residentinfo
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(560, 95)
+        Me.Button1.Location = New System.Drawing.Point(571, 201)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(52, 23)
+        Me.Button1.Size = New System.Drawing.Size(69, 28)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "Search"
         Me.Button1.UseVisualStyleBackColor = False
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txtSearch.Location = New System.Drawing.Point(359, 95)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(200, 23)
-        Me.txtSearch.TabIndex = 4
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(293, 97)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(66, 18)
-        Me.Label1.TabIndex = 9
-        Me.Label1.Text = "Search:"
-        '
-        'lblTitle
-        '
-        Me.lblTitle.AutoSize = True
-        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.lblTitle.Location = New System.Drawing.Point(15, 20)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(337, 45)
-        Me.lblTitle.TabIndex = 0
-        Me.lblTitle.Text = "Resident Information"
         '
         'btnNewResidentApp
         '
@@ -724,25 +769,25 @@ Partial Class residentinfo
         Me.btnNewResidentApp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnNewResidentApp.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnNewResidentApp.ForeColor = System.Drawing.Color.White
-        Me.btnNewResidentApp.Location = New System.Drawing.Point(20, 91)
-        Me.btnNewResidentApp.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnNewResidentApp.Location = New System.Drawing.Point(29, 106)
+        Me.btnNewResidentApp.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnNewResidentApp.Name = "btnNewResidentApp"
-        Me.btnNewResidentApp.Size = New System.Drawing.Size(120, 32)
+        Me.btnNewResidentApp.Size = New System.Drawing.Size(160, 39)
         Me.btnNewResidentApp.TabIndex = 11
         Me.btnNewResidentApp.Text = "New Resident +"
         Me.btnNewResidentApp.UseVisualStyleBackColor = False
         '
         'residentinfo
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1375, 800)
+        Me.ClientSize = New System.Drawing.Size(1629, 814)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "residentinfo"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Resident Information"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.panelRight.ResumeLayout(False)
         Me.panelRight.PerformLayout()

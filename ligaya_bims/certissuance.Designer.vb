@@ -28,16 +28,15 @@ Partial Class certissuance
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.panelRight = New System.Windows.Forms.Panel()
-        Me.Button1 = New ligaya_bims.RoundedButton()
-        Me.RoundedButton5 = New ligaya_bims.RoundedButton()
-        Me.RoundedButton4 = New ligaya_bims.RoundedButton()
-        Me.RoundedButton3 = New ligaya_bims.RoundedButton()
+        Me.layoutMain = New System.Windows.Forms.TableLayoutPanel()
+        Me.layoutHeader = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.btnCreateCertificate = New ligaya_bims.RoundedButton()
+        Me.layoutSearch = New System.Windows.Forms.TableLayoutPanel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New ligaya_bims.RoundedButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,154 +44,174 @@ Partial Class certissuance
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnCreateCertificate = New ligaya_bims.RoundedButton()
+        Me.flowActions = New System.Windows.Forms.FlowLayoutPanel()
+        Me.RoundedButton5 = New ligaya_bims.RoundedButton()
+        Me.RoundedButton4 = New ligaya_bims.RoundedButton()
+        Me.RoundedButton3 = New ligaya_bims.RoundedButton()
         Me.TableLayoutPanel1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.panelRight.SuspendLayout()
+        Me.layoutMain.SuspendLayout()
+        Me.layoutHeader.SuspendLayout()
+        Me.layoutSearch.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.flowActions.SuspendLayout()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 1, 0)
+        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.panelRight, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1185, 821)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1580, 1010)
         Me.TableLayoutPanel1.TabIndex = 0
-        '
-        'Panel1
-        '
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.Panel2)
-        Me.Panel1.Location = New System.Drawing.Point(595, 3)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(587, 815)
-        Me.Panel1.TabIndex = 5
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(584, 815)
-        Me.Panel2.TabIndex = 14
         '
         'panelRight
         '
-        Me.panelRight.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panelRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(245, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(245, Byte), Integer))
-        Me.panelRight.Controls.Add(Me.Button1)
-        Me.panelRight.Controls.Add(Me.RoundedButton5)
-        Me.panelRight.Controls.Add(Me.RoundedButton4)
-        Me.panelRight.Controls.Add(Me.RoundedButton3)
-        Me.panelRight.Controls.Add(Me.Label3)
-        Me.panelRight.Controls.Add(Me.TextBox1)
-        Me.panelRight.Controls.Add(Me.Label2)
-        Me.panelRight.Controls.Add(Me.DataGridView1)
-        Me.panelRight.Controls.Add(Me.btnCreateCertificate)
-        Me.panelRight.Location = New System.Drawing.Point(3, 3)
+        Me.panelRight.Controls.Add(Me.layoutMain)
+        Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelRight.Location = New System.Drawing.Point(4, 4)
+        Me.panelRight.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panelRight.Name = "panelRight"
-        Me.panelRight.Padding = New System.Windows.Forms.Padding(20)
-        Me.panelRight.Size = New System.Drawing.Size(586, 815)
+        Me.panelRight.Padding = New System.Windows.Forms.Padding(32, 30, 32, 30)
+        Me.panelRight.Size = New System.Drawing.Size(1572, 1002)
         Me.panelRight.TabIndex = 4
+        '
+        'layoutMain
+        '
+        Me.layoutMain.ColumnCount = 1
+        Me.layoutMain.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.layoutMain.Controls.Add(Me.layoutHeader, 0, 0)
+        Me.layoutMain.Controls.Add(Me.layoutSearch, 0, 1)
+        Me.layoutMain.Controls.Add(Me.DataGridView1, 0, 2)
+        Me.layoutMain.Controls.Add(Me.flowActions, 0, 3)
+        Me.layoutMain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.layoutMain.Location = New System.Drawing.Point(32, 30)
+        Me.layoutMain.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.layoutMain.Name = "layoutMain"
+        Me.layoutMain.RowCount = 4
+        Me.layoutMain.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutMain.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutMain.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.layoutMain.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutMain.Size = New System.Drawing.Size(1508, 942)
+        Me.layoutMain.TabIndex = 16
+        '
+        'layoutHeader
+        '
+        Me.layoutHeader.ColumnCount = 2
+        Me.layoutHeader.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.layoutHeader.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.layoutHeader.Controls.Add(Me.Label2, 0, 0)
+        Me.layoutHeader.Controls.Add(Me.btnCreateCertificate, 1, 0)
+        Me.layoutHeader.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.layoutHeader.Location = New System.Drawing.Point(0, 0)
+        Me.layoutHeader.Margin = New System.Windows.Forms.Padding(0)
+        Me.layoutHeader.Name = "layoutHeader"
+        Me.layoutHeader.RowCount = 1
+        Me.layoutHeader.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutHeader.Size = New System.Drawing.Size(1508, 80)
+        Me.layoutHeader.TabIndex = 0
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(4, 12)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 12, 21, 12)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(1268, 56)
+        Me.Label2.TabIndex = 12
+        Me.Label2.Text = "Certificate Issuance"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnCreateCertificate
+        '
+        Me.btnCreateCertificate.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.btnCreateCertificate.AutoSize = True
+        Me.btnCreateCertificate.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(125, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.btnCreateCertificate.BorderRadius = 15
+        Me.btnCreateCertificate.FlatAppearance.BorderSize = 0
+        Me.btnCreateCertificate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(24, Byte), Integer))
+        Me.btnCreateCertificate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
+        Me.btnCreateCertificate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCreateCertificate.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.btnCreateCertificate.ForeColor = System.Drawing.Color.White
+        Me.btnCreateCertificate.Location = New System.Drawing.Point(1293, 15)
+        Me.btnCreateCertificate.Margin = New System.Windows.Forms.Padding(0, 15, 0, 15)
+        Me.btnCreateCertificate.Name = "btnCreateCertificate"
+        Me.btnCreateCertificate.Size = New System.Drawing.Size(215, 49)
+        Me.btnCreateCertificate.TabIndex = 10
+        Me.btnCreateCertificate.Text = "Create Certificate"
+        Me.btnCreateCertificate.UseVisualStyleBackColor = False
+        '
+        'layoutSearch
+        '
+        Me.layoutSearch.AutoSize = True
+        Me.layoutSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.layoutSearch.ColumnCount = 3
+        Me.layoutSearch.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.layoutSearch.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.layoutSearch.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.layoutSearch.Controls.Add(Me.Label3, 0, 0)
+        Me.layoutSearch.Controls.Add(Me.TextBox1, 1, 0)
+        Me.layoutSearch.Controls.Add(Me.Button1, 2, 0)
+        Me.layoutSearch.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.layoutSearch.Location = New System.Drawing.Point(0, 80)
+        Me.layoutSearch.Margin = New System.Windows.Forms.Padding(0, 0, 0, 18)
+        Me.layoutSearch.Name = "layoutSearch"
+        Me.layoutSearch.RowCount = 1
+        Me.layoutSearch.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.layoutSearch.Size = New System.Drawing.Size(1508, 48)
+        Me.layoutSearch.TabIndex = 1
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(0, 12)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(0, 12, 16, 12)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(82, 24)
+        Me.Label3.TabIndex = 14
+        Me.Label3.Text = "Search:"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TextBox1.Location = New System.Drawing.Point(98, 10)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(0, 10, 16, 10)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(1313, 27)
+        Me.TextBox1.TabIndex = 13
         '
         'Button1
         '
+        Me.Button1.AutoSize = True
+        Me.Button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(120, Byte), Integer), CType(CType(215, Byte), Integer))
         Me.Button1.BorderRadius = 12
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(511, 95)
+        Me.Button1.Location = New System.Drawing.Point(1443, 6)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(16, 6, 0, 6)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(52, 23)
+        Me.Button1.Size = New System.Drawing.Size(65, 30)
         Me.Button1.TabIndex = 15
         Me.Button1.Text = "Search"
         Me.Button1.UseVisualStyleBackColor = False
-        '
-        'RoundedButton5
-        '
-        Me.RoundedButton5.BackColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(251, Byte), Integer))
-        Me.RoundedButton5.BorderRadius = 15
-        Me.RoundedButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.RoundedButton5.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.RoundedButton5.ForeColor = System.Drawing.Color.White
-        Me.RoundedButton5.Location = New System.Drawing.Point(420, 752)
-        Me.RoundedButton5.Name = "RoundedButton5"
-        Me.RoundedButton5.Size = New System.Drawing.Size(108, 40)
-        Me.RoundedButton5.TabIndex = 11
-        Me.RoundedButton5.Text = "Print"
-        Me.RoundedButton5.UseVisualStyleBackColor = False
-        '
-        'RoundedButton4
-        '
-        Me.RoundedButton4.BackColor = System.Drawing.Color.FromArgb(CType(CType(67, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(95, Byte), Integer))
-        Me.RoundedButton4.BorderRadius = 15
-        Me.RoundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.RoundedButton4.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.RoundedButton4.ForeColor = System.Drawing.Color.White
-        Me.RoundedButton4.Location = New System.Drawing.Point(225, 752)
-        Me.RoundedButton4.Name = "RoundedButton4"
-        Me.RoundedButton4.Size = New System.Drawing.Size(108, 40)
-        Me.RoundedButton4.TabIndex = 12
-        Me.RoundedButton4.Text = "Save"
-        Me.RoundedButton4.UseVisualStyleBackColor = False
-        '
-        'RoundedButton3
-        '
-        Me.RoundedButton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.RoundedButton3.BorderRadius = 15
-        Me.RoundedButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.RoundedButton3.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.RoundedButton3.ForeColor = System.Drawing.Color.White
-        Me.RoundedButton3.Location = New System.Drawing.Point(23, 752)
-        Me.RoundedButton3.Name = "RoundedButton3"
-        Me.RoundedButton3.Size = New System.Drawing.Size(108, 40)
-        Me.RoundedButton3.TabIndex = 13
-        Me.RoundedButton3.Text = "Delete"
-        Me.RoundedButton3.UseVisualStyleBackColor = False
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(244, 97)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(66, 18)
-        Me.Label3.TabIndex = 14
-        Me.Label3.Text = "Search:"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TextBox1.Location = New System.Drawing.Point(310, 95)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(200, 23)
-        Me.TextBox1.TabIndex = 13
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(15, 20)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(308, 45)
-        Me.Label2.TabIndex = 12
-        Me.Label2.Text = "Certificate Issuance"
         '
         'DataGridView1
         '
@@ -205,9 +224,6 @@ Partial Class certissuance
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(230, Byte), Integer), CType(CType(201, Byte), Integer))
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         Me.DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -230,16 +246,18 @@ Partial Class certissuance
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(33, Byte), Integer))
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.EnableHeadersVisualStyles = False
         Me.DataGridView1.GridColor = System.Drawing.Color.FromArgb(CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer), CType(CType(189, Byte), Integer))
-        Me.DataGridView1.Location = New System.Drawing.Point(23, 200)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 171)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(0, 25, 0, 25)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowHeadersWidth = 51
         Me.DataGridView1.RowTemplate.Height = 40
-        Me.DataGridView1.Size = New System.Drawing.Size(540, 525)
+        Me.DataGridView1.Size = New System.Drawing.Size(1508, 661)
         Me.DataGridView1.TabIndex = 11
         '
         'DataGridViewTextBoxColumn1
@@ -284,37 +302,88 @@ Partial Class certissuance
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
         '
-        'btnCreateCertificate
+        'flowActions
         '
-        Me.btnCreateCertificate.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(125, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.btnCreateCertificate.BorderRadius = 15
-        Me.btnCreateCertificate.FlatAppearance.BorderSize = 0
-        Me.btnCreateCertificate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(56, Byte), Integer), CType(CType(24, Byte), Integer))
-        Me.btnCreateCertificate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(27, Byte), Integer), CType(CType(94, Byte), Integer), CType(CType(32, Byte), Integer))
-        Me.btnCreateCertificate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCreateCertificate.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.btnCreateCertificate.ForeColor = System.Drawing.Color.White
-        Me.btnCreateCertificate.Location = New System.Drawing.Point(23, 85)
-        Me.btnCreateCertificate.Name = "btnCreateCertificate"
-        Me.btnCreateCertificate.Size = New System.Drawing.Size(150, 40)
-        Me.btnCreateCertificate.TabIndex = 10
-        Me.btnCreateCertificate.Text = "Create Certificate"
-        Me.btnCreateCertificate.UseVisualStyleBackColor = False
+        Me.flowActions.AutoSize = True
+        Me.flowActions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.flowActions.Controls.Add(Me.RoundedButton5)
+        Me.flowActions.Controls.Add(Me.RoundedButton4)
+        Me.flowActions.Controls.Add(Me.RoundedButton3)
+        Me.flowActions.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.flowActions.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.flowActions.Location = New System.Drawing.Point(0, 857)
+        Me.flowActions.Margin = New System.Windows.Forms.Padding(0)
+        Me.flowActions.Name = "flowActions"
+        Me.flowActions.Padding = New System.Windows.Forms.Padding(0, 18, 0, 0)
+        Me.flowActions.Size = New System.Drawing.Size(1508, 85)
+        Me.flowActions.TabIndex = 3
+        Me.flowActions.WrapContents = False
+        '
+        'RoundedButton5
+        '
+        Me.RoundedButton5.BackColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(164, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.RoundedButton5.BorderRadius = 15
+        Me.RoundedButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RoundedButton5.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.RoundedButton5.ForeColor = System.Drawing.Color.White
+        Me.RoundedButton5.Location = New System.Drawing.Point(1348, 36)
+        Me.RoundedButton5.Margin = New System.Windows.Forms.Padding(0, 18, 0, 0)
+        Me.RoundedButton5.Name = "RoundedButton5"
+        Me.RoundedButton5.Size = New System.Drawing.Size(160, 49)
+        Me.RoundedButton5.TabIndex = 11
+        Me.RoundedButton5.Text = "Print"
+        Me.RoundedButton5.UseVisualStyleBackColor = False
+        '
+        'RoundedButton4
+        '
+        Me.RoundedButton4.BackColor = System.Drawing.Color.FromArgb(CType(CType(67, Byte), Integer), CType(CType(195, Byte), Integer), CType(CType(95, Byte), Integer))
+        Me.RoundedButton4.BorderRadius = 15
+        Me.RoundedButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RoundedButton4.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.RoundedButton4.ForeColor = System.Drawing.Color.White
+        Me.RoundedButton4.Location = New System.Drawing.Point(1188, 36)
+        Me.RoundedButton4.Margin = New System.Windows.Forms.Padding(20, 18, 0, 0)
+        Me.RoundedButton4.Name = "RoundedButton4"
+        Me.RoundedButton4.Size = New System.Drawing.Size(160, 49)
+        Me.RoundedButton4.TabIndex = 12
+        Me.RoundedButton4.Text = "Save"
+        Me.RoundedButton4.UseVisualStyleBackColor = False
+        '
+        'RoundedButton3
+        '
+        Me.RoundedButton3.BackColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.RoundedButton3.BorderRadius = 15
+        Me.RoundedButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RoundedButton3.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.RoundedButton3.ForeColor = System.Drawing.Color.White
+        Me.RoundedButton3.Location = New System.Drawing.Point(1008, 36)
+        Me.RoundedButton3.Margin = New System.Windows.Forms.Padding(20, 18, 0, 0)
+        Me.RoundedButton3.Name = "RoundedButton3"
+        Me.RoundedButton3.Size = New System.Drawing.Size(160, 49)
+        Me.RoundedButton3.TabIndex = 13
+        Me.RoundedButton3.Text = "Delete"
+        Me.RoundedButton3.UseVisualStyleBackColor = False
         '
         'certissuance
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1185, 821)
+        Me.ClientSize = New System.Drawing.Size(1580, 1010)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "certissuance"
         Me.Text = "Certificate Issuance"
         Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
         Me.panelRight.ResumeLayout(False)
-        Me.panelRight.PerformLayout()
+        Me.layoutMain.ResumeLayout(False)
+        Me.layoutMain.PerformLayout()
+        Me.layoutHeader.ResumeLayout(False)
+        Me.layoutHeader.PerformLayout()
+        Me.layoutSearch.ResumeLayout(False)
+        Me.layoutSearch.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.flowActions.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -333,8 +402,10 @@ Partial Class certissuance
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents btnCreateCertificate As ligaya_bims.RoundedButton
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents layoutMain As TableLayoutPanel
+    Friend WithEvents layoutHeader As TableLayoutPanel
+    Friend WithEvents layoutSearch As TableLayoutPanel
+    Friend WithEvents flowActions As FlowLayoutPanel
     Friend WithEvents RoundedButton3 As ligaya_bims.RoundedButton
     Friend WithEvents RoundedButton4 As ligaya_bims.RoundedButton
     Friend WithEvents RoundedButton5 As ligaya_bims.RoundedButton
