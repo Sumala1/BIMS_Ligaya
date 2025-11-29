@@ -17,7 +17,20 @@ Partial Class cedulatracker
             Return
         End If
 
+		InitializeDeleteIcon()
 		LoadCedulaData()
+	End Sub
+
+	Private Sub InitializeDeleteIcon()
+		Try
+			Dim deleteColumn As DataGridViewImageColumn = TryCast(dgvCedula.Columns("colDelete"), DataGridViewImageColumn)
+			If deleteColumn IsNot Nothing Then
+				deleteColumn.Image = IconHelper.GetDeleteIcon()
+				deleteColumn.ImageLayout = DataGridViewImageCellLayout.Zoom
+			End If
+		Catch
+			' Ignore icon initialization failures
+		End Try
 	End Sub
 
     Private Function IsInDesigner() As Boolean

@@ -126,6 +126,8 @@
         If blotterRecordsRestoreForm IsNot Nothing Then
             blotterRecordsRestoreForm.Visible = True
             blotterRecordsRestoreForm.BringToFront()
+            ' Load data when form becomes visible
+            blotterRecordsRestoreForm.LoadDataWhenVisible()
         End If
     End Sub
 

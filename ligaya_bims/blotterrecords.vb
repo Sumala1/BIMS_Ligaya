@@ -303,14 +303,20 @@ Public Class blotterrecords
                 Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(sql, conn)
                     cmd.Parameters.AddWithValue("@caseNumber", caseNumberValue.Value)
                     Using reader As Global.MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+                        ' Verify we have the expected number of columns
+                        If reader.FieldCount < 5 Then
+                            MessageBox.Show("Schedule table structure is incorrect. Expected 5 columns but found " & reader.FieldCount & ".", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            Return
+                        End If
+
                         While reader.Read()
                             Dim record As New ScheduleRecord() With {
                                 .CaseNumber = caseNumberValue.Value,
-                                .SummonLevel = If(reader.IsDBNull(0), String.Empty, reader.GetString(0)),
-                                .CaseDate = If(reader.IsDBNull(1), Date.MinValue, reader.GetDateTime(1)),
-                                .StartTime = If(reader.IsDBNull(2), TimeSpan.Zero, ReadTimeValue(reader, 2)),
-                                .EndTime = If(reader.IsDBNull(3), TimeSpan.Zero, ReadTimeValue(reader, 3)),
-                                .SettlementStatus = If(reader.IsDBNull(4), String.Empty, reader.GetString(4))
+                                .SummonLevel = If(reader.IsDBNull(0) OrElse reader.FieldCount <= 0, String.Empty, reader.GetString(0)),
+                                .CaseDate = If(reader.IsDBNull(1) OrElse reader.FieldCount <= 1, Date.MinValue, reader.GetDateTime(1)),
+                                .StartTime = If(reader.IsDBNull(2) OrElse reader.FieldCount <= 2, TimeSpan.Zero, ReadTimeValue(reader, 2)),
+                                .EndTime = If(reader.IsDBNull(3) OrElse reader.FieldCount <= 3, TimeSpan.Zero, ReadTimeValue(reader, 3)),
+                                .SettlementStatus = If(reader.IsDBNull(4) OrElse reader.FieldCount <= 4, String.Empty, reader.GetString(4))
                             }
 
                             ' Add row with all columns including Column1 (CaseNumber)
@@ -822,12 +828,38 @@ Public Class blotterrecords
     End Sub
 
     Private Function ReadTimeValue(reader As Global.MySql.Data.MySqlClient.MySqlDataReader, ordinal As Integer) As TimeSpan
-        Dim fieldType = reader.GetFieldType(ordinal)
-        If fieldType Is GetType(TimeSpan) Then
-            Return reader.GetTimeSpan(ordinal)
-        End If
+        Try
+            ' Check if ordinal is valid
+            If ordinal < 0 OrElse ordinal >= reader.FieldCount Then
+                Return New TimeSpan(0)
+            End If
 
-        Return reader.GetDateTime(ordinal).TimeOfDay
+            ' Check if value is null
+            If reader.IsDBNull(ordinal) Then
+                Return New TimeSpan(0)
+            End If
+
+            Dim fieldType = reader.GetFieldType(ordinal)
+            If fieldType Is GetType(TimeSpan) Then
+                Return reader.GetTimeSpan(ordinal)
+            End If
+
+            If fieldType Is GetType(DateTime) Then
+                Return reader.GetDateTime(ordinal).TimeOfDay
+            End If
+
+            ' Try to parse as string if needed
+            Dim valueStr As String = reader.GetValue(ordinal).ToString()
+            Dim parsedTimeSpan As TimeSpan
+            If TimeSpan.TryParse(valueStr, parsedTimeSpan) Then
+                Return parsedTimeSpan
+            End If
+
+            Return New TimeSpan(0)
+        Catch ex As Exception
+            ' Return zero if any error occurs
+            Return New TimeSpan(0)
+        End Try
     End Function
 
     Private Function FormatTime(value As TimeSpan) As String
@@ -931,8 +963,8 @@ Public Class blotterrecords
     Private Sub LoadActionIcons()
         If editIcon IsNot Nothing Then Return
 
-        editIcon = CreatePencilIcon()
-        deleteIcon = CreateDeleteIcon()
+        editIcon = IconHelper.GetEditIcon()
+        deleteIcon = IconHelper.GetDeleteIcon()
         printIcon = CreatePrintIcon()
     End Sub
 
@@ -957,48 +989,8 @@ Public Class blotterrecords
         Return column
     End Function
 
-    Private Function CreatePencilIcon() As Image
-        Dim size As Integer = 28
-        Dim bmp As New Bitmap(size, size)
-        Using g As Graphics = Graphics.FromImage(bmp)
-            g.SmoothingMode = SmoothingMode.AntiAlias
-            g.Clear(Color.Transparent)
-
-            Using bodyBrush As New SolidBrush(Color.FromArgb(30, 136, 229))
-                Using pen As New Pen(bodyBrush, 6)
-                    g.DrawLine(pen, 6, size - 8, size - 4, 6)
-                End Using
-                Using tipBrush As New SolidBrush(Color.FromArgb(255, 213, 79))
-                    Dim tipPoints As Point() = {
-                        New Point(size - 5, 5),
-                        New Point(size - 1, 1),
-                        New Point(size - 1, 9)
-                    }
-                    g.FillPolygon(tipBrush, tipPoints)
-                End Using
-            End Using
-        End Using
-        Return bmp
-    End Function
-
-    Private Function CreateDeleteIcon() As Image
-        Dim size As Integer = 28
-        Dim bmp As New Bitmap(size, size)
-        Using g As Graphics = Graphics.FromImage(bmp)
-            g.SmoothingMode = SmoothingMode.AntiAlias
-            g.Clear(Color.Transparent)
-
-            Using brush As New SolidBrush(Color.FromArgb(227, 53, 55))
-                g.FillEllipse(brush, 2, 2, size - 4, size - 4)
-            End Using
-
-            Using pen As New Pen(Color.White, 3)
-                g.DrawLine(pen, 8, 8, size - 8, size - 8)
-                g.DrawLine(pen, size - 8, 8, 8, size - 8)
-            End Using
-        End Using
-        Return bmp
-    End Function
+    ' Edit icon now uses IconHelper.GetEditIcon()
+    ' Delete icon now uses IconHelper.GetDeleteIcon()
 
     Private Function CreatePrintIcon() As Image
         Dim size As Integer = 28

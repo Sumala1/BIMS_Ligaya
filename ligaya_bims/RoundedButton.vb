@@ -4,7 +4,6 @@ Imports System.Windows.Forms
 Imports System.ComponentModel
 Imports System.Diagnostics
 
-Namespace Global.ligaya_bims
 Public Class RoundedButton
     Inherits Button
 
@@ -88,5 +87,4 @@ Public Class RoundedButton
         Invalidate()
     End Sub
 End Class
-End Namespace
 

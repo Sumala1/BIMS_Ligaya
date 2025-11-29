@@ -1,4 +1,4 @@
-﻿Public Class residentinfo
+Public Class residentinfo
     Private residentForm As residentform
     Private residentsList As New List(Of ResidentData)
     Private currentResidentLastName As String = String.Empty
@@ -9,7 +9,6 @@
     Private newPicturePath As String = String.Empty
     Private residentColumnRequirements As New Dictionary(Of String, Boolean)(StringComparer.OrdinalIgnoreCase)
     Private deleteIconImage As Image
-    Private Shared ReadOnly deleteIconBase64 As String = "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"
 
     Public Sub New()
         InitializeComponent()
@@ -58,7 +57,7 @@
                 deleteIconImage = Nothing
             End If
 
-            deleteIconImage = CreateDeleteIconImage()
+            deleteIconImage = IconHelper.GetDeleteIcon()
             Dim actionColumn = TryCast(dgvResidents.Columns("colAction"), DataGridViewImageColumn)
             If actionColumn IsNot Nothing Then
                 actionColumn.Image = deleteIconImage
@@ -726,7 +725,7 @@
                             Return
                         End If
 
-                        Dim insertSql As String = "INSERT INTO tbl_restore (lastname, firstname, middlename, gender, birthdate, age, phoneno, civilstatus, citizenship, fathersname, mothersname, spouse, email, religion, voterstatus, weight, height, idpic, address) VALUES (@ln, @fn, @mn, @gender, @birthdate, @age, @phoneno, @civilstatus, @citizenship, @fathersname, @mothersname, @spouse, @email, @religion, @voterstatus, @weight, @height, @idpic, @address)"
+                        Dim insertSql As String = "INSERT INTO tbl_residentrestore (lastname, firstname, middlename, gender, birthdate, age, phoneno, civilstatus, citizenship, fathersname, mothersname, spouse, email, religion, voterstatus, weight, height, idpic, address) VALUES (@ln, @fn, @mn, @gender, @birthdate, @age, @phoneno, @civilstatus, @citizenship, @fathersname, @mothersname, @spouse, @email, @religion, @voterstatus, @weight, @height, @idpic, @address)"
                         Using insertCmd As New Global.MySql.Data.MySqlClient.MySqlCommand(insertSql, conn, tran)
                             insertCmd.Parameters.AddWithValue("@ln", record("lastname"))
                             insertCmd.Parameters.AddWithValue("@fn", record("firstname"))
@@ -957,18 +956,7 @@
         Return age
     End Function
 
-    Private Function CreateDeleteIconImage() As Image
-        Try
-            Dim bytes As Byte() = Convert.FromBase64String(deleteIconBase64)
-            Using ms As New System.IO.MemoryStream(bytes)
-                Using loaded As Image = Image.FromStream(ms)
-                    Return CType(loaded.Clone(), Image)
-                End Using
-            End Using
-        Catch
-            Return New Bitmap(48, 48)
-        End Try
-    End Function
+    ' Delete icon now uses IconHelper.GetDeleteIcon()
 
     Protected Overrides Sub OnFormClosed(e As FormClosedEventArgs)
         If deleteIconImage IsNot Nothing Then

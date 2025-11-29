@@ -16,12 +16,15 @@ Public Class blotterrecordsrestore
 
     Private Sub blotterrecordsrestore_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         SetRestoreIcon()
-        LoadRestoreRecords()
+        ' Only load records if form is visible to avoid errors when form is hidden
+        If Me.Visible Then
+            LoadRestoreRecords()
+        End If
     End Sub
 
     Private Sub SetRestoreIcon()
         If dgvBlotterRecords IsNot Nothing AndAlso dgvBlotterRecords.Columns.Contains("colRestore") Then
-            restoreIcon = CreateCircularArrowIcon()
+            restoreIcon = IconHelper.GetRestoreIcon()
             Dim restoreColumn As DataGridViewImageColumn = TryCast(dgvBlotterRecords.Columns("colRestore"), DataGridViewImageColumn)
             If restoreColumn IsNot Nothing Then
                 restoreColumn.Image = restoreIcon
@@ -29,54 +32,12 @@ Public Class blotterrecordsrestore
         End If
     End Sub
 
-    Private Function CreateCircularArrowIcon() As Image
-        ' Create a 32x32 bitmap for the circular arrow icon (dark grey circular arrow)
-        Dim size As Integer = 32
-        Dim bmp As New Bitmap(size, size)
-        Using g As Graphics = Graphics.FromImage(bmp)
-            g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-            g.PixelOffsetMode = Drawing2D.PixelOffsetMode.HighQuality
-            g.Clear(Color.Transparent)
-
-            Dim centerX As Single = size / 2
-            Dim centerY As Single = size / 2
-            Dim radius As Single = (size - 8) / 2
-
-            ' Dark grey color for the arrow (RGB: 64, 64, 64)
-            Using brush As New SolidBrush(Color.FromArgb(64, 64, 64))
-                Using pen As New Pen(brush, 3.0F)
-                    ' Draw thick circular arc (most of the circle, leaving gap for arrow head)
-                    Dim rect As New RectangleF(centerX - radius, centerY - radius, radius * 2, radius * 2)
-                    ' Draw arc from 225 degrees (bottom-left) sweeping about 315 degrees (counter-clockwise)
-                    g.DrawArc(pen, rect, 225, 315)
-
-                    ' Draw arrow head at bottom-left (pointing down and left, counter-clockwise)
-                    ' Arrow head angle: 225 degrees (pointing down-left)
-                    Dim arrowAngle As Single = 225 * Math.PI / 180.0F
-                    Dim arrowTipX As Single = centerX + radius * CSng(Math.Cos(arrowAngle))
-                    Dim arrowTipY As Single = centerY + radius * CSng(Math.Sin(arrowAngle))
-
-                    ' Arrow head size and direction
-                    Dim arrowSize As Single = 5
-                    ' Points for arrow head triangle (pointing in counter-clockwise direction)
-                    Dim arrowBase1X As Single = arrowTipX + arrowSize * CSng(Math.Cos(arrowAngle - Math.PI / 3))
-                    Dim arrowBase1Y As Single = arrowTipY + arrowSize * CSng(Math.Sin(arrowAngle - Math.PI / 3))
-                    Dim arrowBase2X As Single = arrowTipX + arrowSize * CSng(Math.Cos(arrowAngle + Math.PI / 3))
-                    Dim arrowBase2Y As Single = arrowTipY + arrowSize * CSng(Math.Sin(arrowAngle + Math.PI / 3))
-
-                    ' Fill arrow head triangle
-                    Dim arrowPoints() As PointF = {
-                        New PointF(arrowTipX, arrowTipY),
-                        New PointF(arrowBase1X, arrowBase1Y),
-                        New PointF(arrowBase2X, arrowBase2Y)
-                    }
-                    g.FillPolygon(brush, arrowPoints)
-                End Using
-            End Using
-        End Using
-
-        Return bmp
-    End Function
+    Public Sub LoadDataWhenVisible()
+        ' This method is called when the form becomes visible
+        If Me.Visible Then
+            LoadRestoreRecords()
+        End If
+    End Sub
 
     Private Sub LoadRestoreRecords()
         dgvBlotterRecords.Rows.Clear()
@@ -136,7 +97,10 @@ Public Class blotterrecordsrestore
                 End Using
             End Using
         Catch ex As Exception
-            MessageBox.Show("Failed to load restore records: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ' Only show error if form is visible to avoid errors when form is hidden during initialization
+            If Me.Visible Then
+                MessageBox.Show("Failed to load restore records: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End Try
 
         UpdatePaginationControls()

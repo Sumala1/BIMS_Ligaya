@@ -450,6 +450,7 @@
     <Compile Include="RoundedButton.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="IconHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CR.png" />
