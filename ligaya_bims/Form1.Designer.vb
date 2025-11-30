@@ -56,7 +56,7 @@ Partial Class Form1
         Me.picLogo.Location = New System.Drawing.Point(1, 55)
         Me.picLogo.Name = "picLogo"
         Me.picLogo.Size = New System.Drawing.Size(476, 465)
-        Me.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picLogo.TabIndex = 1
         Me.picLogo.TabStop = False
         '

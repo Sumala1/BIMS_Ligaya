@@ -299,14 +299,15 @@ Partial Class dashboard
         '
         'Label13
         '
-        Me.Label13.AutoSize = True
+        Me.Label13.AutoSize = False
         Me.Label13.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(7, 170)
+        Me.Label13.Location = New System.Drawing.Point(0, 170)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(189, 21)
+        Me.Label13.Size = New System.Drawing.Size(202, 21)
         Me.Label13.TabIndex = 2
         Me.Label13.Text = "Welcome Administrator!"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblBrand
         '

@@ -28,17 +28,27 @@ Partial Class blotterrecords
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.pnlMain = New System.Windows.Forms.Panel()
         Me.pnlDataArea = New System.Windows.Forms.Panel()
         Me.tblDataLayout = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlLeftTable = New System.Windows.Forms.Panel()
         Me.dgvBlotterRecords = New System.Windows.Forms.DataGridView()
+        Me.CaseNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComplainantName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComplainantAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComplaintName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IncidentDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocationOfIncident = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InvolvedPerson = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NarrativeIncident = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colEdit = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.colDelete = New System.Windows.Forms.DataGridViewImageColumn()
         Me.pnlBlotterButtons = New System.Windows.Forms.Panel()
         Me.lblBlotterTitle = New System.Windows.Forms.Label()
         Me.pnlRightTable = New System.Windows.Forms.Panel()
@@ -61,16 +71,6 @@ Partial Class blotterrecords
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.cmbSearchBy = New System.Windows.Forms.ComboBox()
         Me.lblSearchBy = New System.Windows.Forms.Label()
-        Me.CaseNumber = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ComplainantName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ComplainantAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ComplaintName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IncidentDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LocationOfIncident = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InvolvedPerson = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NarrativeIncident = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colEdit = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.colDelete = New System.Windows.Forms.DataGridViewImageColumn()
         Me.pnlMain.SuspendLayout()
         Me.pnlDataArea.SuspendLayout()
         Me.tblDataLayout.SuspendLayout()
@@ -180,6 +180,99 @@ Partial Class blotterrecords
         Me.dgvBlotterRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvBlotterRecords.Size = New System.Drawing.Size(579, 668)
         Me.dgvBlotterRecords.TabIndex = 0
+        '
+        'CaseNumber
+        '
+        Me.CaseNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.CaseNumber.HeaderText = "Case #"
+        Me.CaseNumber.MinimumWidth = 70
+        Me.CaseNumber.Name = "CaseNumber"
+        Me.CaseNumber.ReadOnly = True
+        Me.CaseNumber.Width = 90
+        '
+        'ComplainantName
+        '
+        Me.ComplainantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ComplainantName.FillWeight = 130.0!
+        Me.ComplainantName.HeaderText = "Complainant Name"
+        Me.ComplainantName.MinimumWidth = 100
+        Me.ComplainantName.Name = "ComplainantName"
+        Me.ComplainantName.ReadOnly = True
+        '
+        'ComplainantAddress
+        '
+        Me.ComplainantAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ComplainantAddress.FillWeight = 120.0!
+        Me.ComplainantAddress.HeaderText = "Complainant Address"
+        Me.ComplainantAddress.MinimumWidth = 100
+        Me.ComplainantAddress.Name = "ComplainantAddress"
+        Me.ComplainantAddress.ReadOnly = True
+        '
+        'ComplaintName
+        '
+        Me.ComplaintName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ComplaintName.FillWeight = 140.0!
+        Me.ComplaintName.HeaderText = "Complaint Details"
+        Me.ComplaintName.MinimumWidth = 110
+        Me.ComplaintName.Name = "ComplaintName"
+        Me.ComplaintName.ReadOnly = True
+        '
+        'IncidentDate
+        '
+        Me.IncidentDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle3.Format = "MMM dd, yyyy hh:mm tt"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.IncidentDate.DefaultCellStyle = DataGridViewCellStyle3
+        Me.IncidentDate.HeaderText = "Incident Date/Time"
+        Me.IncidentDate.MinimumWidth = 110
+        Me.IncidentDate.Name = "IncidentDate"
+        Me.IncidentDate.ReadOnly = True
+        '
+        'LocationOfIncident
+        '
+        Me.LocationOfIncident.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.LocationOfIncident.HeaderText = "Location"
+        Me.LocationOfIncident.MinimumWidth = 90
+        Me.LocationOfIncident.Name = "LocationOfIncident"
+        Me.LocationOfIncident.ReadOnly = True
+        '
+        'InvolvedPerson
+        '
+        Me.InvolvedPerson.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.InvolvedPerson.HeaderText = "Involved Person(s)"
+        Me.InvolvedPerson.MinimumWidth = 110
+        Me.InvolvedPerson.Name = "InvolvedPerson"
+        Me.InvolvedPerson.ReadOnly = True
+        '
+        'NarrativeIncident
+        '
+        Me.NarrativeIncident.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NarrativeIncident.HeaderText = "Narrative"
+        Me.NarrativeIncident.MinimumWidth = 120
+        Me.NarrativeIncident.Name = "NarrativeIncident"
+        Me.NarrativeIncident.ReadOnly = True
+        '
+        'colEdit
+        '
+        Me.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colEdit.HeaderText = "Edit"
+        Me.colEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.colEdit.MinimumWidth = 50
+        Me.colEdit.Name = "colEdit"
+        Me.colEdit.ReadOnly = True
+        Me.colEdit.ToolTipText = "Edit record"
+        Me.colEdit.Width = 50
+        '
+        'colDelete
+        '
+        Me.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colDelete.HeaderText = "Delete"
+        Me.colDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
+        Me.colDelete.MinimumWidth = 50
+        Me.colDelete.Name = "colDelete"
+        Me.colDelete.ReadOnly = True
+        Me.colDelete.ToolTipText = "Delete record"
+        Me.colDelete.Width = 68
         '
         'pnlBlotterButtons
         '
@@ -395,7 +488,7 @@ Partial Class blotterrecords
         Me.btnUpdateSettlementStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnUpdateSettlementStatus.Font = New System.Drawing.Font("Segoe UI Semibold", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnUpdateSettlementStatus.ForeColor = System.Drawing.Color.White
-        Me.btnUpdateSettlementStatus.Location = New System.Drawing.Point(197, 55)
+        Me.btnUpdateSettlementStatus.Location = New System.Drawing.Point(197, 58)
         Me.btnUpdateSettlementStatus.Margin = New System.Windows.Forms.Padding(5)
         Me.btnUpdateSettlementStatus.Name = "btnUpdateSettlementStatus"
         Me.btnUpdateSettlementStatus.Size = New System.Drawing.Size(217, 40)
@@ -486,99 +579,6 @@ Partial Class blotterrecords
         Me.lblSearchBy.Size = New System.Drawing.Size(123, 31)
         Me.lblSearchBy.TabIndex = 0
         Me.lblSearchBy.Text = "Search by:"
-        '
-        'CaseNumber
-        '
-        Me.CaseNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.CaseNumber.HeaderText = "Case #"
-        Me.CaseNumber.MinimumWidth = 70
-        Me.CaseNumber.Name = "CaseNumber"
-        Me.CaseNumber.ReadOnly = True
-        Me.CaseNumber.Width = 90
-        '
-        'ComplainantName
-        '
-        Me.ComplainantName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ComplainantName.FillWeight = 130.0!
-        Me.ComplainantName.HeaderText = "Complainant Name"
-        Me.ComplainantName.MinimumWidth = 100
-        Me.ComplainantName.Name = "ComplainantName"
-        Me.ComplainantName.ReadOnly = True
-        '
-        'ComplainantAddress
-        '
-        Me.ComplainantAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ComplainantAddress.FillWeight = 120.0!
-        Me.ComplainantAddress.HeaderText = "Complainant Address"
-        Me.ComplainantAddress.MinimumWidth = 100
-        Me.ComplainantAddress.Name = "ComplainantAddress"
-        Me.ComplainantAddress.ReadOnly = True
-        '
-        'ComplaintName
-        '
-        Me.ComplaintName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ComplaintName.FillWeight = 140.0!
-        Me.ComplaintName.HeaderText = "Complaint Details"
-        Me.ComplaintName.MinimumWidth = 110
-        Me.ComplaintName.Name = "ComplaintName"
-        Me.ComplaintName.ReadOnly = True
-        '
-        'IncidentDate
-        '
-        Me.IncidentDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle3.Format = "MMM dd, yyyy hh:mm tt"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.IncidentDate.DefaultCellStyle = DataGridViewCellStyle3
-        Me.IncidentDate.HeaderText = "Incident Date/Time"
-        Me.IncidentDate.MinimumWidth = 110
-        Me.IncidentDate.Name = "IncidentDate"
-        Me.IncidentDate.ReadOnly = True
-        '
-        'LocationOfIncident
-        '
-        Me.LocationOfIncident.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.LocationOfIncident.HeaderText = "Location"
-        Me.LocationOfIncident.MinimumWidth = 90
-        Me.LocationOfIncident.Name = "LocationOfIncident"
-        Me.LocationOfIncident.ReadOnly = True
-        '
-        'InvolvedPerson
-        '
-        Me.InvolvedPerson.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.InvolvedPerson.HeaderText = "Involved Person(s)"
-        Me.InvolvedPerson.MinimumWidth = 110
-        Me.InvolvedPerson.Name = "InvolvedPerson"
-        Me.InvolvedPerson.ReadOnly = True
-        '
-        'NarrativeIncident
-        '
-        Me.NarrativeIncident.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NarrativeIncident.HeaderText = "Narrative"
-        Me.NarrativeIncident.MinimumWidth = 120
-        Me.NarrativeIncident.Name = "NarrativeIncident"
-        Me.NarrativeIncident.ReadOnly = True
-        '
-        'colEdit
-        '
-        Me.colEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colEdit.HeaderText = "Edit"
-        Me.colEdit.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
-        Me.colEdit.MinimumWidth = 50
-        Me.colEdit.Name = "colEdit"
-        Me.colEdit.ReadOnly = True
-        Me.colEdit.ToolTipText = "Edit record"
-        Me.colEdit.Width = 50
-        '
-        'colDelete
-        '
-        Me.colDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colDelete.HeaderText = "Delete"
-        Me.colDelete.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom
-        Me.colDelete.MinimumWidth = 50
-        Me.colDelete.Name = "colDelete"
-        Me.colDelete.ReadOnly = True
-        Me.colDelete.ToolTipText = "Delete record"
-        Me.colDelete.Width = 68
         '
         'blotterrecords
         '

@@ -24,6 +24,8 @@ Public Class residentinfo
             InitializeSelectAllCheckbox()
             PositionHeaderCheckBox()
             InitializeDeleteIcon()
+            ' Apply role-based access control
+            ApplyRoleBasedAccess()
         End If
     End Sub
     Private Sub LoadResidentColumnRequirements()
@@ -246,6 +248,12 @@ Public Class residentinfo
     End Sub
 
     Private Sub EditResident(lastName As String, firstName As String)
+        ' Check permission before allowing edit
+        ' User role CAN edit in ResidentInfo, Admin can edit everywhere
+        If Not UserSession.CanEditInForm("residentinfo") Then
+            MessageBox.Show("You do not have permission to edit records in this form.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         Try
             ' Load resident data for editing using composite key
             Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
@@ -773,6 +781,12 @@ Public Class residentinfo
         End Try
     End Sub
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        ' Check permission before allowing update
+        ' User role CAN update in ResidentInfo, Admin can update everywhere
+        If Not UserSession.CanEditInForm("residentinfo") Then
+            MessageBox.Show("You do not have permission to update records in this form.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         If String.IsNullOrWhiteSpace(currentResidentLastName) OrElse String.IsNullOrWhiteSpace(currentResidentFirstName) Then
             MessageBox.Show("Select a resident from the list before updating.", "No Resident Selected", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return
@@ -856,6 +870,57 @@ Public Class residentinfo
         Catch ex As Exception
             MessageBox.Show("Failed to update resident: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    ''' <summary>
+    ''' Applies role-based access control to show/hide edit functionality based on role
+    ''' User role CAN edit/update in ResidentInfo, Admin can edit everywhere
+    ''' </summary>
+    Private Sub ApplyRoleBasedAccess()
+        ' Show Update button - User role CAN update in ResidentInfo
+        If btnUpdate IsNot Nothing Then
+            btnUpdate.Visible = UserSession.CanEditInForm("residentinfo")
+            btnUpdate.Enabled = UserSession.CanEditInForm("residentinfo")
+        End If
+
+        ' Enable/disable detail editing textboxes based on role
+        ' User role CAN edit in ResidentInfo, so we only disable if they can't edit
+        If Not UserSession.CanEditInForm("residentinfo") Then
+            Dim editableTextBoxes As TextBox() = {
+                txtLastName, txtFirstName, txtMiddleName, txtPhoneNumber,
+                txtCitizenship, txtFathersName, txtMothersName, txtSpouse,
+                txtWeight, txtHeight, txtAddress, txtReligion
+            }
+
+            For Each tb As TextBox In editableTextBoxes
+                If tb IsNot Nothing Then
+                    tb.ReadOnly = True
+                    tb.BackColor = Color.FromArgb(240, 240, 240) ' Light gray to indicate read-only
+                End If
+            Next
+
+            ' Disable combo boxes
+            If cmbGender IsNot Nothing Then
+                cmbGender.Enabled = False
+                cmbGender.BackColor = Color.FromArgb(240, 240, 240)
+            End If
+
+            If cmbCivilStatus IsNot Nothing Then
+                cmbCivilStatus.Enabled = False
+                cmbCivilStatus.BackColor = Color.FromArgb(240, 240, 240)
+            End If
+
+            If cmbVotersStatus IsNot Nothing Then
+                cmbVotersStatus.Enabled = False
+                cmbVotersStatus.BackColor = Color.FromArgb(240, 240, 240)
+            End If
+
+            ' Disable date picker
+            If dtpBirthdate IsNot Nothing Then
+                dtpBirthdate.Enabled = False
+                dtpBirthdate.BackColor = Color.FromArgb(240, 240, 240)
+            End If
+        End If
     End Sub
 
     Private Sub picProfile_Click(sender As Object, e As EventArgs) Handles picProfile.Click

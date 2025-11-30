@@ -289,6 +289,8 @@
     </Compile>
     <Compile Include="DataAccessCommand.vb" />
     <Compile Include="Database.vb" />
+    <Compile Include="UserSession.vb" />
+    <Compile Include="PasswordHelper.vb" />
     <Compile Include="resirestore.Designer.vb">
       <DependentUpon>resirestore.vb</DependentUpon>
     </Compile>

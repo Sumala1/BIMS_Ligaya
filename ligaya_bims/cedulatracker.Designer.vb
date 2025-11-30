@@ -194,7 +194,7 @@ Partial Class cedulatracker
         Me.colAction.MinimumWidth = 6
         Me.colAction.Name = "colAction"
         Me.colAction.ReadOnly = True
-        Me.colAction.Width = 170
+        Me.colAction.Width = 150
         '
         'colCTCNumber
         '
@@ -206,11 +206,11 @@ Partial Class cedulatracker
         '
         'colFullName
         '
+        Me.colFullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.colFullName.HeaderText = "Full Name"
         Me.colFullName.MinimumWidth = 6
         Me.colFullName.Name = "colFullName"
         Me.colFullName.ReadOnly = True
-        Me.colFullName.Width = 530
         '
         'colDateIssued
         '
@@ -227,7 +227,7 @@ Partial Class cedulatracker
         Me.colDelete.MinimumWidth = 6
         Me.colDelete.Name = "colDelete"
         Me.colDelete.ReadOnly = True
-        Me.colDelete.Width = 130
+        Me.colDelete.Width = 80
         '
         'cedulatracker
         '

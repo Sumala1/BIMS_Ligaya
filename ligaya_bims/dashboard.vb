@@ -3,6 +3,10 @@
 Public Class dashboard
     Private currentChildForm As Form
     Private residentsList As New List(Of ResidentData)
+    ' Cache for processed logo image (with white background removed)
+    Private processedLogoImage As Image = Nothing
+    ' Store original image separately to prevent default rendering
+    Private originalLogoImage As Image = Nothing
 
     Private Sub OpenChildForm(child As Form)
         If currentChildForm IsNot Nothing Then
@@ -25,12 +29,16 @@ Public Class dashboard
     End Sub
 
     Private Sub navResidents_Click(sender As Object, e As EventArgs) Handles navResidents.Click
+        ' User role CAN access all forms (but can only edit in BlotterRecords and ResidentInfo)
+        ' No access restriction needed here - edit restrictions are handled in the form itself
         Dim residentForm As New residentinfo()
         residentForm.SetAsChildForm()
         OpenChildForm(residentForm)
     End Sub
 
     Private Sub navReports_Click(sender As Object, e As EventArgs) Handles navReports.Click
+        ' User role CAN access all forms (but can only edit in BlotterRecords and ResidentInfo)
+        ' No access restriction needed here - edit restrictions are handled in the form itself
         Dim blotterform As New blotterrecords()
         blotterform.SetAsChildForm()
         OpenChildForm(blotterform)
@@ -61,6 +69,8 @@ Public Class dashboard
     End Sub
 
     Private Sub navDocs_Click(sender As Object, e As EventArgs) Handles navDocs.Click
+        ' User role CAN access all forms (but can only edit in BlotterRecords and ResidentInfo)
+        ' No access restriction needed here - edit restrictions are handled in the form itself
         Dim docsForm As New certissuance()
         docsForm.SetAsChildForm()
         OpenChildForm(docsForm)
@@ -89,6 +99,250 @@ Public Class dashboard
         Catch ex As Exception
             ' Ignore if grid not yet initialized
         End Try
+
+        ' Apply role-based access control
+        ApplyRoleBasedAccess()
+
+        ' Make logo circular - don't remove white background (white ring with text is part of design)
+        If PictureBox9.Image IsNot Nothing Then
+            ' Store original image and clear PictureBox image to prevent default rendering
+            originalLogoImage = PictureBox9.Image
+            ' Use original image directly - don't remove white background
+            processedLogoImage = originalLogoImage
+            ' Clear the Image property so only our custom paint draws it
+            PictureBox9.Image = Nothing
+        End If
+        MakePictureBoxCircular(PictureBox9)
+    End Sub
+
+    ''' <summary>
+    ''' Makes a PictureBox display as a circle and removes white background
+    ''' </summary>
+    Private Sub MakePictureBoxCircular(pb As PictureBox)
+        If pb Is Nothing Then Return
+
+        ' Set the region to a circle
+        Dim diameter As Integer = Math.Min(pb.Width, pb.Height)
+        Dim radius As Integer = diameter \ 2
+        Dim centerX As Integer = pb.Width \ 2
+        Dim centerY As Integer = pb.Height \ 2
+
+        Using path As New System.Drawing.Drawing2D.GraphicsPath()
+            path.AddEllipse(centerX - radius, centerY - radius, diameter, diameter)
+            pb.Region = New Region(path)
+        End Using
+
+        ' Set background to transparent
+        pb.BackColor = Color.Transparent
+
+        ' Add Paint event to handle custom drawing
+        AddHandler pb.Paint, AddressOf PictureBox_Paint
+    End Sub
+
+    ''' <summary>
+    ''' Paint event handler to draw image with enhanced quality rendering
+    ''' </summary>
+    Private Sub PictureBox_Paint(sender As Object, e As PaintEventArgs)
+        Dim pb As PictureBox = TryCast(sender, PictureBox)
+        If pb Is Nothing Then Return
+
+        ' Only draw if we have a processed image
+        Dim processedImage As Image = Nothing
+        If pb Is PictureBox9 AndAlso processedLogoImage IsNot Nothing Then
+            processedImage = processedLogoImage
+        Else
+            Return ' No image to draw
+        End If
+
+        If processedImage Is Nothing Then Return
+
+        ' Enable highest quality rendering to reduce pixelation
+        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias
+        e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic
+        e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality
+        e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality
+        e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver
+
+        ' Create a circular clipping region
+        Dim diameter As Integer = Math.Min(pb.Width, pb.Height)
+        Dim radius As Integer = diameter \ 2
+        Dim centerX As Integer = pb.Width \ 2
+        Dim centerY As Integer = pb.Height \ 2
+
+        Using path As New System.Drawing.Drawing2D.GraphicsPath()
+            path.AddEllipse(centerX - radius, centerY - radius, diameter, diameter)
+            e.Graphics.SetClip(path)
+
+            ' Calculate image rectangle to maintain aspect ratio and fill the circle
+            Dim imgWidth As Integer = processedImage.Width
+            Dim imgHeight As Integer = processedImage.Height
+            Dim imgAspect As Double = imgWidth / imgHeight
+            Dim pbAspect As Double = pb.Width / pb.Height
+
+            Dim drawWidth, drawHeight, drawX, drawY As Integer
+
+            ' Use the diameter to ensure the image fills the circle properly
+            If imgAspect > pbAspect Then
+                ' Image is wider - fit to height (diameter)
+                drawHeight = diameter
+                drawWidth = CInt(drawHeight * imgAspect)
+                drawX = (pb.Width - drawWidth) \ 2
+                drawY = (pb.Height - drawHeight) \ 2
+            Else
+                ' Image is taller - fit to width (diameter)
+                drawWidth = diameter
+                drawHeight = CInt(drawWidth / imgAspect)
+                drawX = (pb.Width - drawWidth) \ 2
+                drawY = (pb.Height - drawHeight) \ 2
+            End If
+
+            ' Create a high-quality image attribute for better rendering
+            Using imgAttributes As New System.Drawing.Imaging.ImageAttributes()
+                ' Use high-quality resampling
+                imgAttributes.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY)
+                
+                ' Draw the image with enhanced quality
+                e.Graphics.DrawImage(
+                    processedImage,
+                    New Rectangle(drawX, drawY, drawWidth, drawHeight),
+                    0, 0, processedImage.Width, processedImage.Height,
+                    GraphicsUnit.Pixel,
+                    imgAttributes
+                )
+            End Using
+
+            ' Reset clip
+            e.Graphics.ResetClip()
+        End Using
+    End Sub
+
+    ''' <summary>
+    ''' Removes white background from an image by making white pixels transparent
+    ''' </summary>
+    Private Function RemoveWhiteBackground(originalImage As Image) As Image
+        If originalImage Is Nothing Then Return Nothing
+
+        Dim bitmap As New Bitmap(originalImage.Width, originalImage.Height)
+        Using g As Graphics = Graphics.FromImage(bitmap)
+            g.DrawImage(originalImage, 0, 0)
+        End Using
+
+        ' Make white pixels transparent
+        bitmap.MakeTransparent(Color.White)
+
+        ' Also handle near-white pixels (with tolerance)
+        For x As Integer = 0 To bitmap.Width - 1
+            For y As Integer = 0 To bitmap.Height - 1
+                Dim pixel As Color = bitmap.GetPixel(x, y)
+                ' Check if pixel is white or near-white (tolerance of 30)
+                If pixel.R > 225 AndAlso pixel.G > 225 AndAlso pixel.B > 225 Then
+                    bitmap.SetPixel(x, y, Color.Transparent)
+                End If
+            Next
+        Next
+
+        Return bitmap
+    End Function
+
+    ''' <summary>
+    ''' Applies role-based access control to show/hide menu items based on user role
+    ''' User role CAN access all forms (but can only edit in BlotterRecords and ResidentInfo)
+    ''' Admin has access to everything
+    ''' </summary>
+    Private Sub ApplyRoleBasedAccess()
+        If Not UserSession.IsLoggedIn Then
+            ' If not logged in, hide everything (shouldn't happen, but safety check)
+            HideAllNavigation()
+            Return
+        End If
+
+        ' Update welcome label in top bar based on user role
+        If lblWelcome IsNot Nothing Then
+            Dim welcomeText As String
+            If UserSession.IsAdmin() Then
+                welcomeText = "Welcome Administrator!"
+            ElseIf UserSession.IsUser() Then
+                welcomeText = "Welcome User!"
+            Else
+                ' Fallback for other roles
+                welcomeText = $"Welcome, {UserSession.CurrentFullName}!"
+            End If
+            lblWelcome.Text = welcomeText
+        End If
+
+        ' Update welcome label in left navigation panel based on user role
+        If Label13 IsNot Nothing Then
+            Dim leftNavWelcomeText As String
+            If UserSession.IsAdmin() Then
+                leftNavWelcomeText = "Welcome Administrator!"
+            ElseIf UserSession.IsUser() Then
+                leftNavWelcomeText = "Welcome User!"
+            Else
+                ' Fallback for other roles
+                leftNavWelcomeText = $"Welcome, {UserSession.CurrentFullName}!"
+            End If
+            Label13.Text = leftNavWelcomeText
+        End If
+
+        If UserSession.IsAdmin() Then
+            ' Admin has access to everything - show all navigation items
+            ShowAllNavigation()
+        ElseIf UserSession.IsUser() Then
+            ' User role: Show all navigation items (can access all forms, but can only edit in BlotterRecords and ResidentInfo)
+            ' Backup/Restore is still restricted (handled in navBackup_Click)
+            ShowUserRoleNavigation()
+        Else
+            ' Unknown role - hide everything
+            HideAllNavigation()
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Shows all navigation items (Admin role)
+    ''' </summary>
+    Private Sub ShowAllNavigation()
+        If navDashboard IsNot Nothing Then navDashboard.Visible = True
+        If navResidents IsNot Nothing Then navResidents.Visible = True
+        If navReports IsNot Nothing Then navReports.Visible = True
+        If navCedula IsNot Nothing Then navCedula.Visible = True
+        If navDocs IsNot Nothing Then navDocs.Visible = True
+        If navStaffs IsNot Nothing Then navStaffs.Visible = True
+        If navBackup IsNot Nothing Then navBackup.Visible = True
+        If navLogout IsNot Nothing Then navLogout.Visible = True
+    End Sub
+
+    ''' <summary>
+    ''' Shows navigation items for User role
+    ''' User role CAN access all forms (but can only edit in BlotterRecords and ResidentInfo)
+    ''' Backup/Restore is still restricted (handled in navBackup_Click)
+    ''' </summary>
+    Private Sub ShowUserRoleNavigation()
+        ' User role can access all forms - show all navigation items
+        ' Edit/Update restrictions are handled in individual forms via CanEditInForm()
+        If navDashboard IsNot Nothing Then navDashboard.Visible = True
+        If navResidents IsNot Nothing Then navResidents.Visible = True
+        If navReports IsNot Nothing Then navReports.Visible = True
+        If navCedula IsNot Nothing Then navCedula.Visible = True
+        If navDocs IsNot Nothing Then navDocs.Visible = True
+        If navStaffs IsNot Nothing Then navStaffs.Visible = True
+        If navLogout IsNot Nothing Then navLogout.Visible = True
+
+        ' Hide Backup/Restore - User role cannot access this functionality
+        If navBackup IsNot Nothing Then navBackup.Visible = False
+    End Sub
+
+    ''' <summary>
+    ''' Hides all navigation items
+    ''' </summary>
+    Private Sub HideAllNavigation()
+        If navDashboard IsNot Nothing Then navDashboard.Visible = False
+        If navResidents IsNot Nothing Then navResidents.Visible = False
+        If navReports IsNot Nothing Then navReports.Visible = False
+        If navCedula IsNot Nothing Then navCedula.Visible = False
+        If navDocs IsNot Nothing Then navDocs.Visible = False
+        If navStaffs IsNot Nothing Then navStaffs.Visible = False
+        If navBackup IsNot Nothing Then navBackup.Visible = False
+        If navLogout IsNot Nothing Then navLogout.Visible = True ' Always show logout
     End Sub
 
     Private Sub LoadDashboardData()
@@ -336,6 +590,8 @@ Public Class dashboard
 
 
     Private Sub navCedula_Click(sender As Object, e As EventArgs) Handles navCedula.Click
+        ' User role CAN access all forms (but can only edit in BlotterRecords and ResidentInfo)
+        ' No access restriction needed here - edit restrictions are handled in the form itself
         OpenChildForm(New cedulatracker())
     End Sub
 
@@ -400,6 +656,12 @@ Public Class dashboard
     End Sub
 
     Private Sub navBackup_Click(sender As Object, e As EventArgs) Handles navBackup.Click
+        ' Check if user has access to Backup/Restore (only Admin can access)
+        If Not UserSession.CanAccessBackupRestore() Then
+            MessageBox.Show("You do not have permission to access Backup/Restore functionality. Only Administrators can access this feature.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         Dim backupForm As New BackupRestore()
         backupForm.SetAsChildForm()
         OpenChildForm(backupForm)
@@ -436,6 +698,9 @@ Public Class dashboard
         Dim confirm As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If confirm = DialogResult.Yes Then
+            ' Clear user session
+            UserSession.ClearSession()
+
             ' Close any child forms
             If currentChildForm IsNot Nothing Then
                 currentChildForm.Close()

@@ -106,6 +106,9 @@ Public Class blotterrecords
         AssignActionIcon("colEdit", editIcon, "Edit record")
         AssignActionIcon("colDelete", deleteIcon, "Delete record")
         AssignActionIcon("colPrint", printIcon, "Print record")
+
+        ' Apply role-based access control - hide Edit column for User role
+        ApplyRoleBasedAccess()
     End Sub
 
     Private Sub StyleDataGridView(grid As DataGridView)
@@ -402,6 +405,13 @@ Public Class blotterrecords
             Return
         End If
 
+        ' Check permission before allowing edit
+        ' User role CAN edit in BlotterRecords (which includes schedules), Admin can edit everywhere
+        If Not UserSession.CanEditInForm("blotterrecords") Then
+            MessageBox.Show("You do not have permission to edit schedules.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         Dim selectedRecord As ScheduleRecord = GetSelectedScheduleRecord()
         If selectedRecord Is Nothing Then
             MessageBox.Show("Please select a schedule to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -455,6 +465,12 @@ Public Class blotterrecords
     End Sub
 
     Private Sub btnUpdateSettlementStatus_Click(sender As Object, e As EventArgs) Handles btnUpdateSettlementStatus.Click
+        ' Check permission before allowing update
+        ' User role CAN update in BlotterRecords (which includes settlement status), Admin can update everywhere
+        If Not UserSession.CanEditInForm("blotterrecords") Then
+            MessageBox.Show("You do not have permission to update settlement status.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
         If IsInDesigner() Then
             Return
         End If
@@ -556,6 +572,12 @@ Public Class blotterrecords
 
         Select Case columnName
             Case "colEdit"
+                ' Check if user has permission to edit in this form
+                ' User role CAN edit in BlotterRecords, Admin can edit everywhere
+                If Not UserSession.CanEditInForm("blotterrecords") Then
+                    MessageBox.Show("You do not have permission to edit records in this form.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
                 EditBlotterRecord(row)
             Case "colDelete"
                 DeleteBlotterRecord(row)
@@ -569,6 +591,13 @@ Public Class blotterrecords
     End Sub
 
     Private Sub EditBlotterRecord(row As DataGridViewRow)
+        ' Check permission before allowing edit
+        ' User role CAN edit in BlotterRecords, Admin can edit everywhere
+        If Not UserSession.CanEditInForm("blotterrecords") Then
+            MessageBox.Show("You do not have permission to edit records in this form.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
         Dim caseNumberValue As Integer? = GetCaseNumberFromRow(row)
         If Not caseNumberValue.HasValue Then
             MessageBox.Show("Unable to determine the case number for the selected record.", "Edit Blotter", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -991,6 +1020,31 @@ Public Class blotterrecords
 
     ' Edit icon now uses IconHelper.GetEditIcon()
     ' Delete icon now uses IconHelper.GetDeleteIcon()
+
+    ''' <summary>
+    ''' Applies role-based access control to show/hide edit functionality based on role
+    ''' User role CAN edit in BlotterRecords, Admin can edit everywhere
+    ''' </summary>
+    Private Sub ApplyRoleBasedAccess()
+        ' Show Edit column - User role CAN edit in BlotterRecords
+        If dgvBlotterRecords IsNot Nothing AndAlso dgvBlotterRecords.Columns.Contains("colEdit") Then
+            Dim editColumn As DataGridViewImageColumn = TryCast(dgvBlotterRecords.Columns("colEdit"), DataGridViewImageColumn)
+            If editColumn IsNot Nothing Then
+                editColumn.Visible = UserSession.CanEditInForm("blotterrecords")
+            End If
+        End If
+
+        ' Show/edit buttons - User role CAN edit in BlotterRecords
+        If btnEditSchedule IsNot Nothing Then
+            btnEditSchedule.Visible = UserSession.CanEditInForm("blotterrecords")
+            btnEditSchedule.Enabled = UserSession.CanEditInForm("blotterrecords")
+        End If
+
+        If btnUpdateSettlementStatus IsNot Nothing Then
+            btnUpdateSettlementStatus.Visible = UserSession.CanEditInForm("blotterrecords")
+            btnUpdateSettlementStatus.Enabled = UserSession.CanEditInForm("blotterrecords")
+        End If
+    End Sub
 
     Private Function CreatePrintIcon() As Image
         Dim size As Integer = 28
