@@ -75,9 +75,10 @@ Partial Class reportsform
         Me.panelMain.Controls.Add(Me.btnCancel)
         Me.panelMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMain.Location = New System.Drawing.Point(0, 0)
+        Me.panelMain.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.panelMain.Name = "panelMain"
-        Me.panelMain.Padding = New System.Windows.Forms.Padding(10)
-        Me.panelMain.Size = New System.Drawing.Size(600, 560)
+        Me.panelMain.Padding = New System.Windows.Forms.Padding(13, 12, 13, 12)
+        Me.panelMain.Size = New System.Drawing.Size(800, 689)
         Me.panelMain.TabIndex = 0
         '
         'lblComplainantAddress
@@ -85,9 +86,10 @@ Partial Class reportsform
         Me.lblComplainantAddress.AutoSize = True
         Me.lblComplainantAddress.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblComplainantAddress.ForeColor = System.Drawing.Color.FromArgb(CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.lblComplainantAddress.Location = New System.Drawing.Point(35, 66)
+        Me.lblComplainantAddress.Location = New System.Drawing.Point(47, 81)
+        Me.lblComplainantAddress.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblComplainantAddress.Name = "lblComplainantAddress"
-        Me.lblComplainantAddress.Size = New System.Drawing.Size(131, 15)
+        Me.lblComplainantAddress.Size = New System.Drawing.Size(169, 20)
         Me.lblComplainantAddress.TabIndex = 0
         Me.lblComplainantAddress.Text = "Complainant's Address"
         '
@@ -95,9 +97,10 @@ Partial Class reportsform
         '
         Me.txtComplainantAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtComplainantAddress.Location = New System.Drawing.Point(37, 84)
+        Me.txtComplainantAddress.Location = New System.Drawing.Point(49, 103)
+        Me.txtComplainantAddress.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtComplainantAddress.Name = "txtComplainantAddress"
-        Me.txtComplainantAddress.Size = New System.Drawing.Size(525, 20)
+        Me.txtComplainantAddress.Size = New System.Drawing.Size(699, 22)
         Me.txtComplainantAddress.TabIndex = 2
         '
         'lblComplainantName
@@ -105,9 +108,10 @@ Partial Class reportsform
         Me.lblComplainantName.AutoSize = True
         Me.lblComplainantName.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblComplainantName.ForeColor = System.Drawing.Color.FromArgb(CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.lblComplainantName.Location = New System.Drawing.Point(35, 14)
+        Me.lblComplainantName.Location = New System.Drawing.Point(47, 17)
+        Me.lblComplainantName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblComplainantName.Name = "lblComplainantName"
-        Me.lblComplainantName.Size = New System.Drawing.Size(120, 15)
+        Me.lblComplainantName.Size = New System.Drawing.Size(154, 20)
         Me.lblComplainantName.TabIndex = 0
         Me.lblComplainantName.Text = "Complainant's Name"
         '
@@ -115,9 +119,10 @@ Partial Class reportsform
         '
         Me.txtComplainantName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtComplainantName.Location = New System.Drawing.Point(37, 32)
+        Me.txtComplainantName.Location = New System.Drawing.Point(49, 39)
+        Me.txtComplainantName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtComplainantName.Name = "txtComplainantName"
-        Me.txtComplainantName.Size = New System.Drawing.Size(525, 20)
+        Me.txtComplainantName.Size = New System.Drawing.Size(699, 22)
         Me.txtComplainantName.TabIndex = 1
         '
         'lblTypeOfIncident
@@ -125,9 +130,10 @@ Partial Class reportsform
         Me.lblTypeOfIncident.AutoSize = True
         Me.lblTypeOfIncident.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblTypeOfIncident.ForeColor = System.Drawing.Color.FromArgb(CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.lblTypeOfIncident.Location = New System.Drawing.Point(35, 118)
+        Me.lblTypeOfIncident.Location = New System.Drawing.Point(47, 145)
+        Me.lblTypeOfIncident.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTypeOfIncident.Name = "lblTypeOfIncident"
-        Me.lblTypeOfIncident.Size = New System.Drawing.Size(97, 15)
+        Me.lblTypeOfIncident.Size = New System.Drawing.Size(122, 20)
         Me.lblTypeOfIncident.TabIndex = 0
         Me.lblTypeOfIncident.Text = "Type of Incident"
         '
@@ -135,9 +141,10 @@ Partial Class reportsform
         '
         Me.txtTypeOfIncident.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtTypeOfIncident.Location = New System.Drawing.Point(37, 136)
+        Me.txtTypeOfIncident.Location = New System.Drawing.Point(49, 167)
+        Me.txtTypeOfIncident.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtTypeOfIncident.Name = "txtTypeOfIncident"
-        Me.txtTypeOfIncident.Size = New System.Drawing.Size(525, 20)
+        Me.txtTypeOfIncident.Size = New System.Drawing.Size(699, 22)
         Me.txtTypeOfIncident.TabIndex = 3
         '
         'lblInclusive
@@ -145,9 +152,10 @@ Partial Class reportsform
         Me.lblInclusive.AutoSize = True
         Me.lblInclusive.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblInclusive.ForeColor = System.Drawing.Color.FromArgb(CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.lblInclusive.Location = New System.Drawing.Point(35, 166)
+        Me.lblInclusive.Location = New System.Drawing.Point(47, 204)
+        Me.lblInclusive.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInclusive.Name = "lblInclusive"
-        Me.lblInclusive.Size = New System.Drawing.Size(198, 15)
+        Me.lblInclusive.Size = New System.Drawing.Size(252, 20)
         Me.lblInclusive.TabIndex = 0
         Me.lblInclusive.Text = "Inclusive Date and Time (From-To)"
         '
@@ -155,18 +163,20 @@ Partial Class reportsform
         '
         Me.dtpFrom.CustomFormat = "MMMM dd, yyyy  hh:mm tt"
         Me.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpFrom.Location = New System.Drawing.Point(37, 182)
+        Me.dtpFrom.Location = New System.Drawing.Point(49, 224)
+        Me.dtpFrom.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpFrom.Name = "dtpFrom"
-        Me.dtpFrom.Size = New System.Drawing.Size(206, 20)
+        Me.dtpFrom.Size = New System.Drawing.Size(273, 22)
         Me.dtpFrom.TabIndex = 4
         '
         'dtpTo
         '
         Me.dtpTo.CustomFormat = "MMMM dd, yyyy  hh:mm tt"
         Me.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpTo.Location = New System.Drawing.Point(248, 182)
+        Me.dtpTo.Location = New System.Drawing.Point(331, 224)
+        Me.dtpTo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.dtpTo.Name = "dtpTo"
-        Me.dtpTo.Size = New System.Drawing.Size(206, 20)
+        Me.dtpTo.Size = New System.Drawing.Size(273, 22)
         Me.dtpTo.TabIndex = 5
         '
         'lblExactLocation
@@ -174,9 +184,10 @@ Partial Class reportsform
         Me.lblExactLocation.AutoSize = True
         Me.lblExactLocation.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblExactLocation.ForeColor = System.Drawing.Color.FromArgb(CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.lblExactLocation.Location = New System.Drawing.Point(35, 214)
+        Me.lblExactLocation.Location = New System.Drawing.Point(47, 263)
+        Me.lblExactLocation.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblExactLocation.Name = "lblExactLocation"
-        Me.lblExactLocation.Size = New System.Drawing.Size(151, 15)
+        Me.lblExactLocation.Size = New System.Drawing.Size(190, 20)
         Me.lblExactLocation.TabIndex = 0
         Me.lblExactLocation.Text = "Exact Location of Incident"
         '
@@ -184,9 +195,10 @@ Partial Class reportsform
         '
         Me.txtExactLocation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtExactLocation.Location = New System.Drawing.Point(37, 230)
+        Me.txtExactLocation.Location = New System.Drawing.Point(49, 283)
+        Me.txtExactLocation.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtExactLocation.Name = "txtExactLocation"
-        Me.txtExactLocation.Size = New System.Drawing.Size(525, 20)
+        Me.txtExactLocation.Size = New System.Drawing.Size(699, 22)
         Me.txtExactLocation.TabIndex = 6
         '
         'lblInvolved
@@ -194,9 +206,10 @@ Partial Class reportsform
         Me.lblInvolved.AutoSize = True
         Me.lblInvolved.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblInvolved.ForeColor = System.Drawing.Color.FromArgb(CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.lblInvolved.Location = New System.Drawing.Point(35, 266)
+        Me.lblInvolved.Location = New System.Drawing.Point(47, 327)
+        Me.lblInvolved.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblInvolved.Name = "lblInvolved"
-        Me.lblInvolved.Size = New System.Drawing.Size(146, 15)
+        Me.lblInvolved.Size = New System.Drawing.Size(184, 20)
         Me.lblInvolved.TabIndex = 0
         Me.lblInvolved.Text = "Involved Person / Details"
         '
@@ -204,9 +217,10 @@ Partial Class reportsform
         '
         Me.txtInvolved.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtInvolved.Location = New System.Drawing.Point(37, 282)
+        Me.txtInvolved.Location = New System.Drawing.Point(49, 347)
+        Me.txtInvolved.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtInvolved.Name = "txtInvolved"
-        Me.txtInvolved.Size = New System.Drawing.Size(525, 20)
+        Me.txtInvolved.Size = New System.Drawing.Size(699, 22)
         Me.txtInvolved.TabIndex = 7
         '
         'lblNarrative
@@ -214,9 +228,10 @@ Partial Class reportsform
         Me.lblNarrative.AutoSize = True
         Me.lblNarrative.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.lblNarrative.ForeColor = System.Drawing.Color.FromArgb(CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.lblNarrative.Location = New System.Drawing.Point(35, 318)
+        Me.lblNarrative.Location = New System.Drawing.Point(47, 391)
+        Me.lblNarrative.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNarrative.Name = "lblNarrative"
-        Me.lblNarrative.Size = New System.Drawing.Size(124, 15)
+        Me.lblNarrative.Size = New System.Drawing.Size(155, 20)
         Me.lblNarrative.TabIndex = 0
         Me.lblNarrative.Text = "Narrative of Incident"
         '
@@ -224,11 +239,12 @@ Partial Class reportsform
         '
         Me.txtNarrative.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtNarrative.Location = New System.Drawing.Point(37, 334)
+        Me.txtNarrative.Location = New System.Drawing.Point(49, 411)
+        Me.txtNarrative.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtNarrative.Multiline = True
         Me.txtNarrative.Name = "txtNarrative"
         Me.txtNarrative.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtNarrative.Size = New System.Drawing.Size(525, 160)
+        Me.txtNarrative.Size = New System.Drawing.Size(699, 196)
         Me.txtNarrative.TabIndex = 8
         '
         'btnSubmit
@@ -242,9 +258,10 @@ Partial Class reportsform
         Me.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSubmit.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnSubmit.ForeColor = System.Drawing.Color.White
-        Me.btnSubmit.Location = New System.Drawing.Point(435, 510)
+        Me.btnSubmit.Location = New System.Drawing.Point(580, 628)
+        Me.btnSubmit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSubmit.Name = "btnSubmit"
-        Me.btnSubmit.Size = New System.Drawing.Size(94, 26)
+        Me.btnSubmit.Size = New System.Drawing.Size(125, 32)
         Me.btnSubmit.TabIndex = 11
         Me.btnSubmit.Text = "Submit"
         Me.btnSubmit.UseVisualStyleBackColor = False
@@ -260,9 +277,10 @@ Partial Class reportsform
         Me.btnSavePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSavePdf.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnSavePdf.ForeColor = System.Drawing.Color.White
-        Me.btnSavePdf.Location = New System.Drawing.Point(248, 510)
+        Me.btnSavePdf.Location = New System.Drawing.Point(236, 628)
+        Me.btnSavePdf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSavePdf.Name = "btnSavePdf"
-        Me.btnSavePdf.Size = New System.Drawing.Size(110, 26)
+        Me.btnSavePdf.Size = New System.Drawing.Size(147, 32)
         Me.btnSavePdf.TabIndex = 10
         Me.btnSavePdf.Text = "Save as PDF"
         Me.btnSavePdf.UseVisualStyleBackColor = False
@@ -278,9 +296,10 @@ Partial Class reportsform
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnCancel.ForeColor = System.Drawing.Color.Black
-        Me.btnCancel.Location = New System.Drawing.Point(69, 510)
+        Me.btnCancel.Location = New System.Drawing.Point(92, 628)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(86, 26)
+        Me.btnCancel.Size = New System.Drawing.Size(115, 32)
         Me.btnCancel.TabIndex = 9
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = False
@@ -313,11 +332,12 @@ Partial Class reportsform
         '
         'reportsform
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(600, 560)
+        Me.ClientSize = New System.Drawing.Size(800, 689)
         Me.Controls.Add(Me.panelMain)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.Name = "reportsform"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -346,7 +366,7 @@ Partial Class reportsform
 	Friend WithEvents txtNarrative As System.Windows.Forms.TextBox
     Friend WithEvents btnCancel As ligaya_bims.RoundedButton
     Friend WithEvents btnSavePdf As ligaya_bims.RoundedButton
-Friend WithEvents btnSubmit As ligaya_bims.RoundedButton
+    Friend WithEvents btnSubmit As ligaya_bims.RoundedButton
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
     Friend WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
     Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog

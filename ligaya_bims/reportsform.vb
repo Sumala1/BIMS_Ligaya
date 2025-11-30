@@ -3,6 +3,7 @@ Imports System.Text
 Imports System.Diagnostics
 Imports System.Drawing.Printing
 Imports System.Linq
+Imports System.Windows.Forms
 
 Partial Class reportsform
     Public Event IncidentSubmitted()
@@ -67,7 +68,7 @@ Partial Class reportsform
                 ' Ensure all values are trimmed and validated before inserting
                 Dim complainantName As String = txtComplainantName.Text.Trim()
                 Dim complainantAddress As String = txtComplainantAddress.Text.Trim()
-                
+
                 ' CRITICAL: Read type_of_incident value and verify it exists
                 Dim typeOfIncident As String = String.Empty
                 Try
@@ -76,21 +77,21 @@ Partial Class reportsform
                     MessageBox.Show("Error reading Type of Incident field: " & ex.Message, "Control Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Return False
                 End Try
-                
+
                 Dim location As String = txtExactLocation.Text.Trim()
                 Dim involvedPerson As String = txtInvolved.Text.Trim()
                 Dim narrative As String = txtNarrative.Text.Trim()
-                
+
                 ' CRITICAL: Verify type_of_incident has a value before proceeding
                 If String.IsNullOrEmpty(typeOfIncident) OrElse String.IsNullOrWhiteSpace(typeOfIncident) Then
                     MessageBox.Show("Type of Incident cannot be empty. Current value: '" & typeOfIncident & "' (Length: " & typeOfIncident.Length & ")", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                     txtTypeOfIncident.Focus()
                     Return False
                 End If
-                
+
                 ' Build SQL statement - use simple approach that matches working SQL query
                 Dim insertSql As String = "INSERT INTO tbl_blotter (complainant_name, complainant_address, type_of_incident, date_time, location_of_incident, involved_person, narrative_incident) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7)"
-                
+
                 Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(insertSql, conn)
                     ' Use simple AddWithValue - order is critical
                     cmd.Parameters.AddWithValue("@p1", complainantName)
@@ -100,7 +101,7 @@ Partial Class reportsform
                     cmd.Parameters.AddWithValue("@p5", location)
                     cmd.Parameters.AddWithValue("@p6", involvedPerson)
                     cmd.Parameters.AddWithValue("@p7", narrative)
-                    
+
                     ' Execute the command
                     cmd.ExecuteNonQuery()
                 End Using
@@ -184,28 +185,123 @@ Partial Class reportsform
         dtpFrom.Value = DateTime.Now.AddHours(-1)
         dtpTo.Value = DateTime.Now
         ApplyFixedWindowBounds()
-        ' Hide extra buttons to merge preview and print
 
+        ' Configure PrintDocument for Windows Print Dialog preview support
+        PrintDocument1.DocumentName = "Incident Report Form"
+
+        ' Ensure default page settings are configured
+        If PrintDocument1.DefaultPageSettings IsNot Nothing Then
+            PrintDocument1.DefaultPageSettings.Margins = New Printing.Margins(0, 0, 0, 0)
+            PrintDocument1.DefaultPageSettings.Landscape = False
+        End If
     End Sub
 
     Private Sub PrintDocument1_BeginPrint(sender As Object, e As System.Drawing.Printing.PrintEventArgs) Handles PrintDocument1.BeginPrint
+        ' CRITICAL: Ensure printer is set first - required for preview to work
+        If String.IsNullOrEmpty(PrintDocument1.PrinterSettings.PrinterName) Then
+            If Printing.PrinterSettings.InstalledPrinters.Count > 0 Then
+                PrintDocument1.PrinterSettings.PrinterName = Printing.PrinterSettings.InstalledPrinters(0)
+            End If
+        End If
+
+        ' Always set margins first - this is needed for both preview and print
         PrintDocument1.DefaultPageSettings.Margins = New Printing.Margins(0, 0, 0, 0)
+
+        ' Ensure page settings are properly configured for preview
+        PrintDocument1.DefaultPageSettings.Landscape = False
+        ' Set default paper size if not already set
+        If PrintDocument1.DefaultPageSettings.PaperSize Is Nothing OrElse
+           PrintDocument1.DefaultPageSettings.PaperSize.Kind = Printing.PaperKind.Custom Then
+            ' Use Letter size (8.5 x 11 inches) - 850 x 1100 in hundredths of an inch
+            Try
+                ' Ensure printer is set before accessing PaperSizes
+                If Not String.IsNullOrEmpty(PrintDocument1.PrinterSettings.PrinterName) Then
+                    For Each size As Printing.PaperSize In PrintDocument1.PrinterSettings.PaperSizes
+                        If size.Kind = Printing.PaperKind.Letter Then
+                            PrintDocument1.DefaultPageSettings.PaperSize = size
+                            Exit For
+                        End If
+                    Next
+                End If
+                ' If Letter not found, create a custom one
+                If PrintDocument1.DefaultPageSettings.PaperSize Is Nothing OrElse
+                   PrintDocument1.DefaultPageSettings.PaperSize.Kind = Printing.PaperKind.Custom Then
+                    PrintDocument1.DefaultPageSettings.PaperSize = New Printing.PaperSize("Letter", 850, 1100)
+                End If
+            Catch
+                ' If error, use default Letter size
+                Try
+                    PrintDocument1.DefaultPageSettings.PaperSize = New Printing.PaperSize("Letter", 850, 1100)
+                Catch
+                End Try
+            End Try
+        End If
+
+        ' Check if this is a preview (PreviewPrintController) - if so, don't interfere at all
+        Dim controller As PrintController = PrintDocument1.PrintController
+        Dim isPreview As Boolean = TypeOf controller Is PreviewPrintController
+
+        ' If this is a preview, just return - let it render normally
+        If isPreview Then
+            Return
+        End If
+    End Sub
+
+    Private Sub PrintDocument1_QueryPageSettings(sender As Object, e As System.Drawing.Printing.QueryPageSettingsEventArgs) Handles PrintDocument1.QueryPageSettings
+        ' Ensure printer settings are properly configured
+        If PrintDocument1.PrinterSettings Is Nothing OrElse String.IsNullOrEmpty(PrintDocument1.PrinterSettings.PrinterName) Then
+            ' Set default printer if none is selected
+            If Printing.PrinterSettings.InstalledPrinters.Count > 0 Then
+                PrintDocument1.PrinterSettings.PrinterName = Printing.PrinterSettings.InstalledPrinters(0)
+            End If
+        End If
     End Sub
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        Dim g As Graphics = e.Graphics
-        g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+        Try
+            Dim g As Graphics = e.Graphics
+            If g Is Nothing Then
+                e.Cancel = True
+                Return
+            End If
 
-        Dim pageRect As Rectangle = e.PageBounds
-        Dim margin As Integer = 50
+            g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
-        ' Fill white background
-        g.FillRectangle(Brushes.White, pageRect)
+            Dim pageRect As Rectangle = e.PageBounds
 
-        ' Draw the exact form layout as shown in the image
-        DrawIncidentReportForm(g, pageRect, margin)
+            ' Ensure page bounds are valid
+            If pageRect.Width <= 0 OrElse pageRect.Height <= 0 Then
+                ' Use default page size if invalid
+                pageRect = New Rectangle(0, 0, 850, 1100) ' Letter size in hundredths of an inch
+            End If
 
-        e.HasMorePages = False
+            Dim margin As Integer = 50
+
+            ' Fill white background
+            g.FillRectangle(Brushes.White, pageRect)
+
+            ' Draw the exact form layout as shown in the image
+            DrawIncidentReportForm(g, pageRect, margin)
+
+            e.HasMorePages = False
+        Catch ex As Exception
+            ' If there's an error, at least draw something so the preview isn't empty
+            Try
+                Dim g As Graphics = e.Graphics
+                If g IsNot Nothing Then
+                    Dim errorFont As New Font("Arial", 12, FontStyle.Regular)
+                    Dim pageRect As Rectangle = e.PageBounds
+                    If pageRect.Width <= 0 OrElse pageRect.Height <= 0 Then
+                        pageRect = New Rectangle(0, 0, 850, 1100)
+                    End If
+                    g.FillRectangle(Brushes.White, pageRect)
+                    g.DrawString("Error rendering preview: " & ex.Message, errorFont, Brushes.Red,
+                                New RectangleF(50, 50, pageRect.Width - 100, 100))
+                End If
+            Catch
+            End Try
+            e.HasMorePages = False
+        End Try
     End Sub
 
     Private Sub DrawIncidentReportForm(g As Graphics, pageRect As Rectangle, margin As Integer)
@@ -367,31 +463,6 @@ Partial Class reportsform
         Return New RectangleF(x, y, w, h)
     End Function
 
-    Private Sub btnPreview_Click(sender As Object, e As EventArgs)
-        Try
-            ' Configure the print preview dialog
-            PrintPreviewDialog1.Document = PrintDocument1
-            PrintPreviewDialog1.WindowState = FormWindowState.Maximized
-            PrintPreviewDialog1.StartPosition = FormStartPosition.CenterScreen
-
-            ' Show the print preview dialog
-            PrintPreviewDialog1.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show("Error showing print preview: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
-        ' Merged flow: show preview dialog which has built-in print button
-        Try
-            PrintPreviewDialog1.Document = PrintDocument1
-            PrintPreviewDialog1.WindowState = FormWindowState.Maximized
-            PrintPreviewDialog1.StartPosition = FormStartPosition.CenterScreen
-            PrintPreviewDialog1.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show("Error showing print preview: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
 
     Private Sub btnPageSetup_Click(sender As Object, e As EventArgs)
         PageSetupDialog1.Document = PrintDocument1
@@ -406,5 +477,50 @@ Partial Class reportsform
     Private Sub txtTypeOfIncident_TextChanged(sender As Object, e As EventArgs) Handles txtTypeOfIncident.TextChanged
 
     End Sub
+
 End Class
+
+' Custom PrintController that intercepts print and shows Windows Print Dialog with preview
+Public Class PrintWithDialogController
+    Inherits StandardPrintController
+
+    Private parentForm As Form
+    Private printDialog As PrintDialog
+    Private documentToPrint As PrintDocument
+
+    Public Sub New(form As Form, dialog As PrintDialog, doc As PrintDocument)
+        parentForm = form
+        printDialog = dialog
+        documentToPrint = doc
+    End Sub
+
+    Public Overrides Sub OnStartPrint(document As PrintDocument, e As PrintEventArgs)
+        ' Show Windows Print Dialog before starting to print
+        ' This allows Windows to generate the preview by calling PrintPage
+        ' Configure the dialog
+        printDialog.Document = documentToPrint
+        printDialog.UseEXDialog = True
+        printDialog.AllowSomePages = True
+        printDialog.AllowSelection = False
+
+        ' Show the dialog - Windows will call PrintPage to generate preview
+        Dim dialogResult As DialogResult = DialogResult.Cancel
+        If parentForm.InvokeRequired Then
+            parentForm.Invoke(New Action(Sub() dialogResult = printDialog.ShowDialog()))
+        Else
+            dialogResult = printDialog.ShowDialog()
+        End If
+
+        If dialogResult <> DialogResult.OK Then
+            ' User cancelled, cancel the print
+            e.Cancel = True
+            Return
+        End If
+
+        ' User clicked OK, proceed with printing using the settings from the dialog
+        ' The document's printer settings are now updated from the dialog
+        MyBase.OnStartPrint(document, e)
+    End Sub
+End Class
+
 
