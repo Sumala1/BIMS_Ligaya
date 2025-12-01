@@ -61,6 +61,16 @@ Public Class Form1
                                 ' Password matches - initialize session
                                 UserSession.InitializeSession(userID, username, roleName, roleID, fullName)
 
+                                ' Handle Remember Me preference
+                                If chkRemember.Checked Then
+                                    My.Settings.RememberMe = True
+                                    My.Settings.SavedUsername = username
+                                Else
+                                    My.Settings.RememberMe = False
+                                    My.Settings.SavedUsername = String.Empty
+                                End If
+                                My.Settings.Save()
+
                                 ' Show welcome message with role
                                 Dim welcomeMsg As String = $"Login successful! Welcome {fullName} ({roleName})!"
                                 MessageBox.Show(welcomeMsg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -128,9 +138,17 @@ Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Username placeholder
-        txtUsername.Text = "Enter your username"
-        txtUsername.ForeColor = Color.Gray
+        ' Load remembered username if enabled
+        If My.Settings.RememberMe AndAlso Not String.IsNullOrWhiteSpace(My.Settings.SavedUsername) Then
+            txtUsername.Text = My.Settings.SavedUsername
+            txtUsername.ForeColor = Color.Black
+            chkRemember.Checked = True
+        Else
+            ' Username placeholder
+            txtUsername.Text = "Enter your username"
+            txtUsername.ForeColor = Color.Gray
+            chkRemember.Checked = False
+        End If
 
         ' Password placeholder - NO PasswordChar initially
         txtPassword.Text = "Enter your password"

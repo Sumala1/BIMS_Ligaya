@@ -47,7 +47,7 @@ Namespace Global.ligaya_bims
             Return False
         End Function
 
-        Protected Overrides Sub OnPaint(pevent As PaintEventArgs)
+    Protected Overrides Sub OnPaint(pevent As PaintEventArgs)
             Dim w As Integer = Width
             Dim h As Integer = Height
             If w <= 0 OrElse h <= 0 Then
@@ -83,10 +83,10 @@ Namespace Global.ligaya_bims
             Return path
         End Function
 
-        Protected Overrides Sub OnResize(e As EventArgs)
-            MyBase.OnResize(e)
-            Invalidate()
-        End Sub
-    End Class
+    Protected Overrides Sub OnResize(e As EventArgs)
+        MyBase.OnResize(e)
+        Invalidate()
+    End Sub
+End Class
 End Namespace
 

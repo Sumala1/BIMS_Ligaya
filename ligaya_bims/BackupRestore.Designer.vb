@@ -215,5 +215,5 @@ Partial Class BackupRestore
     Private WithEvents lblSubtitle As System.Windows.Forms.Label
     Private WithEvents lblTitle As System.Windows.Forms.Label
     Private WithEvents pnlContent As System.Windows.Forms.Panel
-    Private WithEvents btnBlotterRecords As RoundedButton
+    Private WithEvents btnBlotterRecords As ligaya_bims.RoundedButton
 End Class
