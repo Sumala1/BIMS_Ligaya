@@ -1134,42 +1134,42 @@ Partial Class dashboard
     Friend WithEvents PictureBox9 As PictureBox
     Friend WithEvents Label13 As Label
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents panelResidents As RoundedPanel
+    Friend WithEvents panelResidents As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents lblResidentsMore As Label
     Friend WithEvents lblResidentsTitle As Label
     Friend WithEvents lblResidentsCount As Label
-    Friend WithEvents panelBlotter As RoundedPanel
+    Friend WithEvents panelBlotter As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents lblBlotterMore As Label
     Friend WithEvents lblBlotterTitle As Label
     Friend WithEvents lblBlotterCount As Label
-    Friend WithEvents panelCertificates As RoundedPanel
+    Friend WithEvents panelCertificates As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents lblCertificatesMore As Label
     Friend WithEvents lblCertificatesTitle As Label
     Friend WithEvents lblCertificatesCount As Label
-    Friend WithEvents panelOfficials As RoundedPanel
+    Friend WithEvents panelOfficials As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents lblOfficialsMore As Label
     Friend WithEvents lblOfficialsTitle As Label
     Friend WithEvents lblOfficialsCount As Label
-    Friend WithEvents Panel1 As RoundedPanel
+    Friend WithEvents Panel1 As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents Panel2 As RoundedPanel
+    Friend WithEvents Panel2 As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox7 As PictureBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents Panel3 As RoundedPanel
+    Friend WithEvents Panel3 As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents Panel4 As RoundedPanel
+    Friend WithEvents Panel4 As ligaya_bims.RoundedPanel
     Friend WithEvents PictureBox5 As PictureBox
     Friend WithEvents Label10 As Label
     Friend WithEvents Label11 As Label

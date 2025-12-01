@@ -27,9 +27,9 @@ Partial Class Form1
         Me.leftPanel = New System.Windows.Forms.Panel()
         Me.picLogo = New System.Windows.Forms.PictureBox()
         Me.rightPanel = New System.Windows.Forms.Panel()
-        Me.card = New System.Windows.Forms.Panel()
+        Me.card = New ligaya_bims.RoundedPanel()
+        Me.chkRemember = New System.Windows.Forms.CheckBox()
         Me.btnLogin = New ligaya_bims.RoundedButton()
-        Me.lnkForgot = New System.Windows.Forms.LinkLabel()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.txtUsername = New System.Windows.Forms.TextBox()
         Me.lblTitle = New System.Windows.Forms.Label()
@@ -73,8 +73,11 @@ Partial Class Form1
         'card
         '
         Me.card.BackColor = System.Drawing.Color.FromArgb(CType(CType(46, Byte), Integer), CType(CType(125, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.card.BorderColor = System.Drawing.Color.Empty
+        Me.card.BorderRadius = 40
+        Me.card.BorderThickness = 0
+        Me.card.Controls.Add(Me.chkRemember)
         Me.card.Controls.Add(Me.btnLogin)
-        Me.card.Controls.Add(Me.lnkForgot)
         Me.card.Controls.Add(Me.txtPassword)
         Me.card.Controls.Add(Me.txtUsername)
         Me.card.Controls.Add(Me.lblTitle)
@@ -83,6 +86,18 @@ Partial Class Form1
         Me.card.Size = New System.Drawing.Size(420, 360)
         Me.card.TabIndex = 0
         '
+        'chkRemember
+        '
+        Me.chkRemember.AutoSize = True
+        Me.chkRemember.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkRemember.ForeColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(30, Byte), Integer))
+        Me.chkRemember.Location = New System.Drawing.Point(49, 192)
+        Me.chkRemember.Name = "chkRemember"
+        Me.chkRemember.Size = New System.Drawing.Size(109, 19)
+        Me.chkRemember.TabIndex = 3
+        Me.chkRemember.Text = "Remember me!"
+        Me.chkRemember.UseVisualStyleBackColor = True
+        '
         'btnLogin
         '
         Me.btnLogin.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
@@ -90,25 +105,12 @@ Partial Class Form1
         Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogin.Font = New System.Drawing.Font("Segoe UI Semibold", 10.5!, System.Drawing.FontStyle.Bold)
         Me.btnLogin.ForeColor = System.Drawing.Color.Transparent
-        Me.btnLogin.Location = New System.Drawing.Point(120, 232)
+        Me.btnLogin.Location = New System.Drawing.Point(120, 236)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(180, 44)
         Me.btnLogin.TabIndex = 4
         Me.btnLogin.Text = "Log in"
         Me.btnLogin.UseVisualStyleBackColor = False
-        '
-        'lnkForgot
-        '
-        Me.lnkForgot.ActiveLinkColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
-        Me.lnkForgot.AutoSize = True
-        Me.lnkForgot.DisabledLinkColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
-        Me.lnkForgot.LinkColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.lnkForgot.Location = New System.Drawing.Point(47, 190)
-        Me.lnkForgot.Name = "lnkForgot"
-        Me.lnkForgot.Size = New System.Drawing.Size(144, 17)
-        Me.lnkForgot.TabIndex = 3
-        Me.lnkForgot.TabStop = True
-        Me.lnkForgot.Text = "Forgot your password?"
         '
         'txtPassword
         '
@@ -163,11 +165,11 @@ Partial Class Form1
 
     Friend WithEvents leftPanel As System.Windows.Forms.Panel
     Friend WithEvents rightPanel As System.Windows.Forms.Panel
-    Friend WithEvents card As System.Windows.Forms.Panel
+    Friend WithEvents card As ligaya_bims.RoundedPanel
     Friend WithEvents lblTitle As System.Windows.Forms.Label
     Friend WithEvents txtUsername As System.Windows.Forms.TextBox
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
-    Friend WithEvents lnkForgot As System.Windows.Forms.LinkLabel
     Friend WithEvents btnLogin As ligaya_bims.RoundedButton
     Friend WithEvents picLogo As System.Windows.Forms.PictureBox
+    Friend WithEvents chkRemember As System.Windows.Forms.CheckBox
 End Class

@@ -801,11 +801,11 @@ Partial Class residentinfo
 
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents panelLeft As Panel
-    Friend WithEvents Button1 As RoundedButton
+    Friend WithEvents Button1 As ligaya_bims.RoundedButton
     Friend WithEvents Label1 As Label
     Friend WithEvents lblTitle As Label
     Friend WithEvents lblShowEntries As Label
-    Friend WithEvents btnNewResidentApp As RoundedButton
+    Friend WithEvents btnNewResidentApp As ligaya_bims.RoundedButton
     Friend WithEvents txtSearch As TextBox
     Friend WithEvents dgvResidents As DataGridView
     Friend WithEvents panelRight As Panel
@@ -845,7 +845,7 @@ Partial Class residentinfo
     Friend WithEvents lblLastName As Label
     Friend WithEvents picProfile As PictureBox
     Friend WithEvents lblInfoTitle As Label
-    Friend WithEvents btnUpdate As RoundedButton
+    Friend WithEvents btnUpdate As ligaya_bims.RoundedButton
     Friend WithEvents colID As DataGridViewTextBoxColumn
     Friend WithEvents colLastName As DataGridViewTextBoxColumn
     Friend WithEvents colFirstName As DataGridViewTextBoxColumn
