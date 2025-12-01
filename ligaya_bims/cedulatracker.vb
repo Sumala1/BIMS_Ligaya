@@ -98,14 +98,20 @@ Partial Class cedulatracker
 		If cedulaTable Is Nothing Then Return
 		Dim term As String = txtSearch.Text.Trim().ToLowerInvariant()
 		Dim view As DataView = cedulaTable.DefaultView
-		Select Case cmbFilter.SelectedIndex
-			Case 0 ' CTC Number
-				view.RowFilter = If(term = "", "", $"CONVERT(ctcnumber, 'System.String') LIKE '%{term.Replace("'", "''")}%' ")
-			Case 1 ' Full Name
-				view.RowFilter = If(term = "", "", $"fullname LIKE '%{term.Replace("'", "''")}%' ")
-			Case 2 ' Date Issued
-				view.RowFilter = If(term = "", "", $"CONVERT(dateissued, 'System.String') LIKE '%{term.Replace("'", "''")}%' ")
-		End Select
+		
+		' If search term is empty, show all records by clearing the filter
+		If String.IsNullOrWhiteSpace(term) Then
+			view.RowFilter = ""
+		Else
+			Select Case cmbFilter.SelectedIndex
+				Case 0 ' CTC Number
+					view.RowFilter = $"CONVERT(ctcnumber, 'System.String') LIKE '%{term.Replace("'", "''")}%' "
+				Case 1 ' Full Name
+					view.RowFilter = $"fullname LIKE '%{term.Replace("'", "''")}%' "
+				Case 2 ' Date Issued
+					view.RowFilter = $"CONVERT(dateissued, 'System.String') LIKE '%{term.Replace("'", "''")}%' "
+			End Select
+		End If
 		BindGrid(view.ToTable())
 	End Sub
 

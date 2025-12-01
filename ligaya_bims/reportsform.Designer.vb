@@ -75,7 +75,7 @@ Partial Class reportsform
         Me.panelMain.Controls.Add(Me.btnCancel)
         Me.panelMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelMain.Location = New System.Drawing.Point(0, 0)
-        Me.panelMain.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.panelMain.Margin = New System.Windows.Forms.Padding(4)
         Me.panelMain.Name = "panelMain"
         Me.panelMain.Padding = New System.Windows.Forms.Padding(13, 12, 13, 12)
         Me.panelMain.Size = New System.Drawing.Size(800, 689)
@@ -98,7 +98,7 @@ Partial Class reportsform
         Me.txtComplainantAddress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtComplainantAddress.Location = New System.Drawing.Point(49, 103)
-        Me.txtComplainantAddress.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtComplainantAddress.Margin = New System.Windows.Forms.Padding(4)
         Me.txtComplainantAddress.Name = "txtComplainantAddress"
         Me.txtComplainantAddress.Size = New System.Drawing.Size(699, 22)
         Me.txtComplainantAddress.TabIndex = 2
@@ -120,7 +120,7 @@ Partial Class reportsform
         Me.txtComplainantName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtComplainantName.Location = New System.Drawing.Point(49, 39)
-        Me.txtComplainantName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtComplainantName.Margin = New System.Windows.Forms.Padding(4)
         Me.txtComplainantName.Name = "txtComplainantName"
         Me.txtComplainantName.Size = New System.Drawing.Size(699, 22)
         Me.txtComplainantName.TabIndex = 1
@@ -142,7 +142,7 @@ Partial Class reportsform
         Me.txtTypeOfIncident.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTypeOfIncident.Location = New System.Drawing.Point(49, 167)
-        Me.txtTypeOfIncident.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtTypeOfIncident.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTypeOfIncident.Name = "txtTypeOfIncident"
         Me.txtTypeOfIncident.Size = New System.Drawing.Size(699, 22)
         Me.txtTypeOfIncident.TabIndex = 3
@@ -164,7 +164,7 @@ Partial Class reportsform
         Me.dtpFrom.CustomFormat = "MMMM dd, yyyy  hh:mm tt"
         Me.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpFrom.Location = New System.Drawing.Point(49, 224)
-        Me.dtpFrom.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpFrom.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpFrom.Name = "dtpFrom"
         Me.dtpFrom.Size = New System.Drawing.Size(273, 22)
         Me.dtpFrom.TabIndex = 4
@@ -174,7 +174,7 @@ Partial Class reportsform
         Me.dtpTo.CustomFormat = "MMMM dd, yyyy  hh:mm tt"
         Me.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpTo.Location = New System.Drawing.Point(331, 224)
-        Me.dtpTo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.dtpTo.Margin = New System.Windows.Forms.Padding(4)
         Me.dtpTo.Name = "dtpTo"
         Me.dtpTo.Size = New System.Drawing.Size(273, 22)
         Me.dtpTo.TabIndex = 5
@@ -196,7 +196,7 @@ Partial Class reportsform
         Me.txtExactLocation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtExactLocation.Location = New System.Drawing.Point(49, 283)
-        Me.txtExactLocation.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtExactLocation.Margin = New System.Windows.Forms.Padding(4)
         Me.txtExactLocation.Name = "txtExactLocation"
         Me.txtExactLocation.Size = New System.Drawing.Size(699, 22)
         Me.txtExactLocation.TabIndex = 6
@@ -218,7 +218,7 @@ Partial Class reportsform
         Me.txtInvolved.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtInvolved.Location = New System.Drawing.Point(49, 347)
-        Me.txtInvolved.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtInvolved.Margin = New System.Windows.Forms.Padding(4)
         Me.txtInvolved.Name = "txtInvolved"
         Me.txtInvolved.Size = New System.Drawing.Size(699, 22)
         Me.txtInvolved.TabIndex = 7
@@ -240,7 +240,7 @@ Partial Class reportsform
         Me.txtNarrative.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtNarrative.Location = New System.Drawing.Point(49, 411)
-        Me.txtNarrative.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtNarrative.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNarrative.Multiline = True
         Me.txtNarrative.Name = "txtNarrative"
         Me.txtNarrative.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -259,7 +259,7 @@ Partial Class reportsform
         Me.btnSubmit.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnSubmit.ForeColor = System.Drawing.Color.White
         Me.btnSubmit.Location = New System.Drawing.Point(580, 628)
-        Me.btnSubmit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSubmit.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSubmit.Name = "btnSubmit"
         Me.btnSubmit.Size = New System.Drawing.Size(125, 32)
         Me.btnSubmit.TabIndex = 11
@@ -277,8 +277,8 @@ Partial Class reportsform
         Me.btnSavePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSavePdf.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnSavePdf.ForeColor = System.Drawing.Color.White
-        Me.btnSavePdf.Location = New System.Drawing.Point(236, 628)
-        Me.btnSavePdf.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnSavePdf.Location = New System.Drawing.Point(321, 628)
+        Me.btnSavePdf.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSavePdf.Name = "btnSavePdf"
         Me.btnSavePdf.Size = New System.Drawing.Size(147, 32)
         Me.btnSavePdf.TabIndex = 10
@@ -297,7 +297,7 @@ Partial Class reportsform
         Me.btnCancel.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.btnCancel.ForeColor = System.Drawing.Color.Black
         Me.btnCancel.Location = New System.Drawing.Point(92, 628)
-        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(115, 32)
         Me.btnCancel.TabIndex = 9
@@ -337,7 +337,7 @@ Partial Class reportsform
         Me.ClientSize = New System.Drawing.Size(800, 689)
         Me.Controls.Add(Me.panelMain)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "reportsform"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

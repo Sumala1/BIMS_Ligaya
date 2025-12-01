@@ -262,7 +262,8 @@ Public Class blotterrecords
                                 involvedPerson,
                                 narrative,
                                 editIcon,
-                                deleteIcon
+                                deleteIcon,
+                                printIcon
                             )
                             Dim rowReference = dgvBlotterRecords.Rows(rowIndex)
                             rowReference.Cells("CaseNumber").Tag = caseNumberValue
@@ -313,24 +314,40 @@ Public Class blotterrecords
                         End If
 
                         While reader.Read()
+                            ' Read time values directly
+                            Dim startTimeValue As TimeSpan = ReadTimeValue(reader, 2)
+                            Dim endTimeValue As TimeSpan = ReadTimeValue(reader, 3)
+                            
                             Dim record As New ScheduleRecord() With {
                                 .CaseNumber = caseNumberValue.Value,
                                 .SummonLevel = If(reader.IsDBNull(0) OrElse reader.FieldCount <= 0, String.Empty, reader.GetString(0)),
                                 .CaseDate = If(reader.IsDBNull(1) OrElse reader.FieldCount <= 1, Date.MinValue, reader.GetDateTime(1)),
-                                .StartTime = If(reader.IsDBNull(2) OrElse reader.FieldCount <= 2, TimeSpan.Zero, ReadTimeValue(reader, 2)),
-                                .EndTime = If(reader.IsDBNull(3) OrElse reader.FieldCount <= 3, TimeSpan.Zero, ReadTimeValue(reader, 3)),
+                                .StartTime = startTimeValue,
+                                .EndTime = endTimeValue,
                                 .SettlementStatus = If(reader.IsDBNull(4) OrElse reader.FieldCount <= 4, String.Empty, reader.GetString(4))
                             }
+
+                            ' Format times for display
+                            Dim startTimeDisplay As String = FormatTime(record.StartTime)
+                            Dim endTimeDisplay As String = FormatTime(record.EndTime)
 
                             ' Add row with all columns including Column1 (CaseNumber)
                             Dim rowIndex = dgvSchedule.Rows.Add(
                                 FormatCaseNumberValue(caseNumberValue.Value),  ' Column1 - CaseNumber (hidden)
                                 record.SummonLevel,                            ' colSummonLevel
                                 FormatCaseDate(record.CaseDate),               ' colCaseDate
-                                FormatTime(record.StartTime),                  ' colStartTime
-                                FormatTime(record.EndTime),                    ' colEndTime
+                                startTimeDisplay,                              ' colStartTime
+                                endTimeDisplay,                                ' colEndTime
                                 record.SettlementStatus                         ' colSettlementStatus
                             )
+
+                            ' Ensure the time values are set correctly in the cells
+                            If dgvSchedule.Columns.Contains("colStartTime") Then
+                                dgvSchedule.Rows(rowIndex).Cells("colStartTime").Value = startTimeDisplay
+                            End If
+                            If dgvSchedule.Columns.Contains("colEndTime") Then
+                                dgvSchedule.Rows(rowIndex).Cells("colEndTime").Value = endTimeDisplay
+                            End If
 
                             dgvSchedule.Rows(rowIndex).Tag = record
                         End While
@@ -506,8 +523,11 @@ Public Class blotterrecords
             Return
         End If
 
-        ' Search will be triggered on Enter key, not on text change
-        ' This prevents searching on every keystroke
+        ' Auto-refresh when search text is cleared
+        ' If search text is empty, automatically refresh to show all records
+        If String.IsNullOrWhiteSpace(txtSearch.Text) Then
+            PerformSearch()
+        End If
     End Sub
 
     Private Sub txtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSearch.KeyDown
@@ -732,10 +752,73 @@ Public Class blotterrecords
     End Sub
 
     Private Sub PrintBlotterRecord(row As DataGridViewRow)
-        Dim caseNumberValue As Integer? = GetCaseNumberFromRow(row)
-        Dim displayCaseNumber As String = If(caseNumberValue.HasValue, FormatCaseNumberValue(caseNumberValue.Value), "N/A")
-        MessageBox.Show(String.Format("Print functionality for Case #{0} will be implemented here.", displayCaseNumber), "Print Blotter", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Try
+            Dim caseNumberValue As Integer? = GetCaseNumberFromRow(row)
+            If Not caseNumberValue.HasValue Then
+                MessageBox.Show("Unable to retrieve case number for this record.", "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            ' Load full record data from database
+            Dim recordData As BlotterRecordData = LoadBlotterRecordData(caseNumberValue.Value)
+            If String.IsNullOrEmpty(recordData.CaseNumber) Then
+                MessageBox.Show("Unable to load record data for printing.", "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            ' Show print preview form
+            Using printForm As New BlotterPrintPreviewForm(recordData)
+                printForm.ShowDialog()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error opening print preview: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
+
+    Private Function LoadBlotterRecordData(caseNumber As Integer) As BlotterRecordData
+        Dim data As New BlotterRecordData()
+        data.CaseNumber = FormatCaseNumberValue(caseNumber)
+
+        Try
+            Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
+                conn.Open()
+                Dim sql As String = "SELECT complainant_name, complainant_address, type_of_incident, date_time, location_of_incident, involved_person, narrative_incident FROM tbl_blotter WHERE case_number = @caseNumber"
+                
+                Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(sql, conn)
+                    cmd.Parameters.AddWithValue("@caseNumber", caseNumber)
+                    
+                    Using reader As Global.MySql.Data.MySqlClient.MySqlDataReader = cmd.ExecuteReader()
+                        If reader.Read() Then
+                            data.ComplainantName = If(reader.IsDBNull(0), String.Empty, reader.GetString(0))
+                            data.ComplainantAddress = If(reader.IsDBNull(1), String.Empty, reader.GetString(1))
+                            data.TypeOfIncident = If(reader.IsDBNull(2), String.Empty, reader.GetString(2))
+                            
+                            ' Read date_time
+                            If Not reader.IsDBNull(3) Then
+                                Try
+                                    data.IncidentDate = reader.GetDateTime(3)
+                                Catch
+                                    Dim dateStr As String = reader.GetString(3)
+                                    Dim parsedDate As DateTime
+                                    If DateTime.TryParse(dateStr, parsedDate) Then
+                                        data.IncidentDate = parsedDate
+                                    End If
+                                End Try
+                            End If
+                            
+                            data.Location = If(reader.IsDBNull(4), String.Empty, reader.GetString(4))
+                            data.InvolvedPerson = If(reader.IsDBNull(5), String.Empty, reader.GetString(5))
+                            data.Narrative = If(reader.IsDBNull(6), String.Empty, reader.GetString(6))
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error loading record data: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return data
+    End Function
 
     Private Function ReadIncidentDate(value As Object) As System.Nullable(Of Date)
         If value Is Nothing OrElse Convert.IsDBNull(value) Then
@@ -799,8 +882,13 @@ Public Class blotterrecords
                 cmd.Parameters.AddWithValue("@caseNumber", schedule.CaseNumber)
                 cmd.Parameters.AddWithValue("@summonLevel", schedule.SummonLevel)
                 cmd.Parameters.AddWithValue("@caseDate", schedule.CaseDate)
-                cmd.Parameters.AddWithValue("@startTime", schedule.StartTime)
-                cmd.Parameters.AddWithValue("@endTime", schedule.EndTime)
+                ' Format TimeSpan as string for MySQL TIME type (HH:mm:ss format)
+                Dim startTimeParam As New Global.MySql.Data.MySqlClient.MySqlParameter("@startTime", Global.MySql.Data.MySqlClient.MySqlDbType.Time)
+                startTimeParam.Value = schedule.StartTime
+                cmd.Parameters.Add(startTimeParam)
+                Dim endTimeParam As New Global.MySql.Data.MySqlClient.MySqlParameter("@endTime", Global.MySql.Data.MySqlClient.MySqlDbType.Time)
+                endTimeParam.Value = schedule.EndTime
+                cmd.Parameters.Add(endTimeParam)
                 cmd.Parameters.AddWithValue("@settlementStatus", If(String.IsNullOrEmpty(schedule.SettlementStatus), "Pending", schedule.SettlementStatus))
                 cmd.ExecuteNonQuery()
             End Using
@@ -810,22 +898,27 @@ Public Class blotterrecords
     Private Sub UpdateSchedule(originalRecord As ScheduleRecord, updatedRecord As ScheduleRecord)
         Using conn As Global.MySql.Data.MySqlClient.MySqlConnection = Database.CreateConnection()
             conn.Open()
+            ' Use a more reliable WHERE clause - match on case_number, summon_level, and case_date
+            ' This avoids issues with TimeSpan precision matching in MySQL
             Dim sql As String =
                 "UPDATE tbl_blotter_schedule " &
                 "SET summon_level = @newSummonLevel, case_date = @newCaseDate, start_time = @newStartTime, end_time = @newEndTime, settlement_status = @newSettlementStatus " &
-                "WHERE case_number = @caseNumber AND summon_level = @oldSummonLevel AND case_date = @oldCaseDate AND start_time = @oldStartTime AND end_time = @oldEndTime LIMIT 1"
+                "WHERE case_number = @caseNumber AND summon_level = @oldSummonLevel AND case_date = @oldCaseDate LIMIT 1"
 
             Using cmd As New Global.MySql.Data.MySqlClient.MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@newSummonLevel", updatedRecord.SummonLevel)
                 cmd.Parameters.AddWithValue("@newCaseDate", updatedRecord.CaseDate)
-                cmd.Parameters.AddWithValue("@newStartTime", updatedRecord.StartTime)
-                cmd.Parameters.AddWithValue("@newEndTime", updatedRecord.EndTime)
+                ' Format TimeSpan as string for MySQL TIME type (HH:mm:ss format)
+                Dim newStartTimeParam As New Global.MySql.Data.MySqlClient.MySqlParameter("@newStartTime", Global.MySql.Data.MySqlClient.MySqlDbType.Time)
+                newStartTimeParam.Value = updatedRecord.StartTime
+                cmd.Parameters.Add(newStartTimeParam)
+                Dim newEndTimeParam As New Global.MySql.Data.MySqlClient.MySqlParameter("@newEndTime", Global.MySql.Data.MySqlClient.MySqlDbType.Time)
+                newEndTimeParam.Value = updatedRecord.EndTime
+                cmd.Parameters.Add(newEndTimeParam)
                 cmd.Parameters.AddWithValue("@newSettlementStatus", If(String.IsNullOrEmpty(updatedRecord.SettlementStatus), "Pending", updatedRecord.SettlementStatus))
                 cmd.Parameters.AddWithValue("@caseNumber", originalRecord.CaseNumber)
                 cmd.Parameters.AddWithValue("@oldSummonLevel", originalRecord.SummonLevel)
                 cmd.Parameters.AddWithValue("@oldCaseDate", originalRecord.CaseDate)
-                cmd.Parameters.AddWithValue("@oldStartTime", originalRecord.StartTime)
-                cmd.Parameters.AddWithValue("@oldEndTime", originalRecord.EndTime)
 
                 Dim affected = cmd.ExecuteNonQuery()
                 If affected = 0 Then
@@ -860,43 +953,117 @@ Public Class blotterrecords
         Try
             ' Check if ordinal is valid
             If ordinal < 0 OrElse ordinal >= reader.FieldCount Then
-                Return New TimeSpan(0)
+                Return TimeSpan.Zero
             End If
 
             ' Check if value is null
             If reader.IsDBNull(ordinal) Then
-                Return New TimeSpan(0)
+                Return TimeSpan.Zero
+            End If
+
+            ' First, try GetTimeSpan which should work for MySQL TIME type
+            Try
+                Dim timeSpanValue As TimeSpan = reader.GetTimeSpan(ordinal)
+                ' If successful and not zero, return it
+                If timeSpanValue <> TimeSpan.Zero Then
+                    Return timeSpanValue
+                End If
+            Catch
+                ' If GetTimeSpan fails, try other methods
+            End Try
+
+            ' Try getting the raw value and parse it
+            Dim rawValue As Object = reader.GetValue(ordinal)
+            If rawValue Is Nothing Then
+                Return TimeSpan.Zero
             End If
 
             Dim fieldType = reader.GetFieldType(ordinal)
+            
+            ' Handle TimeSpan type directly
             If fieldType Is GetType(TimeSpan) Then
-                Return reader.GetTimeSpan(ordinal)
+                Try
+                    Dim ts As TimeSpan = CType(rawValue, TimeSpan)
+                    If ts <> TimeSpan.Zero Then
+                        Return ts
+                    End If
+                Catch
+                End Try
             End If
 
+            ' Handle DateTime type (extract time portion)
             If fieldType Is GetType(DateTime) Then
-                Return reader.GetDateTime(ordinal).TimeOfDay
+                Try
+                    Dim dt As DateTime = reader.GetDateTime(ordinal)
+                    Return dt.TimeOfDay
+                Catch
+                End Try
             End If
 
-            ' Try to parse as string if needed
-            Dim valueStr As String = reader.GetValue(ordinal).ToString()
-            Dim parsedTimeSpan As TimeSpan
-            If TimeSpan.TryParse(valueStr, parsedTimeSpan) Then
-                Return parsedTimeSpan
+            ' Try to parse as string (format: HH:mm:ss, HH:mm, or "0 HH:mm:ss.ffffff")
+            Dim valueStr As String = rawValue.ToString().Trim()
+            If Not String.IsNullOrEmpty(valueStr) Then
+                ' Handle format like "0 08:00:00.000000" (days hours:minutes:seconds.microseconds)
+                If valueStr.Contains(" ") Then
+                    Dim parts As String() = valueStr.Split(" "c)
+                    If parts.Length >= 2 Then
+                        ' Take the time portion (second part)
+                        valueStr = parts(1)
+                    End If
+                End If
+                
+                ' Try parsing as TimeSpan directly
+                Dim parsedTimeSpan As TimeSpan
+                If TimeSpan.TryParse(valueStr, parsedTimeSpan) Then
+                    Return parsedTimeSpan
+                End If
+                
+                ' Try parsing as time string (HH:mm:ss or HH:mm)
+                ' Remove any leading/trailing whitespace and handle formats like "08:00:00" or "8:00"
+                Dim cleanStr As String = valueStr.Trim()
+                ' Remove microseconds if present (e.g., "08:00:00.000000" -> "08:00:00")
+                If cleanStr.Contains(".") Then
+                    cleanStr = cleanStr.Substring(0, cleanStr.IndexOf("."c))
+                End If
+                
+                Dim timeParts As String() = cleanStr.Split(":"c)
+                If timeParts.Length >= 2 Then
+                    Dim hours As Integer
+                    Dim minutes As Integer
+                    Dim seconds As Integer = 0
+                    
+                    If Integer.TryParse(timeParts(0), hours) AndAlso Integer.TryParse(timeParts(1), minutes) Then
+                        ' Parse seconds if available
+                        If timeParts.Length >= 3 Then
+                            Integer.TryParse(timeParts(2), seconds)
+                        End If
+                        
+                        ' Ensure valid time range
+                        If hours >= 0 AndAlso hours < 24 AndAlso minutes >= 0 AndAlso minutes < 60 AndAlso seconds >= 0 AndAlso seconds < 60 Then
+                            Return New TimeSpan(hours, minutes, seconds)
+                        End If
+                    End If
+                End If
             End If
 
-            Return New TimeSpan(0)
+            Return TimeSpan.Zero
         Catch ex As Exception
             ' Return zero if any error occurs
-            Return New TimeSpan(0)
+            Return TimeSpan.Zero
         End Try
     End Function
 
     Private Function FormatTime(value As TimeSpan) As String
-        If value = TimeSpan.Zero Then
+        If value = TimeSpan.Zero OrElse value.TotalDays >= 1 Then
             Return String.Empty
         End If
 
-        Return value.ToString("hh\:mm")
+        ' Format as 12-hour time with AM/PM (e.g., "8:00 am", "2:30 pm")
+        Dim hours As Integer = value.Hours
+        Dim minutes As Integer = value.Minutes
+        Dim period As String = If(hours < 12, "am", "pm")
+        Dim displayHours As Integer = If(hours = 0, 12, If(hours > 12, hours - 12, hours))
+        Return String.Format("{0}:{1:00} {2}", displayHours, minutes, period)
     End Function
 
     Private Function FormatCaseNumberValue(value As Integer) As String
@@ -994,7 +1161,7 @@ Public Class blotterrecords
 
         editIcon = IconHelper.GetEditIcon()
         deleteIcon = IconHelper.GetDeleteIcon()
-        printIcon = CreatePrintIcon()
+        printIcon = IconHelper.GetPrintIcon()
     End Sub
 
     Private Function CreateTextColumn(name As String, header As String) As DataGridViewTextBoxColumn
@@ -1045,25 +1212,6 @@ Public Class blotterrecords
             btnUpdateSettlementStatus.Enabled = UserSession.CanEditInForm("blotterrecords")
         End If
     End Sub
-
-    Private Function CreatePrintIcon() As Image
-        Dim size As Integer = 28
-        Dim bmp As New Bitmap(size, size)
-        Using g As Graphics = Graphics.FromImage(bmp)
-            g.SmoothingMode = SmoothingMode.AntiAlias
-            g.Clear(Color.Transparent)
-
-            Using bodyBrush As New SolidBrush(Color.FromArgb(67, 195, 95))
-                g.FillRectangle(bodyBrush, 4, 6, size - 8, size - 10)
-                g.FillRectangle(bodyBrush, 7, size - 12, size - 14, 8)
-            End Using
-
-            Using paperBrush As New SolidBrush(Color.White)
-                g.FillRectangle(paperBrush, 8, 10, size - 16, size - 18)
-            End Using
-        End Using
-        Return bmp
-    End Function
 
     Private Sub pnlBlotterButtons_Paint(sender As Object, e As PaintEventArgs) Handles pnlBlotterButtons.Paint
 
@@ -1325,7 +1473,7 @@ Friend Class BlotterRecordEditorDialog
         MaximizeBox = False
         MinimizeBox = False
         StartPosition = FormStartPosition.CenterParent
-        ClientSize = New Size(560, 520)
+        ClientSize = New Size(600, 620)
         BackColor = Color.White
 
         Dim layout As New TableLayoutPanel() With {
@@ -1338,11 +1486,14 @@ Friend Class BlotterRecordEditorDialog
 
         layout.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 35.0F))
         layout.ColumnStyles.Add(New ColumnStyle(SizeType.Percent, 65.0F))
+        ' Single-line fields (rows 0-6)
         For i As Integer = 0 To 6
-            layout.RowStyles.Add(New RowStyle(SizeType.Absolute, 50.0F))
+            layout.RowStyles.Add(New RowStyle(SizeType.Absolute, 45.0F))
         Next
-        layout.RowStyles.Add(New RowStyle(SizeType.Absolute, 120.0F))
-        layout.RowStyles.Add(New RowStyle(SizeType.Absolute, 70.0F))
+        ' Narrative field (multiline) - row 7
+        layout.RowStyles.Add(New RowStyle(SizeType.Absolute, 100.0F))
+        ' Buttons row - row 8
+        layout.RowStyles.Add(New RowStyle(SizeType.Absolute, 60.0F))
 
         txtCaseNumber = New TextBox() With {
             .Dock = DockStyle.Fill,
@@ -1431,9 +1582,11 @@ Friend Class BlotterRecordEditorDialog
         Dim buttonsPanel As New FlowLayoutPanel() With {
             .Dock = DockStyle.Fill,
             .FlowDirection = FlowDirection.RightToLeft,
-            .Padding = New Padding(0, 10, 0, 0)
+            .Padding = New Padding(0, 5, 0, 0),
+            .Margin = New Padding(0)
         }
         buttonsPanel.Controls.Add(btnSave)
+        buttonsPanel.Controls.Add(New Panel() With {.Width = 10}) ' Spacing between buttons
         buttonsPanel.Controls.Add(btnCancel)
 
         layout.Controls.Add(CreateFieldLabel("Case Number"), 0, 0)

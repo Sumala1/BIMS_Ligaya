@@ -191,6 +191,15 @@ Public Class residentinfo
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        PerformSearch()
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        ' Auto-refresh when search text is cleared
+        PerformSearch()
+    End Sub
+
+    Private Sub PerformSearch()
         Dim searchText = txtSearch.Text.ToLower()
 
         If String.IsNullOrEmpty(searchText) Then
@@ -249,9 +258,9 @@ Public Class residentinfo
 
     Private Sub EditResident(lastName As String, firstName As String)
         ' Check permission before allowing edit
-        ' User role CAN edit in ResidentInfo, Admin can edit everywhere
-        If Not UserSession.CanEditInForm("residentinfo") Then
-            MessageBox.Show("You do not have permission to edit records in this form.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        ' Only Admin can edit in ResidentInfo
+        If Not UserSession.IsAdmin() Then
+            MessageBox.Show("You do not have permission to edit records in this form. Only Administrators can edit resident information.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
         Try
@@ -532,7 +541,7 @@ Public Class residentinfo
                                     End If
 
                                     If loaded Then
-                                        picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                                        picProfile.SizeMode = PictureBoxSizeMode.StretchImage
                                         picProfile.Refresh()
                                     Else
                                         picProfile.Image = Nothing
@@ -543,7 +552,7 @@ Public Class residentinfo
                                         Using fs As New System.IO.FileStream(resident.IdPicture, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.ReadWrite)
                                             picProfile.Image = System.Drawing.Image.FromStream(fs)
                                         End Using
-                                        picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                                        picProfile.SizeMode = PictureBoxSizeMode.StretchImage
                                         picProfile.Refresh()
                                     Else
                                         ' Try to decode as Base64-encoded image string
@@ -553,17 +562,17 @@ Public Class residentinfo
                                             Using ms As New System.IO.MemoryStream(bytes)
                                                 picProfile.Image = System.Drawing.Image.FromStream(ms)
                                             End Using
-                                            picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                                            picProfile.SizeMode = PictureBoxSizeMode.StretchImage
                                             picProfile.Refresh()
                                         Catch
                                             picProfile.Image = Nothing
-                                            picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                                            picProfile.SizeMode = PictureBoxSizeMode.StretchImage
                                             picProfile.Refresh()
                                         End Try
                                     End If
                                 Else
                                     picProfile.Image = Nothing
-                                    picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                                    picProfile.SizeMode = PictureBoxSizeMode.StretchImage
                                     picProfile.Refresh()
                                 End If
                             Catch ex As Exception
@@ -571,7 +580,7 @@ Public Class residentinfo
                                     picProfile.Image.Dispose()
                                     picProfile.Image = Nothing
                                 End If
-                                picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                                picProfile.SizeMode = PictureBoxSizeMode.StretchImage
                                 picProfile.Refresh()
                             End Try
                         End If
@@ -782,9 +791,9 @@ Public Class residentinfo
     End Sub
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         ' Check permission before allowing update
-        ' User role CAN update in ResidentInfo, Admin can update everywhere
-        If Not UserSession.CanEditInForm("residentinfo") Then
-            MessageBox.Show("You do not have permission to update records in this form.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        ' Only Admin can update in ResidentInfo
+        If Not UserSession.IsAdmin() Then
+            MessageBox.Show("You do not have permission to update records in this form. Only Administrators can update resident information.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
         If String.IsNullOrWhiteSpace(currentResidentLastName) OrElse String.IsNullOrWhiteSpace(currentResidentFirstName) Then
@@ -874,18 +883,18 @@ Public Class residentinfo
 
     ''' <summary>
     ''' Applies role-based access control to show/hide edit functionality based on role
-    ''' User role CAN edit/update in ResidentInfo, Admin can edit everywhere
+    ''' User role CANNOT update in ResidentInfo, only Admin can update
     ''' </summary>
     Private Sub ApplyRoleBasedAccess()
-        ' Show Update button - User role CAN update in ResidentInfo
+        ' Show Update button - Only Admin can update in ResidentInfo
         If btnUpdate IsNot Nothing Then
-            btnUpdate.Visible = UserSession.CanEditInForm("residentinfo")
-            btnUpdate.Enabled = UserSession.CanEditInForm("residentinfo")
+            btnUpdate.Visible = UserSession.IsAdmin()
+            btnUpdate.Enabled = UserSession.IsAdmin()
         End If
 
         ' Enable/disable detail editing textboxes based on role
-        ' User role CAN edit in ResidentInfo, so we only disable if they can't edit
-        If Not UserSession.CanEditInForm("residentinfo") Then
+        ' Only Admin can edit in ResidentInfo, so we disable if they're not Admin
+        If Not UserSession.IsAdmin() Then
             Dim editableTextBoxes As TextBox() = {
                 txtLastName, txtFirstName, txtMiddleName, txtPhoneNumber,
                 txtCitizenship, txtFathersName, txtMothersName, txtSpouse,
@@ -945,7 +954,7 @@ Public Class residentinfo
                 End If
 
                 picProfile.Image = clonedImage
-                picProfile.SizeMode = PictureBoxSizeMode.Zoom
+                picProfile.SizeMode = PictureBoxSizeMode.StretchImage
                 picProfile.Refresh()
 
                 newPicturePath = openDialog.FileName

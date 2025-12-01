@@ -68,6 +68,15 @@ Public Class certissuance
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        PerformSearch()
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        ' Auto-refresh when search text is cleared
+        PerformSearch()
+    End Sub
+
+    Private Sub PerformSearch()
         Dim searchText = TextBox1.Text.ToLower()
 
         If String.IsNullOrEmpty(searchText) Then
