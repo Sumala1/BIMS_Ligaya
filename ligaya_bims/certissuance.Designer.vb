@@ -64,7 +64,7 @@ Partial Class certissuance
         Me.TableLayoutPanel1.Controls.Add(Me.panelRight, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
@@ -77,7 +77,7 @@ Partial Class certissuance
         Me.panelRight.Controls.Add(Me.layoutMain)
         Me.panelRight.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelRight.Location = New System.Drawing.Point(4, 4)
-        Me.panelRight.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.panelRight.Margin = New System.Windows.Forms.Padding(4)
         Me.panelRight.Name = "panelRight"
         Me.panelRight.Padding = New System.Windows.Forms.Padding(32, 30, 32, 30)
         Me.panelRight.Size = New System.Drawing.Size(1572, 1002)
@@ -93,7 +93,7 @@ Partial Class certissuance
         Me.layoutMain.Controls.Add(Me.flowActions, 0, 3)
         Me.layoutMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.layoutMain.Location = New System.Drawing.Point(32, 30)
-        Me.layoutMain.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.layoutMain.Margin = New System.Windows.Forms.Padding(4)
         Me.layoutMain.Name = "layoutMain"
         Me.layoutMain.RowCount = 4
         Me.layoutMain.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -371,7 +371,7 @@ Partial Class certissuance
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1580, 1010)
         Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "certissuance"
         Me.Text = "Certificate Issuance"
         Me.TableLayoutPanel1.ResumeLayout(False)
